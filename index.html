@@ -1,52 +1,54 @@
 <!DOCTYPE html>
 <html>
-<title>Repositorio Isaac Zainea</title>
+<head>
+<title>Isaac Zainea | Data Science & AI</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+<link rel="icon" type="image/png" href="favicon.png">
 <style>
 body, html {
   height: 100%;
   font-family: "Inconsolata", sans-serif;
 }
-
 .bgimg {
   background-position: center;
   background-size: cover;
-  background-image: url("https://raw.githubusercontent.com/Izainea/Izainea.github.io/master/feature-default.jpg");
+  background-image: url("https://raw.githubusercontent.com/Izainea/Izainea.github.io/master/new-background.jpg");
   min-height: 75%;
 }
-
 .menu {
   display: none;
 }
+.w3-theme {
+  background-color: #AA78BF;
+  color: white;
+}
 </style>
+</head>
 <body>
 
-<!-- Links (sit on top) -->
+<!-- Navigation Bar -->
 <div class="w3-top">
-  <div class="w3-row w3-padding w3-black">
+  <div class="w3-row w3-padding w3-theme">
     <div class="w3-col s3">
-      <a href="#" class="w3-button w3-block w3-black">HOME</a>
+      <a href="#home" class="w3-button w3-block">HOME</a>
     </div>
     <div class="w3-col s3">
-      <a href="#about" class="w3-button w3-block w3-black">ABOUT</a>
+      <a href="#about" class="w3-button w3-block">ABOUT</a>
     </div>
     <div class="w3-col s3">
-      <a href="#menu" class="w3-button w3-block w3-black">REPOSITORIES</a>
+      <a href="#projects" class="w3-button w3-block">PROJECTS</a>
     </div>
     <div class="w3-col s3">
-      <a href="#where" class="w3-button w3-block w3-black">CONTACT</a>
+      <a href="#contact" class="w3-button w3-block">CONTACT</a>
     </div>
   </div>
 </div>
 
-<!-- Header with image -->
+<!-- Header with Background Image -->
 <header class="bgimg w3-display-container w3-grayscale-min" id="home">
-  <div class="w3-display-bottomleft w3-center w3-padding-large w3-hide-small">
-    <span class="w3-tag">Other applied mathematician</span>
-  </div>
   <div class="w3-display-middle w3-center">
     <span class="w3-text-white" style="font-size:90px">Isaac <br>Zainea</span>
   </div>
@@ -55,94 +57,48 @@ body, html {
   </div>
 </header>
 
-<!-- Add a background color and large text to the whole page -->
-<div class="w3-sand w3-grayscale w3-large">
-
-<!-- About Container -->
-<div class="w3-container" id="about">
+<!-- About Section -->
+<div class="w3-container w3-light-grey w3-padding-64" id="about">
   <div class="w3-content" style="max-width:700px">
-    <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">ABOUT ME</span></h5>
-    <p>Hello, I am an applied mathematician from the National University of Colombia who has worked as a teacher at various private universities in Bogota. I am passionate about good problems and I am a Python lover, on this page you will find some of the tutorials and repositories that I use in my classes.</p>
-    <p>If you are a student who came to this site looking for information or help for a course, I invite you to check the links to the different projects that we have developed in some classes. Check my contact information if you need me.</p>
-    <div class="w3-panel w3-leftbar w3-light-grey">
-      <p><i>"...hoy cada persona es un nodo en una compleja red que aminora las distancias y virtualiza las experiencias, estamos tan cerca a la información que ya nos convertimos en causa y fin de ella... </i></p>
+    <h5 class="w3-center w3-padding-32"><span class="w3-tag w3-theme w3-wide">ABOUT ME</span></h5>
+    <p>I am a Data Scientist and AI Consultant specializing in NLP, machine learning for fraud detection, and public procurement analytics. With experience in academia and the private sector, I lead AI-driven projects to enhance decision-making and automate complex processes.</p>
+  </div>
+</div>
+
+<!-- Projects Section -->
+<div class="w3-container w3-padding-64" id="projects">
+  <div class="w3-content" style="max-width:700px">
+    <h5 class="w3-center w3-padding-32"><span class="w3-tag w3-theme w3-wide">PROJECTS</span></h5>
+    <div class="w3-card w3-margin w3-padding">
+      <h5><a href="https://github.com/gobataco">Gobataco - Public Procurement Data</a></h5>
+      <p>Data science applications for analyzing public procurement contracts.</p>
+    </div>
+    <div class="w3-card w3-margin w3-padding">
+      <h5><a href="https://github.com/Izainea/VizLinc">VizLinc - Graph-Based NLP</a></h5>
+      <p>Visualization and network analysis of legal and social relationships.</p>
+    </div>
+    <div class="w3-card w3-margin w3-padding">
+      <h5><a href="https://github.com/Izainea/NER-Colombia">NER for Colombian Conflict</a></h5>
+      <p>Named Entity Recognition models adapted to analyze testimonies and documents.</p>
     </div>
   </div>
 </div>
 
-<!-- Menu Container -->
-<div class="w3-container" id="menu">
+<!-- Contact Section -->
+<div class="w3-container w3-light-grey w3-padding-64" id="contact">
   <div class="w3-content" style="max-width:700px">
- 
-    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">REPOSITORIES</span></h5>
-  
-    <div class="w3-row w3-center w3-card w3-padding">
-      <a href="javascript:void(0)" onclick="openMenu(event, 'Eat');" id="myLink">
-        <div class="w3-col s6 tablink">Projects</div>
-      </a>
-      <a href="javascript:void(0)" onclick="openMenu(event, 'Drinks');">
-        <div class="w3-col s6 tablink">Repositories</div>
-      </a>
-    </div>
-
-    <div id="Eat" class="w3-container menu w3-padding-48 w3-card">
-     <h5><a href="https://github.com/MCG-Externado"> Using Python in Mathematics Education</a></h5>
-      <p class="w3-text-grey">A project of the Externado de Colombia University in which we explore all math topics using Jupyter notebooks.</p><br>
-      <h5><a href="https://github.com/Izainea/Curso-Python"> Python Course</a></h5>
-      <p class="w3-text-grey">Let's do a simple Python scan. The material available here guides us from the Anaconda installation to the elementary processing of some databases.</p><br>
-      
-      <h5>Cellular Automata in epidemiological models</h5>
-      <p class="w3-text-grey"> Simulations and modeling with cellular automata.</p><br>
-    
-          <h5>NLP in legal data</h5>
-      <p class="w3-text-grey"> We use various natural language processing techniques to create applications that advise citizens on their legal needs.</p><br>
-     
-    </div>
-
-    <div id="Drinks" class="w3-container menu w3-padding-48 w3-card">
-      <h5><a href="https://github.com/izainea"> GitHub Profile</a></h5>
-      <p class="w3-text-grey">All repositories.</p><br>
-    </div>  
-
-    
+    <h5 class="w3-center w3-padding-32"><span class="w3-tag w3-theme w3-wide">CONTACT</span></h5>
+    <p>Feel free to reach out to discuss projects or collaborations.</p>
+    <p>Email: <a href="mailto:cizaineam@gmail.com">cizaineam@gmail.com</a></p>
+    <p><a href="https://www.linkedin.com/in/isaaczainea" target="_blank">LinkedIn</a></p>
+    <p><a href="https://github.com/Izainea" target="_blank">GitHub</a></p>
   </div>
-</div>
-    <!-- img src="/w3images/coffeehouse2.jpg" style="width:100%;max-width:1000px;margin-top:32px;">
-<!-- Contact/Area Container -->
-<div class="w3-container" id="where" style="padding-bottom:32px;">
-  <div class="w3-content" style="max-width:700px">
-    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">CONTACT</span></h5>
-    <p>Do you want to talk to me?</p>
-    <p><span class="w3-tag">EMAIL</span>  cizaineam@gmail.com</p>
- 
-  </div>
-</div>
-
-<!-- End page content -->
 </div>
 
 <!-- Footer -->
-<footer class="w3-center w3-light-grey w3-padding-48 w3-large">
-  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+<footer class="w3-center w3-theme w3-padding-32">
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-opacity">W3.CSS</a></p>
 </footer>
-
-<script>
-// Tabbed Menu
-function openMenu(evt, menuName) {
-  var i, x, tablinks;
-  x = document.getElementsByClassName("menu");
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablink");
-  for (i = 0; i < x.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" w3-dark-grey", "");
-  }
-  document.getElementById(menuName).style.display = "block";
-  evt.currentTarget.firstElementChild.className += " w3-dark-grey";
-}
-document.getElementById("myLink").click();
-</script>
 
 </body>
 </html>
