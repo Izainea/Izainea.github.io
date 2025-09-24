@@ -1,104 +1,209 @@
 <!DOCTYPE html>
-<html>
+<html lang="es" class="scroll-smooth">
+
 <head>
-<title>Isaac Zainea | Data Science & AI</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
-<link rel="icon" type="image/png" href="logo.png">
-<style>
-body, html {
-  height: 100%;
-  font-family: "Inconsolata", sans-serif;
-}
-.bgimg {
-  background-position: center;
-  background-size: cover;
-  background-image: url("https://raw.githubusercontent.com/Izainea/Izainea.github.io/master/feature-default.jpg");
-  min-height: 75%;
-}
-.menu {
-  display: none;
-}
-.w3-theme {
-  background-color: #AA78BF;
-  color: white;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isaac Zainea | Data Scientist & Educator</title>
+    <meta name="description" content="Sitio personal de Isaac Zainea, un espacio sobre Ciencia de Datos, PLN e Inteligencia Artificial.">
+    <meta name="author" content="Isaac Zainea">
+    <link rel="icon" type="image/png" href="1585442600410.jpeg">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" xintegrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f1f5f9; /* slate-100 */
+            color: #334155; /* slate-700 */
+        }
+        h1, h2, h3 {
+             font-family: 'Lora', serif;
+             color: #1e293b; /* slate-800 */
+        }
+        .accent-color {
+            color: #4f46e5; /* indigo-600 */
+        }
+        .accent-bg {
+            background-color: #4f46e5;
+        }
+        .card {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0; /* slate-200 */
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+    </style>
 </head>
-<body>
 
-<!-- Navigation Bar -->
-<div class="w3-top">
-  <div class="w3-row w3-padding w3-theme">
-    <div class="w3-col s3">
-      <a href="#home" class="w3-button w3-block">HOME</a>
-    </div>
-    <div class="w3-col s3">
-      <a href="#about" class="w3-button w3-block">ABOUT</a>
-    </div>
-    <div class="w3-col s3">
-      <a href="#projects" class="w3-button w3-block">PROJECTS</a>
-    </div>
-    <div class="w3-col s3">
-      <a href="#contact" class="w3-button w3-block">CONTACT</a>
-    </div>
-  </div>
-</div>
+<body class="antialiased">
 
-<!-- Header with Background Image -->
-<header class="bgimg w3-display-container w3-grayscale-min" id="home">
-  <div class="w3-display-middle w3-center">
-    <span class="w3-text-white" style="font-size:90px">Isaac <br>Zainea</span>
-  </div>
-  <div class="w3-display-bottomright w3-center w3-padding-large">
-    <span class="w3-text-white">Bogotá, Colombia</span>
-  </div>
-</header>
+    <!-- Header & Navigation -->
+    <header class="w-full sticky top-0 z-50 bg-white/90 backdrop-blur-lg border-b border-slate-200">
+        <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="#home" class="text-2xl font-bold text-slate-800">Isaac Zainea</a>
+                <div class="hidden md:flex md:items-center md:space-x-8 text-slate-600 font-medium">
+                    <a href="#perfil" class="hover:text-indigo-600 transition-colors">Perfil</a>
+                    <a href="#experiencia" class="hover:text-indigo-600 transition-colors">Experiencia</a>
+                    <a href="#proyectos" class="hover:text-indigo-600 transition-colors">Proyectos</a>
+                    <a href="#contacto" class="hover:text-indigo-600 transition-colors">Contacto</a>
+                </div>
+            </div>
+        </nav>
+    </header>
 
-<!-- About Section -->
-<div class="w3-container w3-light-grey w3-padding-64" id="about">
-  <div class="w3-content" style="max-width:700px">
-    <h5 class="w3-center w3-padding-32"><span class="w3-tag w3-theme w3-wide">ABOUT ME</span></h5>
-    <p>I am a Data Scientist and AI Consultant specializing in NLP, machine learning for fraud detection, and public procurement analytics. With experience in academia and the private sector, I lead AI-driven projects to enhance decision-making and automate complex processes.</p>
-  </div>
-</div>
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
-<!-- Projects Section -->
-<div class="w3-container w3-padding-64" id="projects">
-  <div class="w3-content" style="max-width:700px">
-    <h5 class="w3-center w3-padding-32"><span class="w3-tag w3-theme w3-wide">PROJECTS</span></h5>
-    <div class="w3-card w3-margin w3-padding">
-      <h5><a href="https://github.com/gobataco">Gobataco - Public Procurement Data</a></h5>
-      <p>Data science applications for analyzing public procurement contracts.</p>
-    </div>
-    <div class="w3-card w3-margin w3-padding">
-      <h5><a href="https://github.com/Izainea/VizLinc">VizLinc - Graph-Based NLP</a></h5>
-      <p>Visualization and network analysis of legal and social relationships.</p>
-    </div>
-    <div class="w3-card w3-margin w3-padding">
-      <h5><a href="https://github.com/Izainea/NER-Colombia">NER for Colombian Conflict</a></h5>
-      <p>Named Entity Recognition models adapted to analyze testimonies and documents.</p>
-    </div>
-  </div>
-</div>
+        <!-- Hero Section -->
+        <section id="home" class="py-24 md:py-32 flex flex-col md:flex-row items-center gap-12">
+            <div class="w-full md:w-1/3 flex justify-center">
+                 <img src="https://avatars.githubusercontent.com/u/10189047?v=4" alt="Foto de Isaac Zainea" class="rounded-full w-52 h-52 md:w-64 md:h-64 object-cover border-4 border-white shadow-xl">
+            </div>
+            <div class="w-full md:w-2/3 text-center md:text-left">
+                <h1 class="text-4xl md:text-5xl font-bold tracking-tight">
+                    Isaac Zainea Maya
+                </h1>
+                <p class="mt-2 text-2xl accent-color font-semibold">
+                    Data Scientist | AI Specialist | Educator
+                </p>
+                <p class="mt-6 max-w-xl text-lg text-slate-600">
+                    Científico de datos con experiencia en la industria y la academia, enfocado en resolver problemas complejos a través de la Inteligencia Artificial y la docencia.
+                </p>
+                <div class="mt-8 flex justify-center md:justify-start space-x-4">
+                    <a href="https://www.linkedin.com/in/isaac-zainea-3005015a/" target="_blank" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white accent-bg hover:bg-indigo-700 transition-colors">
+                        <i class="fab fa-linkedin mr-2"></i> Conectar en LinkedIn
+                    </a>
+                     <a href="#contacto" class="inline-flex items-center justify-center px-5 py-3 border border-slate-300 text-base font-medium rounded-md text-slate-700 bg-white hover:bg-slate-50 transition-colors">
+                        <i class="fas fa-envelope mr-2"></i> Contacto
+                    </a>
+                </div>
+            </div>
+        </section>
 
-<!-- Contact Section -->
-<div class="w3-container w3-light-grey w3-padding-64" id="contact">
-  <div class="w3-content" style="max-width:700px">
-    <h5 class="w3-center w3-padding-32"><span class="w3-tag w3-theme w3-wide">CONTACT</span></h5>
-    <p>Feel free to reach out to discuss projects or collaborations.</p>
-    <p>Email: <a href="mailto:cizaineam@gmail.com">cizaineam@gmail.com</a></p>
-    <p><a href="https://www.linkedin.com/in/isaaczainea" target="_blank">LinkedIn</a></p>
-    <p><a href="https://github.com/Izainea" target="_blank">GitHub</a></p>
-  </div>
-</div>
+        <!-- Perfil Section -->
+        <section id="perfil" class="py-24">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl font-bold">Un Perfil Híbrido</h2>
+                <p class="mt-4 text-lg text-slate-600 leading-relaxed">
+                    Mi carrera se forja en la intersección del desarrollo tecnológico y la vocación académica. Como matemático, disfruto el ciclo completo de la creación de soluciones de IA: desde el diseño de <strong class="text-slate-900">arquitecturas y pipelines de datos</strong> hasta la implementación de <strong class="text-slate-900">sistemas inteligentes</strong> para resolver problemas complejos como la detección de fraude a gran escala. Al mismo tiempo, mi vocación social me lleva a la docencia en diversas universidades, especialmente en espacios como la <strong class="text-slate-900">Universidad Santo Tomás</strong>, donde busco guiar a la próxima generación de profesionales. Este balance se nutre de mi curiosidad por la filosofía, investigando cómo la hermenéutica puede informar la construcción de una IA más robusta y transparente.
+                </p>
+            </div>
+        </section>
 
-<!-- Footer -->
-<footer class="w3-center w3-theme w3-padding-32">
-  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-opacity">W3.CSS</a></p>
-</footer>
+        <!-- Experiencia Section -->
+        <section id="experiencia" class="py-24 bg-white">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-center mb-12">Áreas de Enfoque</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0 mt-1">
+                            <i class="fas fa-shield-alt text-2xl accent-color"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">Ingeniería de Datos Anti-Fraude</h3>
+                            <p class="mt-2 text-slate-600">Diseño de modelos predictivos y arquitecturas de datos a gran escala (BigQuery, Neo4j) para la detección de anomalías.</p>
+                        </div>
+                    </div>
+                     <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0 mt-1">
+                           <i class="fas fa-chalkboard-teacher text-2xl accent-color"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">Formador en Business Intelligence</h3>
+                            <p class="mt-2 text-slate-600">Capacitación en visualización y análisis de datos para potenciar las habilidades de equipos profesionales.</p>
+                        </div>
+                    </div>
+                     <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0 mt-1">
+                             <i class="fas fa-search-plus text-2xl accent-color"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">IA con Impacto Social</h3>
+                            <p class="mt-2 text-slate-600">Aplicación de IA para automatizar y agilizar procesos clave en la búsqueda de personas desaparecidas, colaborando con la UBPD.</p>
+                        </div>
+                    </div>
+                     <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0 mt-1">
+                           <i class="fas fa-balance-scale text-2xl accent-color"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">Datos para la Transparencia Pública</h3>
+                            <p class="mt-2 text-slate-600">Modelado de datos para mejorar la eficiencia y la transparencia en la contratación pública del país.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Proyectos Section -->
+        <section id="proyectos" class="py-24">
+            <h2 class="text-3xl font-bold text-center">Proyectos e Investigación</h2>
+            <p class="mt-4 text-lg text-slate-600 text-center max-w-3xl mx-auto">Explora algunos de mis proyectos recientes e intereses de investigación. Puedes encontrar más en mi GitHub.</p>
+            <div class="mt-12 grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                <!-- Project 1: Capacitación ICFES -->
+                <a href="https://github.com/Izainea/capacitacion_icfes" target="_blank" class="card block rounded-lg overflow-hidden">
+                    <img src="https://placehold.co/600x400/FFFFFF/1e293b?text=ICFES" alt="Proyecto Capacitación ICFES" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold">Capacitación ICFES</h3>
+                        <p class="mt-2 text-slate-600">Recursos y talleres para la formación en análisis de datos, aplicados al contexto de las pruebas de estado en Colombia.</p>
+                    </div>
+                </a>
+                <!-- Project 2: Capacitación en Ciencia de Datos -->
+                <a href="https://github.com/Izainea/capacitacion_dian_usta" target="_blank" class="card block rounded-lg overflow-hidden">
+                    <img src="https://placehold.co/600x400/FFFFFF/1e293b?text=Capacitación" alt="Proyecto Capacitación en Ciencia de Datos" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold">Capacitación en Ciencia de Datos</h3>
+                        <p class="mt-2 text-slate-600">Material y talleres para formaciones en ciencia de datos aplicados a contextos de entidades públicas.</p>
+                    </div>
+                </a>
+                <!-- Project 3: Investigación -->
+                 <div class="card rounded-lg p-6">
+                    <h3 class="text-xl font-bold mb-4">Líneas de Investigación</h3>
+                    <ul class="space-y-4 text-slate-600">
+                        <li class="flex items-start"><i class="fas fa-brain mt-1 mr-3 text-indigo-500"></i><span><strong>Filosofía y IA</strong><br><span class="text-sm">Investigando la lógica de la interpretación en arquitecturas de IA.</span></span></li>
+                        <li class="flex items-start"><i class="fas fa-project-diagram mt-1 mr-3 text-indigo-500"></i><span><strong>Autómatas Celulares Topológicos</strong><br><span class="text-sm">Marco para modelar dinámicas de sistemas complejos sobre grafos.</span></span></li>
+                    </ul>
+                 </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contacto" class="py-24 text-center bg-white">
+          <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold">Hablemos</h2>
+            <p class="mt-4 text-lg text-slate-600">Estoy disponible para colaboraciones, consultorías o charlas. Si tienes un proyecto en mente, no dudes en escribirme.</p>
+            <div class="mt-8">
+                 <a href="mailto:cizaineam@gmail.com" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-lg font-medium rounded-md text-white accent-bg hover:bg-indigo-700 transition-colors">
+                    <i class="fas fa-envelope mr-3"></i> cizaineam@gmail.com
+                </a>
+            </div>
+             <div class="mt-12 flex justify-center space-x-6">
+                <a href="https://www.linkedin.com/in/isaac-zainea-3005015a/" target="_blank" class="text-slate-400 hover:text-indigo-600 transition-colors text-2xl" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/Izainea" target="_blank" class="text-slate-400 hover:text-indigo-600 transition-colors text-2xl" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+             </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-8 border-t border-slate-200 bg-white">
+        <p class="text-slate-500">&copy; 2025 Isaac Zainea Maya.</p>
+    </footer>
 
 </body>
 </html>
