@@ -1,0 +1,120 @@
+---
+// Figura 1: el quiver del sitio. Se dibuja en el servidor a partir de src/data/quiver.json;
+// el script de abajo solo añade la interacción.
+import data from '../data/quiver.json';
+
+const KIND = { inv: 'Investigación', app: 'App / herramienta', blog: 'Blog', doc: 'Docencia' };
+const byId = Object.fromEntries(data.nodes.map((n) => [n.id, n]));
+const norm = (x, y) => { const l = Math.hypot(x, y) || 1; return [x / l, y / l]; };
+
+function edgePath(a, b) {
+  const dx = b.x - a.x, dy = b.y - a.y;
+  const cx = (a.x + b.x) / 2 - dy * 0.1, cy = (a.y + b.y) / 2 + dx * 0.1;
+  const u = norm(cx - a.x, cy - a.y), v = norm(b.x - cx, b.y - cy);
+  const sx = a.x + u[0] * (a.r + 4), sy = a.y + u[1] * (a.r + 4);
+  const ex = b.x - v[0] * (b.r + 6), ey = b.y - v[1] * (b.r + 6);
+  return `M${sx.toFixed(1)} ${sy.toFixed(1)}Q${cx.toFixed(1)} ${cy.toFixed(1)} ${ex.toFixed(1)} ${ey.toFixed(1)}`;
+}
+function labelPos(n) {
+  if (n.lp === 'r') return { x: n.r + 8, y: 4, anchor: 'start' };
+  if (n.lp === 'l') return { x: -(n.r + 8), y: 4, anchor: 'end' };
+  return { x: 0, y: n.r + 18, anchor: 'middle' };
+}
+const diamond = (r) => `M0 ${-r * 1.2}L${r * 1.2} 0L0 ${r * 1.2}L${-r * 1.2} 0z`;
+const triangle = (r) => `M0 ${-r * 1.15}L${r * 1.15} ${r * 0.9}L${-r * 1.15} ${r * 0.9}z`;
+
+const payload = { kind: KIND, inicial: data.inicial, nodes: data.nodes.map(({ id, t, title, desc, href }) => ({ id, t, title, desc, href })) };
+---
+<figure class="fig" data-quiver>
+  <div class="filters" role="group" aria-label="Filtrar el quiver por tipo">
+    <button type="button" data-f="all" aria-pressed="true">Todo</button>
+    <button type="button" data-f="inv" aria-pressed="false"><svg viewBox="-6 -6 12 12"><circle r="5" class="t-inv"></circle></svg>Investigación</button>
+    <button type="button" data-f="app" aria-pressed="false"><svg viewBox="-6 -6 12 12"><rect x="-4.5" y="-4.5" width="9" height="9" class="t-app"></rect></svg>Apps</button>
+    <button type="button" data-f="blog" aria-pressed="false"><svg viewBox="-6 -6 12 12"><path d="M0 -5.5L5.5 0L0 5.5L-5.5 0z" class="t-blog"></path></svg>Blog</button>
+    <button type="button" data-f="doc" aria-pressed="false"><svg viewBox="-6 -6 12 12"><path d="M0 -5.5L5.5 4.5L-5.5 4.5z" class="t-doc"></path></svg>Docencia</button>
+  </div>
+  <div class="fig-body">
+    <div class="quiver-scroll">
+      <svg class="quiver" viewBox="0 0 760 480" role="group" aria-label="Quiver interactivo del trabajo de Carlos Isaac Zainea">
+        <defs>
+          <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 1L9 5L0 9z" class="ah"></path></marker>
+          <marker id="ah-on" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 1L9 5L0 9z" class="ah-on"></path></marker>
+        </defs>
+        <g>
+          {data.edges.map(([from, to]) => (
+            <path class="edge" d={edgePath(byId[from], byId[to])} data-from={from} data-to={to} marker-end="url(#ah)"></path>
+          ))}
+        </g>
+        <g>
+          {data.nodes.map((n) => {
+            const lp = labelPos(n);
+            return (
+              <g class="node" data-id={n.id} data-t={n.t} transform={`translate(${n.x} ${n.y})`} tabindex="0" role="button" aria-label={`${n.title} (${KIND[n.t]})`}>
+                <circle r={n.r + 9} class={`halo t-${n.t}`}></circle>
+                {n.t === 'inv' && <circle r={n.r} class="shape t-inv"></circle>}
+                {n.t === 'app' && <rect x={-n.r * 0.88} y={-n.r * 0.88} width={n.r * 1.76} height={n.r * 1.76} class="shape t-app"></rect>}
+                {n.t === 'blog' && <path d={diamond(n.r)} class="shape t-blog"></path>}
+                {n.t === 'doc' && <path d={triangle(n.r)} class="shape t-doc"></path>}
+                <text x={lp.x} y={lp.y} text-anchor={lp.anchor}>{n.label}</text>
+              </g>
+            );
+          })}
+        </g>
+      </svg>
+    </div>
+    <div class="detail" aria-live="polite"></div>
+  </div>
+  <figcaption><b>Figura 1.</b> El quiver de mi trabajo. Cada vértice es una línea de investigación, una app, una entrada o un curso; cada flecha indica que una cosa alimenta a la otra. Pasa el cursor o toca un vértice para ver de qué se trata.</figcaption>
+  <script type="application/json" data-quiver-data set:html={JSON.stringify(payload)}></script>
+</figure>
+
+<script>
+  document.querySelectorAll('[data-quiver]').forEach((fig) => {
+    const data = JSON.parse(fig.querySelector('[data-quiver-data]').textContent);
+    const byId = Object.fromEntries(data.nodes.map((n) => [n.id, n]));
+    const nodes = [...fig.querySelectorAll('.node')];
+    const edges = [...fig.querySelectorAll('.edge')];
+    const detail = fig.querySelector('.detail');
+    const external = (href) => /^https?:/.test(href);
+
+    function select(id) {
+      const n = byId[id];
+      nodes.forEach((g) => g.classList.toggle('on', g.dataset.id === id));
+      edges.forEach((e) => {
+        const on = e.dataset.from === id || e.dataset.to === id;
+        e.classList.toggle('on', on);
+        e.setAttribute('marker-end', on ? 'url(#ah-on)' : 'url(#ah)');
+      });
+      const kind = Object.assign(document.createElement('span'), { className: 'kind', textContent: data.kind[n.t] });
+      kind.style.color = `var(--c-${n.t})`;
+      const title = Object.assign(document.createElement('strong'), { textContent: n.title });
+      const desc = Object.assign(document.createElement('p'), { textContent: n.desc });
+      const link = Object.assign(document.createElement('a'), { href: n.href, textContent: external(n.href) ? 'Abrir en GitHub ↗' : 'Ver →' });
+      if (external(n.href)) { link.target = '_blank'; link.rel = 'noopener'; }
+      detail.replaceChildren(kind, title, desc, link);
+    }
+    function go(id) {
+      const href = byId[id].href;
+      if (external(href)) window.open(href, '_blank', 'noopener'); else window.location.href = href;
+    }
+    function applyFilter(f) {
+      const t = Object.fromEntries(nodes.map((g) => [g.dataset.id, g.dataset.t]));
+      nodes.forEach((g) => g.classList.toggle('dim', f !== 'all' && g.dataset.t !== f));
+      edges.forEach((e) => e.classList.toggle('dim', f !== 'all' && (t[e.dataset.from] !== f || t[e.dataset.to] !== f)));
+      fig.querySelectorAll('.filters button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.f === f)));
+    }
+
+    nodes.forEach((g) => {
+      const id = g.dataset.id;
+      g.addEventListener('mouseenter', () => select(id));
+      g.addEventListener('focus', () => select(id));
+      g.addEventListener('click', () => select(id));
+      g.addEventListener('dblclick', () => go(id));
+      g.addEventListener('keydown', (ev) => {
+        if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); go(id); }
+      });
+    });
+    fig.querySelectorAll('.filters button').forEach((b) => b.addEventListener('click', () => applyFilter(b.dataset.f)));
+    select(data.inicial);
+  });
+</script>

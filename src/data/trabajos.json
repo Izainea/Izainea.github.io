@@ -1,0 +1,23 @@
+{
+  "investigacion": [
+    { "when": "2026 · en curso", "name": "Álgebras de caminos como soporte de la atención multi-salto en GNN", "desc": "El álgebra de caminos de un quiver como marco para entender —y atacar— el over-squashing en redes neuronales de grafos.", "tags": ["quivers", "GNN", "over-squashing"], "href": "https://github.com/Izainea/path-algebra-gnn" },
+    { "when": "2026", "name": "Autómatas de impacto sobre quivers (AIQ)", "desc": "Marco algebraico para modelar dinámicas en sistemas complejos con representaciones de quivers y álgebras de configuración de Brauer.", "tags": ["álgebras de Brauer", "sistemas complejos"], "href": "https://github.com/Izainea/aiq-quivers" },
+    { "when": "2025 · artículo", "name": "Autómatas celulares topológicos", "desc": "Coautor. Dinámicas de sistemas complejos sobre quivers arbitrarios, con reglas de evolución basadas en vecindades topológicas.", "tags": [] },
+    { "when": "2026", "name": "IA explicable e inferencia causal", "desc": "Cuadernos y experimentos sobre explicabilidad de modelos desde una mirada causal.", "tags": ["XAI", "causalidad"], "href": "https://github.com/Izainea/xai-inferencia-causal" }
+  ],
+  "apps": [
+    { "when": "App", "name": "scholar-agent", "desc": "Tablero conversacional para analizar redes de citación con configuraciones de Brauer; un agente con herramientas responde preguntas sobre el grafo.", "tags": ["FastAPI", "React", "Cytoscape", "agentes LLM"], "href": "https://github.com/Izainea/scholar-agent" },
+    { "when": "Herramienta", "name": "secoplic", "desc": "Utilidades en Python para trabajar con los datos abiertos de contratación pública del SECOP.", "tags": ["Python", "datos abiertos"], "href": "https://github.com/Izainea/secoplic" },
+    { "when": "Modelo", "name": "Alineación de taxonomías UNSPSC–CIIU", "desc": "Emparejar lo que el Estado compra (UNSPSC) con lo que las empresas hacen (CIIU), para alinear oferta y demanda pública.", "tags": ["PLN", "embeddings"], "href": "https://github.com/Izainea/alineacion-taxonomias-unspsc-ciiu" },
+    { "when": "Modelo", "name": "NER para el conflicto colombiano", "desc": "Reconocimiento de entidades nombradas adaptado a testimonios y documentos históricos del conflicto.", "tags": ["PLN", "memoria histórica"], "href": "https://github.com/Izainea/NER-Colombia" },
+    { "when": "Web", "name": "datos-al-parque", "desc": "Sitio del proyecto Datos al Parque.", "tags": [], "href": "https://github.com/Izainea/datos-al-parque" },
+    { "when": "Visualización · archivo", "name": "Usuarios de Twitter en común por candidato", "desc": "Red interactiva de audiencias compartidas entre candidatos.", "tags": ["vis.js", "redes"], "href": "/candidatos.html" }
+  ],
+  "docencia": [
+    { "when": "2026 · taller", "name": "Agentes locales con Ollama y LangChain", "desc": "Construir agentes que corren en tu propia máquina, sin depender de la nube.", "tags": [], "href": "https://github.com/Izainea/capacitacion-agentes-locales" },
+    { "when": "2026", "name": "Agentes de IA para la investigación", "desc": "Material sobre cómo usar agentes de IA en el trabajo académico.", "tags": [], "href": "https://github.com/Izainea/agentes-ia-investigacion" },
+    { "when": "2025 · ICFES", "name": "Análisis de datos para las pruebas de Estado", "desc": "Recursos y talleres de análisis de datos en R, en el contexto de las pruebas Saber.", "tags": [], "href": "https://github.com/Izainea/capacitacion_icfes" },
+    { "when": "DIAN · USTA", "name": "Ciencia de datos para entidades públicas", "desc": "Formación aplicada para equipos del sector público.", "tags": [], "href": "https://github.com/Izainea/capacitacion_dian_usta" },
+    { "when": "2025-2 · curso", "name": "Bases de datos", "desc": "Cuadernos del curso universitario.", "tags": [], "href": "https://github.com/Izainea/Bases-de-Datos-202502" }
+  ]
+}

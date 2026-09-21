@@ -1,0 +1,5 @@
+---
+// Nota al margen. En MDX: <Glosa marca="a">texto</Glosa>, justo después del párrafo que anota.
+const { marca } = Astro.props;
+---
+<aside class="glosa">{marca && <span class="mark">{marca}</span>} <slot /></aside>

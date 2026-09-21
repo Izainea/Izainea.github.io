@@ -1,0 +1,64 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Quiver from '../components/Quiver.astro';
+import Rows from '../components/Rows.astro';
+import Glosa from '../components/Glosa.astro';
+import trabajos from '../data/trabajos.json';
+
+const posts = (await getCollection('blog')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const blogItems = posts.slice(0, 4).map((p) => ({
+  when: p.data.tema,
+  name: p.data.title,
+  desc: p.data.description,
+  status: p.data.draft ? 'por escribir' : p.data.estado,
+  href: p.data.draft ? undefined : `/blog/${p.id}/`,
+}));
+---
+<Base home>
+  <section class="thesis" id="inicio">
+    <div class="thesis-head">
+      <h1>Trabajo con flechas.</h1>
+      <p>Las de un <em>quiver</em>, las de un pipeline de datos y las que van de una idea a la persona que la está aprendiendo.</p>
+    </div>
+    <Quiver />
+  </section>
+
+  <section class="sec" id="sobre">
+    <div class="sec-head"><span class="no">§1</span><h2>Sobre mí</h2></div>
+    <p class="lede">Soy matemático y mi carrera ocurre en la intersección entre construir tecnología y enseñarla. Disfruto el ciclo completo de una solución de IA: desde la arquitectura y los pipelines de datos hasta el sistema que alguien usa un lunes por la mañana para encontrar un patrón que antes no se veía.</p>
+    <Glosa marca="a"><i>Quiver</i> (carcaj): grafo dirigido que admite lazos y flechas múltiples. Sus álgebras de caminos y sus representaciones son el hilo de mi investigación doctoral.</Glosa>
+    <p>En la investigación estudio dinámicas sobre quivers<sup class="mark">a</sup> y lo que sus álgebras de caminos dicen sobre cómo fluye la información en una red neuronal de grafos. En la industria he aplicado procesamiento de lenguaje natural y grafos a problemas con consecuencias: apoyar la búsqueda de personas desaparecidas con la UBPD<sup class="mark">b</sup> y hacer más legible la contratación pública del país.</p>
+    <Glosa marca="b">Unidad de Búsqueda de Personas dadas por Desaparecidas, creada tras el Acuerdo de Paz de 2016.</Glosa>
+    <p>Enseño en varias universidades, sobre todo en la Universidad Santo Tomás. Y leo filosofía: me interesa qué puede decirle la hermenéutica<sup class="mark">c</sup> a quienes construimos modelos que, a su manera, interpretan.</p>
+    <Glosa marca="c">El círculo hermenéutico: el todo se entiende desde las partes y las partes desde el todo. Un mecanismo de atención hace algo inquietantemente parecido.</Glosa>
+  </section>
+
+  <section class="sec" id="investigacion">
+    <div class="sec-head"><span class="no">§2</span><h2>Investigación</h2></div>
+    <Rows items={trabajos.investigacion} />
+  </section>
+
+  <section class="sec" id="apps">
+    <div class="sec-head"><span class="no">§3</span><h2>Apps y herramientas</h2></div>
+    <p>Lo que construyo para que la investigación y los datos públicos se puedan usar: desde agentes que conversan con una red de citación hasta utilidades para leer el SECOP<sup class="mark">d</sup>.</p>
+    <Glosa marca="d">Sistema Electrónico de Contratación Pública de Colombia. Millones de contratos, descritos en lenguaje natural por miles de manos distintas.</Glosa>
+    <Rows items={trabajos.apps} />
+  </section>
+
+  <section class="sec" id="blog">
+    <div class="sec-head"><span class="no">§4</span><h2>Blog</h2><a class="more" href="/blog/">todas las entradas →</a></div>
+    <Rows items={blogItems} />
+  </section>
+
+  <section class="sec" id="docencia">
+    <div class="sec-head"><span class="no">§5</span><h2>Docencia</h2></div>
+    <Rows items={trabajos.docencia} />
+  </section>
+
+  <section class="sec contact" id="contacto">
+    <div class="sec-head"><span class="no">§6</span><h2>Contacto</h2></div>
+    <p>Para colaborar en investigación, proponer un taller o conversar sobre datos con impacto público:</p>
+    <a class="mail" href="mailto:cizaineam@gmail.com">cizaineam@gmail.com</a>
+  </section>
+</Base>

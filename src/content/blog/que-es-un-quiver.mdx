@@ -1,0 +1,53 @@
+---
+title: "¿Qué es un quiver y por qué debería importarle a quien trabaja con datos?"
+description: "Una introducción visual: vértices, flechas, caminos y el álgebra que generan."
+date: 2026-09-18
+tema: Matemáticas
+estado: semilla
+---
+import Glosa from '../../components/Glosa.astro';
+import ContadorCaminos from '../../components/ContadorCaminos.astro';
+
+Casi todo lo que modelamos con datos termina siendo un grafo dirigido: quién cita a quién, qué entidad contrata a cuál proveedor, qué neurona alimenta a cuál otra. Los algebristas tienen un nombre propio para ese objeto, y sobre todo una manera particular de mirarlo.
+
+## La definición
+
+Un **quiver** es una cuádrupla $Q = (Q_0, Q_1, s, t)$: un conjunto de vértices $Q_0$, un conjunto de flechas $Q_1$ y dos funciones $s, t : Q_1 \to Q_0$ que le asignan a cada flecha su origen y su destino.
+
+<Glosa marca="a">
+*Quiver* significa carcaj: el estuche donde se guardan las flechas. El nombre lo puso Peter Gabriel en 1972.
+</Glosa>
+
+Hasta aquí es un multigrafo dirigido: se permiten lazos y varias flechas entre el mismo par de vértices. La diferencia no está en el objeto sino en la pregunta. Un teórico de grafos pregunta por conexidad o coloraciones; quien estudia quivers pregunta qué pasa cuando las flechas *se componen*.
+
+## Caminos
+
+Un camino de longitud $n$ es una sucesión de flechas $\alpha_n \cdots \alpha_2 \alpha_1$ en la que cada una empieza donde termina la anterior: $s(\alpha_{i+1}) = t(\alpha_i)$. Se escribe de derecha a izquierda, como la composición de funciones. A cada vértice $i$ se le asigna además un camino trivial $e_i$, de longitud cero.
+
+Contar caminos es un problema de álgebra lineal. Si $A$ es la matriz de adyacencia, con $A_{ij}$ el número de flechas de $i$ a $j$, entonces la entrada $(i, j)$ de $A^n$ cuenta los caminos de longitud $n$ de $i$ a $j$:
+
+$$
+\#\{\text{caminos de longitud } n\} = \sum_{i,j} (A^n)_{ij}.
+$$
+
+<ContadorCaminos numero={1} />
+
+## El álgebra de caminos
+
+Fijado un cuerpo $k$, el **álgebra de caminos** $kQ$ es el espacio vectorial que tiene como base a todos los caminos de $Q$. El producto de dos caminos es su concatenación cuando encajan, y cero cuando no:
+
+$$
+kQ = \bigoplus_{n \ge 0} kQ_n, \qquad kQ_n \cdot kQ_m \subseteq kQ_{n+m}.
+$$
+
+<Glosa marca="b">
+Los caminos triviales $e_i$ son idempotentes ortogonales y, si $Q_0$ es finito, su suma es la unidad del álgebra.
+</Glosa>
+
+La figura de arriba ya muestra el primer teorema del tema: para un quiver finito, $kQ$ tiene dimensión finita si y solo si $Q$ no tiene ciclos dirigidos.
+
+## ¿Y los datos?
+
+Una **representación** de $Q$ pone un espacio vectorial en cada vértice y una transformación lineal en cada flecha. Visto así, una red neuronal de grafos es muy parecida a una representación de un quiver: vectores en los nodos, mapas lineales a lo largo de las aristas. Y la información que viaja $n$ saltos lo hace, precisamente, a lo largo de los caminos de longitud $n$: la graduación de $kQ$ es una contabilidad exacta de por dónde puede fluir un mensaje.
+
+Esa es la puerta de entrada a lo que investigo: usar la estructura del álgebra de caminos para entender qué se pierde cuando demasiados caminos se comprimen en un solo vector. Pero eso es tema de otra entrada.

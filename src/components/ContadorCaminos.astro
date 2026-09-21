@@ -1,0 +1,91 @@
+---
+// Figura interactiva de ejemplo para el blog: cuenta caminos de cada longitud en un quiver
+// pequeño usando potencias de la matriz de adyacencia. Sirve de plantilla para otras figuras.
+const { numero = 1 } = Astro.props;
+---
+<figure class="wide cc" data-cc>
+  <div class="cc-body">
+    <svg viewBox="0 0 320 210" class="cc-svg" role="img" aria-label="Quiver con vértices 1, 2 y 3">
+      <defs>
+        <marker id="cc-ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 1L9 5L0 9z" class="cc-head"></path></marker>
+        <marker id="cc-ah2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 1L9 5L0 9z" class="cc-head2"></path></marker>
+      </defs>
+      <path class="cc-arrow" d="M58 160L146 48" marker-end="url(#cc-ah)"></path>
+      <path class="cc-arrow" d="M174 48L262 160" marker-end="url(#cc-ah)"></path>
+      <path class="cc-arrow" d="M64 172L254 172" marker-end="url(#cc-ah)"></path>
+      <path class="cc-arrow cc-extra" d="M258 186Q160 225 62 186" marker-end="url(#cc-ah2)"></path>
+      <text x="88" y="98" class="cc-lab">a</text><text x="226" y="98" class="cc-lab">b</text><text x="156" y="164" class="cc-lab">c</text>
+      <text x="156" y="206" class="cc-lab cc-extra">d</text>
+      <circle cx="50" cy="172" r="9" class="cc-v"></circle><circle cx="160" cy="36" r="9" class="cc-v"></circle><circle cx="270" cy="172" r="9" class="cc-v"></circle>
+      <text x="30" y="178" class="cc-num">1</text><text x="156" y="18" class="cc-num">2</text><text x="284" y="178" class="cc-num">3</text>
+    </svg>
+    <div class="cc-panel">
+      <label class="cc-check"><input type="checkbox" id={`cc-ciclo-${numero}`} data-cc-ciclo /> Añadir la flecha <i>d</i> : 3 → 1</label>
+      <div class="cc-bars" data-cc-bars aria-hidden="true"></div>
+      <p class="cc-out" data-cc-out aria-live="polite"></p>
+    </div>
+  </div>
+  <figcaption><b>Figura {numero}.</b> Caminos de cada longitud, de 0 a 8. Sin ciclos hay un número finito de caminos y el álgebra tiene dimensión finita; basta una flecha que cierre un ciclo para que nunca dejen de aparecer.</figcaption>
+</figure>
+
+<style is:global>
+  .cc-body { display: grid; grid-template-columns: minmax(0, 22rem) minmax(0, 1fr); gap: 1.5rem 3rem; align-items: center; }
+  .cc-svg { width: 100%; height: auto; }
+  .cc-arrow { fill: none; stroke: var(--muted); stroke-width: 1.6; }
+  .cc-extra { display: none; }
+  .cc-ciclo .cc-extra { display: inline; }
+  .cc-arrow.cc-extra { stroke: var(--c-blog); }
+  .cc-head { fill: var(--muted); } .cc-head2 { fill: var(--c-blog); }
+  .cc-v { fill: var(--c-inv); stroke: var(--bg); stroke-width: 2; }
+  .cc-lab { font-family: var(--serif); font-style: italic; font-size: 17px; fill: var(--ink); }
+  .cc-lab.cc-extra { fill: var(--c-blog); }
+  .cc-num { font-family: var(--mono); font-size: 12px; fill: var(--muted); }
+  .cc-check { font-family: var(--mono); font-size: 0.8rem; display: flex; gap: 0.5rem; align-items: center; cursor: pointer; }
+  .cc-check input { accent-color: var(--accent); width: 1rem; height: 1rem; }
+  .cc-bars { display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 0.4rem; align-items: end; height: 9rem; margin-top: 1.2rem; border-bottom: 1px solid var(--rule); }
+  .cc-bar { display: flex; flex-direction: column; justify-content: flex-end; align-items: center; height: 100%; font-family: var(--mono); font-size: 0.7rem; color: var(--muted); }
+  .cc-bar i { display: block; width: 100%; background: var(--c-inv); border-radius: 2px 2px 0 0; min-height: 0; }
+  .cc-bar.zero { color: var(--rule); }
+  .cc-axis { display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 0.4rem; font-family: var(--mono); font-size: 0.7rem; color: var(--muted); text-align: center; margin-top: 0.3rem; }
+  .cc-out { font-size: 0.95rem; color: var(--muted); margin: 0.9rem 0 0; }
+  .cc-out b { color: var(--ink); }
+  @media (max-width: 700px) { .cc-body { grid-template-columns: minmax(0, 1fr); } }
+</style>
+
+<script>
+  const mul = (A, B) => A.map((r, i) => B[0].map((_, j) => r.reduce((s, _v, k) => s + A[i][k] * B[k][j], 0)));
+  const total = (M) => M.flat().reduce((s, v) => s + v, 0);
+
+  document.querySelectorAll('[data-cc]').forEach((fig) => {
+    const check = fig.querySelector('[data-cc-ciclo]');
+    const bars = fig.querySelector('[data-cc-bars]');
+    const out = fig.querySelector('[data-cc-out]');
+    const axis = Object.assign(document.createElement('div'), { className: 'cc-axis' });
+    bars.after(axis);
+
+    function draw() {
+      const ciclo = check.checked;
+      fig.classList.toggle('cc-ciclo', ciclo);
+      // A[i][j] = número de flechas de i a j
+      const A = [[0, 1, 1], [0, 0, 1], [ciclo ? 1 : 0, 0, 0]];
+      let P = [[1, 0, 0], [0, 1, 0], [0, 0, 1]];
+      const counts = [];
+      for (let n = 0; n <= 8; n++) { counts.push(total(P)); P = mul(P, A); }
+      const max = Math.max(...counts);
+      bars.replaceChildren(...counts.map((c) => {
+        const b = Object.assign(document.createElement('div'), { className: 'cc-bar' + (c === 0 ? ' zero' : '') });
+        const fill = document.createElement('i');
+        fill.style.height = (c / max) * 80 + '%';
+        b.append(String(c), fill);
+        return b;
+      }));
+      axis.replaceChildren(...counts.map((_, n) => Object.assign(document.createElement('span'), { textContent: 'n=' + n })));
+      const suma = counts.reduce((s, v) => s + v, 0);
+      out.innerHTML = ciclo
+        ? 'Con el ciclo, los caminos no se acaban: hasta longitud 8 ya van <b>' + suma + '</b>, y el álgebra de caminos tiene dimensión infinita.'
+        : 'Hay <b>' + suma + '</b> caminos en total: 3 triviales, 3 flechas y el camino <i>ba</i>. Esa es la dimensión de <i>kQ</i>.';
+    }
+    check.addEventListener('change', draw);
+    draw();
+  });
+</script>
