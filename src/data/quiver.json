@@ -1,18 +1,22 @@
 {
-  "_ayuda": "Cada vértice: id, t (inv | app | blog | doc), x/y dentro de un lienzo 760x480, r (radio), lp (posición de la etiqueta: r, l, b). Cada flecha: [origen, destino]. href que empieza por / o # es interno.",
-  "inicial": "tesis",
+  "_ayuda": "Cada vértice: id, t (fil | inv | app | blog | doc), x/y dentro de un lienzo 760x480, r (radio), lp (posición de la etiqueta: r, l, b). Cada flecha: [origen, destino]. href que empieza por / o # es interno.",
+  "inicial": "filo",
   "nodes": [
-    { "id": "tesis", "t": "inv", "x": 380, "y": 235, "r": 13, "lp": "r", "label": "Doctorado", "title": "Investigación doctoral", "desc": "Quivers, álgebras de caminos y álgebras de configuración de Brauer aplicadas a sistemas complejos y aprendizaje en grafos. De aquí sale casi todo lo demás.", "href": "/#investigacion" },
+    { "id": "filo", "t": "fil", "x": 230, "y": 240, "r": 13, "lp": "l", "label": "Doctorado en Filosofía", "title": "Agencia sin imputación", "desc": "Criterios de validación epistémica para el razonamiento artificial desde la hermenéutica (Ricœur) y la pragmática (Austin, Habermas). Doctorado en Filosofía, Universidad Santo Tomás.", "href": "/#filosofia" },
+    { "id": "asi", "t": "fil", "x": 150, "y": 70, "r": 9, "lp": "r", "label": "Agencia sin imputación (artículo)", "title": "Agencia sin imputación", "desc": "Hermenéutica, pragmática y la validación epistémica del discurso artificial. Artículo en español e inglés.", "href": "/escritos/agencia-sin-imputacion.pdf" },
+    { "id": "austin", "t": "fil", "x": 240, "y": 120, "r": 8, "lp": "r", "label": "De Austin a la pregunta", "title": "De Austin a la pregunta", "desc": "El argumento doctoral construido en diez obras, de Austin (1962) a 2019. Examen de conocimientos, junio de 2026.", "href": "/escritos/de-austin-a-la-pregunta.pdf" },
+    { "id": "amoral", "t": "fil", "x": 330, "y": 320, "r": 8, "lp": "b", "label": "Agencia moral sin imputación", "title": "Agencia moral sin imputación", "desc": "Los modelos de lenguaje ante los nuevos materialismos: Latour, Verbeek, Bennett y Barad. La agencia se distribuye; la imputación se dirige.", "href": "/escritos/agencia-moral-sin-imputacion.pdf" },
+    { "id": "tesis", "t": "inv", "x": 380, "y": 235, "r": 13, "lp": "r", "label": "Doctorado en Matemáticas", "title": "Investigación doctoral", "desc": "Quivers, álgebras de caminos y álgebras de configuración de Brauer aplicadas a sistemas complejos y aprendizaje en grafos. De aquí sale casi todo lo demás.", "href": "/#investigacion" },
     { "id": "aiq", "t": "inv", "x": 290, "y": 160, "r": 9, "lp": "l", "label": "aiq-quivers", "title": "Autómatas de impacto sobre quivers", "desc": "Marco algebraico para modelar dinámicas en sistemas complejos con representaciones de quivers.", "href": "https://github.com/Izainea/aiq-quivers" },
     { "id": "pgnn", "t": "inv", "x": 480, "y": 150, "r": 9, "lp": "r", "label": "path-algebra-gnn", "title": "Álgebras de caminos y GNN", "desc": "El álgebra de caminos como soporte de la atención multi-salto; una mirada algebraica al over-squashing.", "href": "https://github.com/Izainea/path-algebra-gnn" },
-    { "id": "act", "t": "inv", "x": 170, "y": 90, "r": 8, "lp": "r", "label": "Autómatas celulares topológicos", "title": "Autómatas celulares topológicos (2025)", "desc": "Artículo en coautoría: reglas de evolución basadas en vecindades topológicas sobre quivers arbitrarios.", "href": "/#investigacion" },
+    { "id": "act", "t": "inv", "x": 400, "y": 80, "r": 8, "lp": "b", "label": "Autómatas celulares topológicos", "title": "Autómatas celulares topológicos (2025)", "desc": "Artículo en coautoría: reglas de evolución basadas en vecindades topológicas sobre quivers arbitrarios.", "href": "/#investigacion" },
     { "id": "xai", "t": "inv", "x": 500, "y": 300, "r": 8, "lp": "b", "label": "xai-inferencia-causal", "title": "IA explicable e inferencia causal", "desc": "Experimentos sobre explicabilidad de modelos desde la causalidad.", "href": "https://github.com/Izainea/xai-inferencia-causal" },
     { "id": "scholar", "t": "app", "x": 620, "y": 200, "r": 9, "lp": "r", "label": "scholar-agent", "title": "scholar-agent", "desc": "Tablero conversacional que analiza redes de citación con configuraciones de Brauer y un agente LLM con herramientas.", "href": "https://github.com/Izainea/scholar-agent" },
     { "id": "secop", "t": "app", "x": 650, "y": 340, "r": 9, "lp": "b", "label": "secoplic", "title": "secoplic", "desc": "Utilidades para trabajar con los datos abiertos de contratación pública (SECOP).", "href": "https://github.com/Izainea/secoplic" },
     { "id": "tax", "t": "app", "x": 560, "y": 420, "r": 8, "lp": "b", "label": "taxonomías UNSPSC–CIIU", "title": "Alineación de taxonomías UNSPSC–CIIU", "desc": "Emparejar lo que el Estado compra con lo que las empresas hacen.", "href": "https://github.com/Izainea/alineacion-taxonomias-unspsc-ciiu" },
     { "id": "ner", "t": "app", "x": 430, "y": 390, "r": 8, "lp": "b", "label": "NER-Colombia", "title": "NER para el conflicto colombiano", "desc": "Reconocimiento de entidades en testimonios y documentos históricos.", "href": "https://github.com/Izainea/NER-Colombia" },
     { "id": "parque", "t": "app", "x": 700, "y": 110, "r": 7, "lp": "l", "label": "datos-al-parque", "title": "datos-al-parque", "desc": "Sitio del proyecto Datos al Parque.", "href": "https://github.com/Izainea/datos-al-parque" },
-    { "id": "b1", "t": "blog", "x": 130, "y": 210, "r": 7, "lp": "b", "label": "¿Qué es un quiver?", "title": "¿Qué es un quiver?", "desc": "Introducción visual a vértices, flechas, caminos y el álgebra que generan.", "href": "/blog/que-es-un-quiver/" },
+    { "id": "b1", "t": "blog", "x": 130, "y": 190, "r": 7, "lp": "b", "label": "¿Qué es un quiver?", "title": "¿Qué es un quiver?", "desc": "Introducción visual a vértices, flechas, caminos y el álgebra que generan.", "href": "/blog/que-es-un-quiver/" },
     { "id": "b2", "t": "blog", "x": 250, "y": 290, "r": 7, "lp": "b", "label": "Hermenéutica y LLM", "title": "Hermenéutica para modelos de lenguaje", "desc": "Por escribir: interpretación, prejuicio y contexto, de Gadamer a los transformers.", "href": "/blog/" },
     { "id": "b3", "t": "blog", "x": 590, "y": 60, "r": 7, "lp": "l", "label": "Over-squashing con caminos", "title": "El over-squashing, explicado con caminos", "desc": "Por escribir: por qué una GNN olvida lo que está lejos.", "href": "/blog/" },
     { "id": "agloc", "t": "doc", "x": 150, "y": 430, "r": 8, "lp": "b", "label": "Taller: agentes locales", "title": "Agentes locales con Ollama y LangChain", "desc": "Taller para construir agentes que corren en la propia máquina.", "href": "https://github.com/Izainea/capacitacion-agentes-locales" },
@@ -21,9 +25,9 @@
     { "id": "dian", "t": "doc", "x": 200, "y": 360, "r": 8, "lp": "r", "label": "DIAN–USTA", "title": "Ciencia de datos para entidades públicas", "desc": "Formación aplicada para equipos del sector público.", "href": "https://github.com/Izainea/capacitacion_dian_usta" }
   ],
   "edges": [
-    ["tesis", "aiq"], ["tesis", "pgnn"], ["tesis", "xai"], ["tesis", "b1"],
-    ["aiq", "act"], ["aiq", "scholar"], ["pgnn", "b3"], ["xai", "b2"], ["ner", "b2"],
-    ["secop", "tax"], ["parque", "secop"], ["scholar", "aginv"], ["agloc", "aginv"],
-    ["icfes", "dian"], ["dian", "agloc"]
+    ["tesis", "aiq"], ["tesis", "pgnn"], ["tesis", "xai"], ["tesis", "b1"], ["aiq", "act"],
+    ["aiq", "scholar"], ["pgnn", "b3"], ["xai", "b2"], ["ner", "b2"], ["secop", "tax"],
+    ["parque", "secop"], ["scholar", "aginv"], ["agloc", "aginv"], ["icfes", "dian"], ["dian", "agloc"],
+    ["filo", "asi"], ["filo", "austin"], ["filo", "amoral"], ["filo", "b2"], ["austin", "asi"]
   ]
 }

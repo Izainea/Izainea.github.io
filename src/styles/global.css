@@ -10,6 +10,7 @@
   --c-app: #2B55B8;
   --c-blog: #9C2C83;
   --c-doc: #A8650F;
+  --c-fil: #8A1C2B;
   --wm: rgba(40, 55, 50, 0.085);
   --display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", sans-serif;
   --serif: "Source Serif 4", "Iowan Old Style", Georgia, serif;
@@ -28,6 +29,7 @@
     --c-app: #93B5FF;
     --c-blog: #F09AD6;
     --c-doc: #F2A66B;
+    --c-fil: #F08A9B;
     --wm: rgba(220, 235, 228, 0.07);
     color-scheme: dark;
   }
@@ -43,6 +45,7 @@
   --c-app: #93B5FF;
   --c-blog: #F09AD6;
   --c-doc: #F2A66B;
+  --c-fil: #F08A9B;
   --wm: rgba(220, 235, 228, 0.07);
   color-scheme: dark;
 }
@@ -226,7 +229,7 @@ figure { margin: 0; }
 .node.on text, .node:hover text { fill: var(--ink); }
 .node:focus { outline: none; }
 .node:focus-visible .halo { opacity: 0.35; }
-.t-inv { fill: var(--c-inv); } .t-app { fill: var(--c-app); } .t-blog { fill: var(--c-blog); } .t-doc { fill: var(--c-doc); }
+.t-inv { fill: var(--c-inv); } .t-app { fill: var(--c-app); } .t-blog { fill: var(--c-blog); } .t-doc { fill: var(--c-doc); } .t-fil { fill: var(--c-fil); }
 
 .detail {
   display: flex;
@@ -293,6 +296,8 @@ figcaption b { color: var(--ink); font-weight: 600; }
 .rows .name { font-family: var(--display); font-weight: 700; font-size: 1.08rem; line-height: 1.3; }
 .rows .go { font-family: var(--mono); color: var(--muted); }
 .rows p { grid-column: 1 / -1; margin: 0; font-size: 0.95rem; line-height: 1.55; color: var(--muted); }
+.links-row { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 0.3rem 1.1rem; margin-top: 0.45rem; font-family: var(--mono); font-size: 0.78rem; }
+.links-row a::after { content: " ↗"; color: var(--muted); }
 .tags { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 0.35rem 0.9rem; margin-top: 0.35rem; font-family: var(--mono); font-size: 0.72rem; color: var(--muted); }
 .tags span::before { content: "· "; color: var(--accent); }
 .status { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.05em; border: 1px solid var(--c-blog); color: var(--c-blog); border-radius: 999px; padding: 0.1rem 0.55rem; align-self: start; white-space: nowrap; }

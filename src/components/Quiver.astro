@@ -3,7 +3,7 @@
 // el script de abajo solo añade la interacción.
 import data from '../data/quiver.json';
 
-const KIND = { inv: 'Investigación', app: 'App / herramienta', blog: 'Blog', doc: 'Docencia' };
+const KIND = { fil: 'Filosofía', inv: 'Matemáticas', app: 'App / herramienta', blog: 'Blog', doc: 'Docencia' };
 const byId = Object.fromEntries(data.nodes.map((n) => [n.id, n]));
 const norm = (x, y) => { const l = Math.hypot(x, y) || 1; return [x / l, y / l]; };
 
@@ -22,13 +22,19 @@ function labelPos(n) {
 }
 const diamond = (r) => `M0 ${-r * 1.2}L${r * 1.2} 0L0 ${r * 1.2}L${-r * 1.2} 0z`;
 const triangle = (r) => `M0 ${-r * 1.15}L${r * 1.15} ${r * 0.9}L${-r * 1.15} ${r * 0.9}z`;
+// pentágono regular, vértice arriba
+const pentagon = (r) => Array.from({ length: 5 }, (_, i) => {
+  const a = -Math.PI / 2 + (i * 2 * Math.PI) / 5;
+  return `${i ? 'L' : 'M'}${(r * 1.2 * Math.cos(a)).toFixed(2)} ${(r * 1.2 * Math.sin(a)).toFixed(2)}`;
+}).join('') + 'z';
 
 const payload = { kind: KIND, inicial: data.inicial, nodes: data.nodes.map(({ id, t, title, desc, href }) => ({ id, t, title, desc, href })) };
 ---
 <figure class="fig" data-quiver>
   <div class="filters" role="group" aria-label="Filtrar el quiver por tipo">
     <button type="button" data-f="all" aria-pressed="true">Todo</button>
-    <button type="button" data-f="inv" aria-pressed="false"><svg viewBox="-6 -6 12 12"><circle r="5" class="t-inv"></circle></svg>Investigación</button>
+    <button type="button" data-f="fil" aria-pressed="false"><svg viewBox="-6 -6 12 12"><path d="M0 -5.5L5.2 -1.7L3.2 4.5L-3.2 4.5L-5.2 -1.7z" class="t-fil"></path></svg>Filosofía</button>
+    <button type="button" data-f="inv" aria-pressed="false"><svg viewBox="-6 -6 12 12"><circle r="5" class="t-inv"></circle></svg>Matemáticas</button>
     <button type="button" data-f="app" aria-pressed="false"><svg viewBox="-6 -6 12 12"><rect x="-4.5" y="-4.5" width="9" height="9" class="t-app"></rect></svg>Apps</button>
     <button type="button" data-f="blog" aria-pressed="false"><svg viewBox="-6 -6 12 12"><path d="M0 -5.5L5.5 0L0 5.5L-5.5 0z" class="t-blog"></path></svg>Blog</button>
     <button type="button" data-f="doc" aria-pressed="false"><svg viewBox="-6 -6 12 12"><path d="M0 -5.5L5.5 4.5L-5.5 4.5z" class="t-doc"></path></svg>Docencia</button>
@@ -55,6 +61,7 @@ const payload = { kind: KIND, inicial: data.inicial, nodes: data.nodes.map(({ id
                 {n.t === 'app' && <rect x={-n.r * 0.88} y={-n.r * 0.88} width={n.r * 1.76} height={n.r * 1.76} class="shape t-app"></rect>}
                 {n.t === 'blog' && <path d={diamond(n.r)} class="shape t-blog"></path>}
                 {n.t === 'doc' && <path d={triangle(n.r)} class="shape t-doc"></path>}
+                {n.t === 'fil' && <path d={pentagon(n.r)} class="shape t-fil"></path>}
                 <text x={lp.x} y={lp.y} text-anchor={lp.anchor}>{n.label}</text>
               </g>
             );
@@ -89,13 +96,14 @@ const payload = { kind: KIND, inicial: data.inicial, nodes: data.nodes.map(({ id
       kind.style.color = `var(--c-${n.t})`;
       const title = Object.assign(document.createElement('strong'), { textContent: n.title });
       const desc = Object.assign(document.createElement('p'), { textContent: n.desc });
-      const link = Object.assign(document.createElement('a'), { href: n.href, textContent: external(n.href) ? 'Abrir en GitHub ↗' : 'Ver →' });
-      if (external(n.href)) { link.target = '_blank'; link.rel = 'noopener'; }
+      const pdf = /\.pdf$/.test(n.href);
+      const link = Object.assign(document.createElement('a'), { href: n.href, textContent: external(n.href) ? 'Abrir en GitHub ↗' : pdf ? 'Abrir PDF ↗' : 'Ver →' });
+      if (external(n.href) || pdf) { link.target = '_blank'; link.rel = 'noopener'; }
       detail.replaceChildren(kind, title, desc, link);
     }
     function go(id) {
       const href = byId[id].href;
-      if (external(href)) window.open(href, '_blank', 'noopener'); else window.location.href = href;
+      if (external(href) || /\.pdf$/.test(href)) window.open(href, '_blank', 'noopener'); else window.location.href = href;
     }
     function applyFilter(f) {
       const t = Object.fromEntries(nodes.map((g) => [g.dataset.id, g.dataset.t]));

@@ -1,22 +1,25 @@
 ---
-// Lista de trabajos: cada item { when, name, desc, tags?, href?, status? }
+// Lista de trabajos: cada item { when, name, desc, tags?, href?, status?, links?: [{label, href}] }
+// Con `links`, la fila no es un enlace único sino que muestra varios (PDF en español, en inglés, código...).
 const { items } = Astro.props;
 const external = (href) => /^https?:/.test(href);
 ---
 <ul class="rows">
   {items.map((it) => {
+    const multi = it.links?.length > 0;
     const inner = (
       <>
         <span class="when">{it.when}</span>
         <span class="name">{it.name}</span>
-        {it.status ? <span class="status">{it.status}</span> : <span class="go">{it.href ? (external(it.href) ? '↗' : '→') : ''}</span>}
+        {it.status ? <span class="status">{it.status}</span> : <span class="go">{!multi && it.href ? (external(it.href) ? '↗' : '→') : ''}</span>}
         <p>{it.desc}</p>
+        {multi && <span class="links-row">{it.links.map((l) => <a href={l.href} target={external(l.href) ? '_blank' : undefined} rel={external(l.href) ? 'noopener' : undefined}>{l.label}</a>)}</span>}
         {it.tags?.length > 0 && <span class="tags">{it.tags.map((t) => <span>{t}</span>)}</span>}
       </>
     );
     return (
       <li>
-        {it.href
+        {it.href && !multi
           ? <a class="row" href={it.href} target={external(it.href) ? '_blank' : undefined} rel={external(it.href) ? 'noopener' : undefined}>{inner}</a>
           : <div class="row">{inner}</div>}
       </li>
