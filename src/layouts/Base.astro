@@ -1,0 +1,108 @@
+---
+import '../styles/global.css';
+import Watermark from '../components/Watermark.astro';
+
+const { title, description = 'Carlos Isaac Zainea Maya: matemático, científico de datos y profesor. Investigación, apps, blog y docencia.', home = false } = Astro.props;
+const fullTitle = title ? `${title} · Carlos Isaac Zainea` : 'Carlos Isaac Zainea Maya';
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const path = Astro.url.pathname;
+
+const nav = [
+  { href: '/#inicio', label: 'Quiver' },
+  { href: '/#sobre', label: 'Sobre mí' },
+  { href: '/#investigacion', label: 'Investigación' },
+  { href: '/#apps', label: 'Apps' },
+  { href: '/blog/', label: 'Blog' },
+  { href: '/#docencia', label: 'Docencia' },
+  { href: '/#contacto', label: 'Contacto' },
+];
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="Carlos Isaac Zainea Maya" />
+    <meta property="og:image" content={new URL('/carlos-isaac-zainea.jpeg', Astro.site)} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate" type="application/rss+xml" title="Blog de Carlos Isaac Zainea" href="/rss.xml" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content="es_CO" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" />
+    <script is:inline>
+      try { var t = localStorage.getItem('tema'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <Watermark />
+    <div class="page">
+      <header class="panel">
+        <div>
+          <a class="home" href="/" aria-label="Inicio">
+            <span class="id-row">
+            <span class="photo" role="img" aria-label="Foto de Carlos Isaac Zainea Maya"></span>
+            <svg class="glyph" viewBox="0 0 46 46" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <circle cx="8" cy="36" r="4" fill="currentColor" stroke="none"></circle>
+              <circle cx="23" cy="9" r="4" fill="currentColor" stroke="none"></circle>
+              <circle cx="39" cy="33" r="4" fill="currentColor" stroke="none"></circle>
+              <path d="M11 31 L20 14"></path><path d="M26.5 13 L36 28"></path><path d="M13 35.5 L34 33.5"></path>
+              <path d="M16.5 14.8 L20 14 L21 17.6"></path><path d="M32.3 27.3 L36 28 L36.4 24.2"></path><path d="M30.8 31 L34 33.5 L31.3 36.5"></path>
+            </svg>
+            </span>
+            <p class="name">Carlos Isaac<br />Zainea Maya</p>
+          </a>
+          <p class="role">Matemático · Científico de datos<br />Profesor · Bogotá</p>
+          <p class="tagline">Construyo inteligencia artificial con matemáticas, y la enseño para que otros la construyan mejor.</p>
+        </div>
+        <nav aria-label="Secciones">
+          {nav.map((n) => (
+            <a href={n.href} class:list={{ 'is-active': !home && n.href === '/blog/' && path.startsWith('/blog') }}>{n.label}</a>
+          ))}
+        </nav>
+        <div class="links">
+          <a href="https://github.com/Izainea" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/in/isaac-zainea-3005015a/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="mailto:cizaineam@gmail.com">Correo</a>
+          <button type="button" class="theme-btn" id="tema-btn" aria-label="Cambiar entre papel y pizarra">papel / pizarra</button>
+        </div>
+      </header>
+
+      <main>
+        <slot />
+        <footer>© {new Date().getFullYear()} Carlos Isaac Zainea Maya · Hecho con Astro, MDX y KaTeX · <a href="/rss.xml">RSS</a></footer>
+      </main>
+    </div>
+
+    <script is:inline>
+      document.getElementById('tema-btn').addEventListener('click', function () {
+        var root = document.documentElement;
+        var dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        root.dataset.theme = dark ? 'light' : 'dark';
+        try { localStorage.setItem('tema', root.dataset.theme); } catch (e) {}
+      });
+    </script>
+    {home && (
+      <script is:inline>
+        (function () {
+          var links = document.querySelectorAll('.panel nav a[href^="/#"]');
+          if (!('IntersectionObserver' in window)) return;
+          var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (en) {
+              if (!en.isIntersecting) return;
+              links.forEach(function (l) { l.classList.toggle('is-active', l.getAttribute('href') === '/#' + en.target.id); });
+            });
+          }, { rootMargin: '-25% 0px -65% 0px' });
+          document.querySelectorAll('main section[id]').forEach(function (s) { io.observe(s); });
+        })();
+      </script>
+    )}
+  </body>
+</html>

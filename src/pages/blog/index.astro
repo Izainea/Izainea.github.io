@@ -1,0 +1,24 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Rows from '../../components/Rows.astro';
+import Glosa from '../../components/Glosa.astro';
+
+const posts = (await getCollection('blog')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const fecha = (d) => d.toLocaleDateString('es-CO', { year: 'numeric', month: 'short', timeZone: 'UTC' });
+const items = posts.map((p) => ({
+  when: p.data.draft ? p.data.tema : `${p.data.tema} · ${fecha(p.data.date)}`,
+  name: p.data.title,
+  desc: p.data.description,
+  status: p.data.draft ? 'por escribir' : p.data.estado,
+  href: p.data.draft ? undefined : `/blog/${p.id}/`,
+}));
+---
+<Base title="Blog" description="Notas de Carlos Isaac Zainea sobre matemáticas, inteligencia artificial, datos públicos y filosofía.">
+  <section class="sec" id="blog">
+    <div class="sec-head"><span class="no">§</span><h1>Blog</h1></div>
+    <p>Matemáticas, inteligencia artificial, datos públicos y algo de filosofía. Las entradas crecen con el tiempo: cada una declara su estado<sup class="mark">a</sup>.</p>
+    <Glosa marca="a"><i>Semilla</i>: una idea apenas plantada. <i>Brote</i>: ya tiene forma, aún cambia. <i>Perenne</i>: terminada y mantenida.</Glosa>
+    <Rows items={items} />
+  </section>
+</Base>

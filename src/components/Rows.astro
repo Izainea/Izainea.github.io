@@ -1,0 +1,25 @@
+---
+// Lista de trabajos: cada item { when, name, desc, tags?, href?, status? }
+const { items } = Astro.props;
+const external = (href) => /^https?:/.test(href);
+---
+<ul class="rows">
+  {items.map((it) => {
+    const inner = (
+      <>
+        <span class="when">{it.when}</span>
+        <span class="name">{it.name}</span>
+        {it.status ? <span class="status">{it.status}</span> : <span class="go">{it.href ? (external(it.href) ? '↗' : '→') : ''}</span>}
+        <p>{it.desc}</p>
+        {it.tags?.length > 0 && <span class="tags">{it.tags.map((t) => <span>{t}</span>)}</span>}
+      </>
+    );
+    return (
+      <li>
+        {it.href
+          ? <a class="row" href={it.href} target={external(it.href) ? '_blank' : undefined} rel={external(it.href) ? 'noopener' : undefined}>{inner}</a>
+          : <div class="row">{inner}</div>}
+      </li>
+    );
+  })}
+</ul>
