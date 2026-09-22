@@ -19,46 +19,52 @@ const blogItems = posts.slice(0, 4).map((p) => ({
   <section class="thesis" id="inicio">
     <div class="thesis-head">
       <h1>Entre la estructura y el sentido.</h1>
-      <p>Investigo el álgebra de los sistemas complejos —<em>quivers</em>, álgebras de caminos, redes neuronales de grafos— y la pongo a trabajar en problemas de interés público: contratación estatal, memoria histórica, búsqueda de personas.</p>
+      <p>Dos doctorados en curso, en filosofía y en matemáticas, sobre una misma pregunta: qué hace válido lo que un sistema —una red, un modelo de lenguaje— produce, y quién responde por ello.</p>
     </div>
     <Quiver />
   </section>
 
   <section class="sec" id="sobre">
     <div class="sec-head"><span class="no">§1</span><h2>Sobre mí</h2></div>
-    <p class="lede">Matemático de formación, científico de datos por oficio y profesor por convicción. Mi trabajo tiene una sola pregunta de fondo: qué estructura subyace a un sistema complejo y cómo esa estructura determina lo que en él puede fluir, aprenderse o interpretarse.</p>
-    <Glosa marca="a"><i>Quiver</i> (carcaj): grafo dirigido que admite lazos y flechas múltiples. Sus álgebras de caminos y sus representaciones son el objeto central de mi investigación doctoral.</Glosa>
-    <p>En la investigación abordo esa pregunta desde la teoría de representaciones: quivers<sup class="mark">a</sup>, álgebras de caminos y álgebras de configuración de Brauer como marcos para modelar dinámicas sobre grafos y para dar cuenta, con precisión algebraica, de fenómenos como el <i>over-squashing</i> en redes neuronales de grafos. La apuesta es que la estructura combinatoria de una red no es un detalle de implementación sino el invariante que gobierna su capacidad de representar.</p>
-    <Glosa marca="b">Unidad de Búsqueda de Personas dadas por Desaparecidas, entidad del Acuerdo de Paz de 2016.</Glosa>
-    <p>En la práctica profesional he llevado esa misma mirada a problemas con consecuencias reales: procesamiento de lenguaje natural y análisis de grafos para apoyar a la UBPD<sup class="mark">b</sup> en la búsqueda de personas desaparecidas, y modelado de datos para hacer más transparente y eficiente la contratación pública colombiana. Enseño en la Universidad Santo Tomás y en otras universidades del país, donde formo a profesionales en ciencia de datos y en las matemáticas que la sostienen.</p>
-    <Glosa marca="c">Del círculo hermenéutico —el todo desde las partes, las partes desde el todo— al mecanismo de atención hay menos distancia de la que parece.</Glosa>
-    <p>La filosofía completa el cuadro. Me interesa la hermenéutica<sup class="mark">c</sup> como marco para pensar qué hace un modelo cuando interpreta, y qué debería exigírsele a un sistema que toma decisiones sobre otros: legibilidad, trazabilidad y una noción de sentido que no se agote en la métrica.</p>
+    <p class="lede">Matemático de formación, científico de datos por oficio y curioso por convicción. Mi trabajo parte de una intención: encontrar las subestructuras que sostienen a un sistema complejo.</p>
+    <Glosa marca="a">Doctorado en Matemáticas, Universidad Nacional de Colombia, bajo la dirección de Agustín Moreno Cañadas. Tesis: <i>Autómatas de impacto sobre quivers</i>. Un <i>quiver</i> es un grafo dirigido que admite lazos y flechas múltiples.</Glosa>
+    <p>En matemáticas<sup class="mark">a</sup> esa búsqueda pasa por los quivers, sus álgebras de caminos y las álgebras de configuración de Brauer: un lenguaje para describir dinámicas sobre grafos y para estudiar cómo fluye, y dónde se pierde, la información en una red neuronal de grafos. Pero saber por dónde fluye la información no dice todavía qué hace válido lo que sale al final, ni quién responde por ello. Esa pregunta ya no es algebraica.</p>
+    <Glosa marca="b">Doctorado en Filosofía, Universidad Santo Tomás, bajo la dirección de Juan Carlos Moreno Ortiz. Proyecto: <i>Agencia sin imputación: criterios de validación epistémica para el razonamiento artificial desde la hermenéutica y la pragmática</i>.</Glosa>
+    <p>En filosofía<sup class="mark">b</sup> la retomo donde las matemáticas la dejan: bajo qué condiciones el conocimiento producido por modelos de lenguaje puede validarse, y quién responde por lo que así se afirma. La pregunta habitual —¿comprende la máquina?— tiene una respuesta negativa correcta que no implica lo que suele concluirse de ella. Leído con la triple mímesis de Ricœur, el LLM configura sin poder refigurar ni imputarse lo configurado: agencia sin imputación. Su error característico no es una «alucinación» sino un infortunio de autoridad epistémica en el sentido de Austin, y la tradición metodológica cualitativa contiene los criterios de validación que el razonamiento artificial no posee. De ahí el concepto de prótesis hermenéutica: una arquitectura que redistribuye las funciones epistémicas entre un agente operativo y uno imputable.</p>
+    <Glosa marca="c">Unidad de Búsqueda de Personas dadas por Desaparecidas, entidad del Acuerdo de Paz de 2016.</Glosa>
+    <p>Fuera de la academia he trabajado con procesamiento de lenguaje natural y análisis de grafos en problemas con consecuencias: apoyo a la UBPD<sup class="mark">c</sup> para automatizar y agilizar procesos en la búsqueda de personas desaparecidas, modelos de reconocimiento de entidades sobre testimonios y documentos del conflicto, y modelado de datos para alinear oferta y demanda en la contratación pública colombiana. He enseñado en varias universidades y he formado equipos de entidades públicas en análisis de datos e inteligencia de negocios.</p>
+  </section>
+
+  <section class="sec" id="filosofia">
+    <div class="sec-head"><span class="no">§2</span><h2>Filosofía</h2></div>
+    <p>Escritos del doctorado. Son versiones de trabajo: el argumento está en construcción y agradezco lecturas críticas.</p>
+    <Rows items={trabajos.filosofia} />
   </section>
 
   <section class="sec" id="investigacion">
-    <div class="sec-head"><span class="no">§2</span><h2>Investigación</h2></div>
+    <div class="sec-head"><span class="no">§3</span><h2>Matemáticas y aprendizaje en grafos</h2></div>
     <Rows items={trabajos.investigacion} />
   </section>
 
   <section class="sec" id="apps">
-    <div class="sec-head"><span class="no">§3</span><h2>Apps y herramientas</h2></div>
+    <div class="sec-head"><span class="no">§4</span><h2>Apps y herramientas</h2></div>
     <p>Lo que construyo para que la investigación y los datos públicos se puedan usar: desde agentes que conversan con una red de citación hasta utilidades para leer el SECOP<sup class="mark">d</sup>.</p>
     <Glosa marca="d">Sistema Electrónico de Contratación Pública de Colombia. Millones de contratos, descritos en lenguaje natural por miles de manos distintas.</Glosa>
     <Rows items={trabajos.apps} />
   </section>
 
   <section class="sec" id="blog">
-    <div class="sec-head"><span class="no">§4</span><h2>Blog</h2><a class="more" href="/blog/">todas las entradas →</a></div>
+    <div class="sec-head"><span class="no">§5</span><h2>Blog</h2><a class="more" href="/blog/">todas las entradas →</a></div>
     <Rows items={blogItems} />
   </section>
 
   <section class="sec" id="docencia">
-    <div class="sec-head"><span class="no">§5</span><h2>Docencia</h2></div>
+    <div class="sec-head"><span class="no">§6</span><h2>Docencia</h2></div>
     <Rows items={trabajos.docencia} />
   </section>
 
   <section class="sec contact" id="contacto">
-    <div class="sec-head"><span class="no">§6</span><h2>Contacto</h2></div>
+    <div class="sec-head"><span class="no">§7</span><h2>Contacto</h2></div>
     <p>Para colaborar en investigación, proponer un taller o conversar sobre datos con impacto público:</p>
     <a class="mail" href="mailto:cizaineam@gmail.com">cizaineam@gmail.com</a>
   </section>

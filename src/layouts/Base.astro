@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import Watermark from '../components/Watermark.astro';
 
-const { title, description = 'Carlos Isaac Zainea Maya: matemático, científico de datos y profesor. Investigación, apps, blog y docencia.', home = false } = Astro.props;
+const { title, description = 'Carlos Isaac Zainea Maya: filosofía de la inteligencia artificial, álgebra de quivers y ciencia de datos. Escritos, investigación, apps, blog y docencia.', home = false } = Astro.props;
 const fullTitle = title ? `${title} · Carlos Isaac Zainea` : 'Carlos Isaac Zainea Maya';
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const path = Astro.url.pathname;
@@ -10,7 +10,8 @@ const path = Astro.url.pathname;
 const nav = [
   { href: '/#inicio', label: 'Quiver' },
   { href: '/#sobre', label: 'Sobre mí' },
-  { href: '/#investigacion', label: 'Investigación' },
+  { href: '/#filosofia', label: 'Filosofía' },
+  { href: '/#investigacion', label: 'Matemáticas' },
   { href: '/#apps', label: 'Apps' },
   { href: '/blog/', label: 'Blog' },
   { href: '/#docencia', label: 'Docencia' },
@@ -59,8 +60,8 @@ const nav = [
             </span>
             <p class="name">Carlos Isaac<br />Zainea Maya</p>
           </a>
-          <p class="role">Matemático · Científico de datos<br />Profesor · Bogotá</p>
-          <p class="tagline">Álgebra, aprendizaje en grafos y datos públicos. Investigación doctoral, desarrollo aplicado y docencia universitaria.</p>
+          <p class="role">Doctorando en Filosofía y en Matemáticas<br />Científico de datos · Bogotá</p>
+          <p class="tagline">Hermenéutica y pragmática del razonamiento artificial; álgebra de quivers y aprendizaje en grafos; datos públicos.</p>
         </div>
         <nav aria-label="Secciones">
           {nav.map((n) => (
