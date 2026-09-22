@@ -1,0 +1,70 @@
+---
+title: "Agencia sin imputación: por qué «la máquina no comprende» no cierra la discusión"
+description: "La crítica ontológica a los LLM es correcta. La conclusión que suele sacarse de ella, no. El giro epistemológico y la triple mímesis de Ricœur."
+date: 2026-09-23
+tema: Filosofía
+estado: brote
+---
+import Glosa from '../../components/Glosa.astro';
+
+<p class="note">Adaptado de mi artículo <a href="/escritos/agencia-sin-imputacion.pdf">Agencia sin imputación. Hermenéutica, pragmática y la validación epistémica del discurso artificial</a> (2026), que desarrolla el argumento con detalle y bibliografía.</p>
+
+Los modelos de lenguaje de gran escala ingresaron a la producción de conocimiento antes de que la filosofía respondiera a la pregunta que plantean. Sintetizan literatura, extraen patrones, proponen categorías y producen textos que circulan como resultados de investigación en universidades, redacciones y despachos judiciales. El problema no es si serán usados —ya lo son—, sino bajo qué condiciones ese uso es epistemológicamente legítimo.
+
+## La herencia de la crítica ontológica
+
+La filosofía ha respondido con una pregunta de carácter ontológico: ¿comprende la máquina? ¿Tiene intencionalidad? ¿Es un sujeto? La tradición que la ha contestado es sólida y, en lo esencial, correcta. El *Chinese Room* de Searle establece que la manipulación sintáctica de símbolos no produce semántica. Dreyfus añade la dimensión fenomenológica: la comprensión humana está anclada en el cuerpo, la situación y un trasfondo de habilidades prácticas que ningún sistema formal replica. Gadamer la extiende al plano hermenéutico: comprender es participar en una tradición, en una historia de efectos previa a todo acto individual. Heidegger formula el fundamento: la comprensión no es una operación cognitiva sino una estructura del *Dasein* en cuanto ser-en-el-mundo.
+
+<Glosa marca="a">
+Cuando un LLM enuncia algo sobre el duelo, no ha perdido a nadie; cuando sintetiza una discusión filosófica, no tiene ninguna de las preguntas que la hacen importar.
+</Glosa>
+
+El LLM carece de todo esto<sup class="mark">a</sup>: no tiene cuerpo, situación, historia efectual ni un mundo al cual pertenecer. Su producción opera sobre probabilidades de co-ocurrencia en un corpus, no sobre participación en las prácticas que ese corpus sedimenta. La crítica ontológica es irrefutable, y este trabajo la acepta en su totalidad. Lo que discute es la inferencia que suele derivarse de ella.
+
+## El bloqueo
+
+La crítica desemboca en un silogismo de conclusión paralizante:
+
+<figure class="wide">
+  <svg viewBox="0 0 640 150" style="width:100%;max-width:40rem;height:auto;display:block" role="img" aria-label="P1: el LLM no comprende. P2: su output carece de valor epistémico. Conclusión: nada que diseñar. El paso de P1 a P2 es un non sequitur.">
+    <style>{`.s1{font-family:var(--serif);font-size:16px;fill:var(--ink)} .s2{font-family:var(--mono);font-size:11px;letter-spacing:.06em;fill:var(--muted)} .s3{font-family:var(--serif);font-style:italic;font-size:14px;fill:var(--c-fil)} .ln{stroke:var(--muted);stroke-width:1.2;fill:none} .x{stroke:var(--c-fil);stroke-width:2.2}`}</style>
+    <text x="16" y="34" class="s2">P1</text><text x="52" y="34" class="s1">El LLM no comprende.</text>
+    <text x="16" y="74" class="s2">P2</text><text x="52" y="74" class="s1">Su output carece de valor epistémico.</text>
+    <text x="16" y="120" class="s2">∴</text><text x="52" y="120" class="s1">Nada que diseñar.</text>
+    <path class="ln" d="M40 42 L40 60" /><path class="ln" d="M40 82 L40 106" />
+    <path class="x" d="M28 46 L52 58" /><path class="x" d="M52 46 L28 58" />
+    <text x="400" y="52" class="s3">non sequitur</text>
+    <text x="400" y="74" class="s3">La carencia ontológica no implica</text>
+    <text x="400" y="94" class="s3">inutilidad epistémica.</text>
+  </svg>
+  <figcaption><b>Figura 1.</b> El bloqueo ontológico. La premisa es verdadera; el paso a la segunda no está justificado.</figcaption>
+</figure>
+
+Un telescopio no «comprende» las estrellas; una resonancia magnética no «siente» el tejido. Nadie niega su valor epistémico, que depende de los protocolos que gobiernan su uso y de los criterios que determinan cuándo su output participa en un proceso válido. La analogía instrumental no es completa, y hay que volver sobre ella: el telescopio no produce afirmaciones, no encadena inferencias, no selecciona qué decir a continuación. El LLM sí. Esa diferencia no autoriza a tratarlo como sujeto, pero obliga a buscar categorías que describan lo que hace sin antropomorfizarlo ni reducirlo al aparato óptico.
+
+La distinción de Reichenbach entre contexto de descubrimiento y contexto de justificación es aquí decisiva. Que un LLM genere una categoría o una hipótesis no dice nada sobre su validez; lo que la determina es el proceso por el cual ese resultado se evalúa, corrobora y contrasta, proceso independiente del origen cognitivo del resultado. Lo que importa epistemológicamente no es si quien generó la hipótesis comprende, sino si el proceso de validación satisface las condiciones que hacen que un resultado cuente como conocimiento. Esa es la pregunta productiva.
+
+## El giro epistemológico
+
+| Pregunta ontológica | Pregunta epistemológica |
+|---|---|
+| ¿Comprende el LLM? | ¿Es válido el conocimiento producido? |
+| ¿Tiene intencionalidad? | ¿Cómo se controla su fiabilidad? |
+| ¿Es un sujeto? | ¿Quién valida y cómo? |
+| *Respuesta: no. Y es un callejón sin salida.* | *Respuesta: depende del andamiaje procesal.* |
+
+La reorientación implica reconocer que la epistemología no requiere que los instrumentos de producción de conocimiento sean sujetos cognoscentes, sino que los procesos que gobiernan su uso satisfagan condiciones de validez. Floridi señala dos cosas que conviene leer juntas: que los LLM producen datos con aspecto de información semántica, aléticamente neutros hasta que un proceso externo los sitúa en un registro de verdad, y que tales sistemas pueden caracterizarse como agentes en sentido propio —interactivos, autónomos, adaptables— sin que por ello les corresponda intencionalidad, conciencia o responsabilidad.
+
+El diagnóstico es de doble cara: el LLM opera con competencia creciente y actúa con consecuencias reales, pero carece de las condiciones para que esa acción sea epistémicamente válida y atribuible.
+
+## Dónde está el déficit: la triple mímesis
+
+<Glosa marca="b">
+En *Tiempo y narración*, Ricœur distingue tres momentos: la prefiguración del mundo práctico (Mímesis I), la configuración de la trama (Mímesis II) y la refiguración, cuando la obra retorna al mundo del lector y lo transforma (Mímesis III).
+</Glosa>
+
+La triple mímesis de Ricœur<sup class="mark">b</sup> permite localizar con precisión lo que el LLM hace y lo que no puede hacer. El LLM es una máquina de configuración: habita con competencia extraordinaria la Mímesis II. Produce tramas, organiza datos, genera discurso coherente, y es en ese ejercicio un agente en sentido propio. Pero el arco hermenéutico se trunca en sus dos extremos. No hay refiguración (Mímesis III), porque no hay mundo al cual retornar ni sujeto que se apropie de lo configurado. Y la prefiguración (Mímesis I) es ajena: el corpus del que el sistema predice no es la precomprensión de la comunidad cuyo material interpreta.
+
+Si la refiguración se lee a la luz de la imputabilidad de *Sí mismo como otro*, el déficit adquiere nombre: **agencia sin imputación**. Hay agencia operativa; falta un agente que pueda ser tenido por autor de lo que se produce y que responda por ello ante otros.
+
+Nombrar el déficit así tiene una consecuencia de diseño: si lo que falta es la imputación, no se resuelve con un modelo más grande. Se resuelve construyendo desde afuera las condiciones que el sistema no genera desde adentro. De eso tratan las dos entradas siguientes: [qué nombre darle al error](/blog/alucinacion-o-infortunio/) y [qué arquitectura compensa la carencia](/blog/protesis-hermeneutica/).

@@ -1,0 +1,77 @@
+---
+title: "Los modelos de lenguaje no alucinan: cometen infortunios"
+description: "La metáfora de la alucinación es incoherente respecto de su objeto. Austin, Habermas y Floridi permiten nombrar mejor lo que falla, y ese nombre decide dónde se busca la solución."
+date: 2026-09-24
+tema: Filosofía
+estado: brote
+---
+import Glosa from '../../components/Glosa.astro';
+
+<p class="note">Segunda entrada a partir de <a href="/escritos/agencia-sin-imputacion.pdf">Agencia sin imputación</a> (2026). La primera, sobre el giro epistemológico, está <a href="/blog/agencia-sin-imputacion/">aquí</a>.</p>
+
+> «Decir algo es hacer algo.» — J. L. Austin, *Cómo hacer cosas con palabras*
+
+Nombrar con precisión lo que falla cuando un LLM produce un resultado incorrecto no es taxonomía neutral: el nombre determina dónde se busca la solución. Si el LLM «alucina», la solución es, en última instancia, psiquiátrica: corregir la mente del sistema, darle mejores datos. Si comete infortunios de autoridad epistémica, la solución es procesal: diseñar las condiciones externas de validez que el sistema no genera internamente. La elección es arquitectónica, no estilística.
+
+## Una metáfora incoherente
+
+El término «alucinación» migró de la psicopatología al discurso sobre IA cuando los ingenieros buscaron una metáfora para audiencias no técnicas. La que eligieron presupone exactamente lo que el LLM no tiene: una mente que construye representaciones del mundo y, bajo ciertas condiciones, las distorsiona. Pero el LLM no construye representaciones en ningún sentido relevante: produce secuencias de tokens que satisfacen expectativas estadísticas. Cuando genera un token factualmente falso, no ha fallado en representar la realidad; ha seguido el mismo proceso que cuando genera uno verdadero. La metáfora no es solo imprecisa: es incoherente respecto del objeto que pretende describir.
+
+| Marco mentalista | Marco pragmático |
+|---|---|
+| El LLM «alucina». | El LLM comete infortunios. |
+| Tiene una mente que produce representaciones falsas del mundo. | Austin: un acto de habla que satisface la forma pero falla en las condiciones de validez. |
+| Solución: mejorar la mente (más datos, más RLHF). | Solución: diseñar las condiciones de validez. |
+| *No hay mente. La metáfora es incoherente.* | *No presupone mente. Permite diseño.* |
+
+El marco pragmático tiene la ventaja de ser honesto sobre lo que el LLM es: no postula una interioridad que no posee. Trabaja con lo observable —la estructura de los actos de habla y las condiciones de su validez—, y esa austeridad ontológica es justamente lo que lo hace más poderoso para el diseño. Si el problema es la ausencia de condiciones de validez, el diseño puede construirlas; si fuera una mente que falla, solo cabría esperar que falle menos.
+
+## Del infortunio convencional al infortunio epistémico
+
+<Glosa marca="a">
+En Austin, *infelicity* cubre los performativos que fallan por no satisfacer sus condiciones convencionales: el juez sin jurisdicción, la promesa bajo coacción. No los enunciados simplemente falsos, que son errores ordinarios.
+</Glosa>
+
+Aplicar el concepto de infortunio<sup class="mark">a</sup> al LLM requiere una extensión justificada. El output del LLM no es nunca puramente constatativo: cuando responde a una pregunta, sintetiza una bibliografía o propone una categoría, no emite un modesto «puede ser que *p*», sino un acto con fuerza epistémica. Presenta *p* como resultado de un razonamiento, con la autoridad implícita de quien ha procesado evidencia y llegado a una conclusión fundamentada. Esa presentación de autoridad está inscrita en el modo en que el sistema produce discurso, pues fue entrenado sobre texto humano donde esa fuerza es constitutiva del género.
+
+El fallo del LLM no consiste en decir algo falso —eso sería un error constatativo ordinario, que también cometen los humanos—, sino en producir ese contenido *como si* satisficiera las condiciones que fundamentan la autoridad de una aserción, sin poder satisfacerlas estructuralmente. A esto propongo llamar **infortunio de autoridad epistémica**: el acto adopta la forma de una aserción fundamentada cuando la fundamentación es constitutivamente inaccesible desde adentro del sistema. La autoridad de una aserción no es propiedad del enunciado, sino del agente que se compromete a responder por él.
+
+## Anatomía del infortunio
+
+Un acto de habla epistemológicamente válido debe satisfacer al menos cuatro condiciones. El LLM cumple consistentemente solo la primera.
+
+<figure class="wide">
+  <svg viewBox="0 0 680 190" style="width:100%;max-width:42rem;height:auto;display:block" role="img" aria-label="Cuatro condiciones: forma (se cumple), referencia (a veces), sinceridad (no hay sujeto), validez (no puede evaluar su propio output). Las tres últimas son la zona de infortunio, donde opera el andamiaje.">
+    <style>{`.h{font-family:var(--display);font-weight:700;font-size:15px;fill:var(--ink)} .d{font-family:var(--serif);font-size:12.5px;fill:var(--muted)} .m{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;fill:var(--c-fil)} .ok{fill:var(--c-inv)} .no{fill:var(--c-fil)} .br{stroke:var(--c-fil);stroke-width:1.2;fill:none}`}</style>
+    <g>
+      <text x="0" y="24" class="h">Forma</text><circle cx="62" cy="19" r="5" class="ok"/>
+      <text x="0" y="46" class="d">Oraciones gramaticales,</text><text x="0" y="62" class="d">coherentes, calibradas.</text>
+    </g>
+    <g transform="translate(170 0)">
+      <text x="0" y="24" class="h">Referencia</text><text x="88" y="24" class="d">~</text>
+      <text x="0" y="46" class="d">A veces acierta,</text><text x="0" y="62" class="d">a veces fabrica.</text>
+    </g>
+    <g transform="translate(340 0)">
+      <text x="0" y="24" class="h">Sinceridad</text><circle cx="86" cy="19" r="5" class="no"/>
+      <text x="0" y="46" class="d">No hay sujeto</text><text x="0" y="62" class="d">que se comprometa.</text>
+    </g>
+    <g transform="translate(510 0)">
+      <text x="0" y="24" class="h">Validez</text><circle cx="62" cy="19" r="5" class="no"/>
+      <text x="0" y="46" class="d">No puede evaluar</text><text x="0" y="62" class="d">su propio output.</text>
+    </g>
+    <path class="br" d="M170 92 L170 104 L680 104 L680 92"/>
+    <text x="425" y="126" text-anchor="middle" class="m">ZONA DE INFORTUNIO</text>
+    <text x="425" y="146" text-anchor="middle" class="m">ZONA DONDE OPERA EL ANDAMIAJE</text>
+  </svg>
+  <figcaption><b>Figura 1.</b> Las cuatro condiciones de un acto de habla epistémicamente válido y cuáles satisface un LLM.</figcaption>
+</figure>
+
+La forma es la condición que el LLM mejor satisface, y esa perfección de superficie es la fuente del peligro: oculta el déficit de fondo. La referencia se satisface parcial e impredeciblemente, sin marca formal que distinga lo correcto de lo fabricado. La sinceridad —que el hablante crea lo que afirma— es estructuralmente imposible: no hay sujeto que crea. La validez —que el hablante pueda dar razones— es igualmente inaccesible: detrás del output no hay razones, sino distribuciones de probabilidad sobre vocabularios, y las distribuciones no son razones.
+
+## Rendimiento no es validez
+
+Habermas permite precisar el diagnóstico. Todo acto de habla serio levanta pretensiones de validez —verdad, rectitud normativa, veracidad— que el hablante está comprometido a defender si se le interpela. La validez no es propiedad del contenido sino de la capacidad del hablante de sostenerlo argumentativamente. Cuando se le pide a un LLM justificar una afirmación, produce una nueva cadena de tokens con la morfología de una justificación, no una justificación.
+
+La consecuencia es visible en la discrepancia entre rendimiento y validez. La ingeniería mide rendimiento: *accuracy*, tasa de error. Pero un LLM puede acertar el 95 % de un *benchmark* y ser epistemológicamente ingobernable, porque el 95 % correcto se produce por las mismas razones estadísticas que el 5 % incorrecto, y no hay diferencia interna que el sistema pueda señalar. La distinción no es de grado sino de categoría: el rendimiento mide aciertos; la validez mide la capacidad de dar razones. El marco de la «alucinación», al centrarse en el rendimiento, orienta la búsqueda de soluciones en la dirección equivocada.
+
+Austin, Habermas y Floridi convergen así en un diagnóstico que ninguno formula por separado: el infortunio ocurre al ejecutar un acto sin las condiciones convencionales que lo legitiman; el LLM no puede dar razones porque ningún sujeto comunicativo asume la responsabilidad; hay agencia operativa pero no imputable. Si la fundamentación es inaccesible desde adentro, debe construirse desde afuera. Esa construcción es la [prótesis hermenéutica](/blog/protesis-hermeneutica/).

@@ -1,0 +1,75 @@
+---
+title: "La prótesis hermenéutica"
+description: "Una arquitectura que redistribuye las funciones epistémicas: la máquina configura, el investigador valida, y la frontera entre ambos es el principio de diseño."
+date: 2026-09-25
+tema: Filosofía
+estado: brote
+---
+import Glosa from '../../components/Glosa.astro';
+
+<p class="note">Tercera entrada a partir de <a href="/escritos/agencia-sin-imputacion.pdf">Agencia sin imputación</a> (2026). Las anteriores: <a href="/blog/agencia-sin-imputacion/">el giro epistemológico</a> y <a href="/blog/alucinacion-o-infortunio/">el infortunio de autoridad epistémica</a>.</p>
+
+Si el LLM configura sin poder validar ni responder por lo configurado, la pregunta deja de ser qué le falta y pasa a ser cómo se organiza un sistema de producción de conocimiento en el que esa carencia no se convierta en engaño. La respuesta no es un procedimiento más, sino una forma de mediación: interponer una herramienta altera la relación entre un agente y su objeto, y esa alteración debe fundamentarse, porque determina cómo se distribuyen las funciones epistémicas entre sistema e investigador.
+
+## Por qué «prótesis» no es un retroceso
+
+Conviene precisar un punto que de otro modo abriría una contradicción aparente. Si el LLM es agente, llamarlo «prótesis» parecería volver a la imagen instrumental que la primera entrada rechazó. No es así. Lo que aquí se llama prótesis no es el LLM aislado, sino el sistema andamiaje-LLM articulado al investigador. El LLM conserva su agencia operativa —sigue interactuando, decidiendo, adaptándose—, pero esa agencia queda acoplada, mediante el andamiaje, al circuito de imputación del investigador.
+
+La palabra *prótesis* designa una extensión funcional: no el reemplazo de una capacidad ausente, sino la ampliación de una capacidad presente bajo condiciones de limitación. El calificativo *hermenéutica* especifica el tipo de extensión: no computacional sino interpretativa, gobernada por los protocolos de la comprensión y la validación que la investigación cualitativa ha operacionalizado durante un siglo.
+
+## Tres fundamentos
+
+<Glosa marca="a">
+El bastón del ciego, en Merleau-Ponty, no es algo que toca sino algo *con lo que* toca. El investigador experto no opera sobre el andamiaje sino a través de él.
+</Glosa>
+
+La teoría de la mente extendida (Clark) explica por qué el acoplamiento es posible: cuando una herramienta se acopla de manera fiable y fluida a los procesos epistémicos de un agente, pasa a ser constitutiva de su sistema cognitivo. Los lentes, el papel, la calculadora y, bajo las condiciones adecuadas, el LLM no son apoyos externos a la cognición sino componentes de ella.
+
+La fenomenología explica cómo el acoplamiento se experimenta como continuidad<sup class="mark">a</sup>, y el enactivismo de Varela, Thompson y Rosch añade lo decisivo: la validación no puede delegarse por completo al sistema, porque requiere el acoplamiento del investigador con las consecuencias prácticas de las interpretaciones. Un mundo al cual retornar y en el cual los hallazgos sean evaluados por sus efectos.
+
+<Glosa marca="b">
+Feenberg distingue la instrumentalización primaria —la operación técnica en abstracto— de la secundaria: el encastre social, la apropiación significativa en un contexto de práctica.
+</Glosa>
+
+La teoría crítica de la tecnología<sup class="mark">b</sup> explica qué condiciones políticas y éticas debe cumplir el acoplamiento. Los LLM operan por defecto en la capa primaria: despliegan agencia operativa sin estar acoplados a un horizonte de imputación. El andamiaje hermenéutico es exactamente instrumentalización secundaria: el conjunto de mediaciones que devuelve la operación técnica a un contexto de práctica, a criterios de validación y al sujeto que puede ser tenido por autor del juicio. Vallor añade la dimensión que ninguna arquitectura puede ignorar: el andamiaje debe cultivar en el investigador las virtudes epistémicas —apertura a la refutación, reflexividad, tolerancia a la incertidumbre— que hacen posible la validación genuina. Una prótesis mal diseñada atrofia las capacidades que pretende compensar.
+
+## El concepto y la arquitectura
+
+La prótesis hermenéutica puede definirse ahora con precisión: un sistema de producción de conocimiento en el que un LLM opera como extensión cognitiva del investigador en la configuración (Mímesis II), mientras el investigador preserva y ejerce la validación (Mímesis III), y el andamiaje hace visible y auditable la frontera entre ambas. No es una IA consciente —imposibilidad estructural—, sino una IA epistémicamente gobernable.
+
+<figure class="wide">
+  <svg viewBox="0 0 640 300" style="width:100%;max-width:40rem;height:auto;display:block" role="img" aria-label="Arquitectura: datos entran a la máquina, que aplica Teoría Fundamentada y triangulación y produce un output estructurado y auditable con niveles de confianza; cruza la frontera hacia la validación humana, que valida, evalúa divergencias y asume responsabilidad; hay retroalimentación de vuelta a la máquina.">
+    <style>{`.bx{fill:var(--surface);stroke:var(--rule);stroke-width:1.2} .t{font-family:var(--serif);font-size:13px;fill:var(--ink)} .s{font-family:var(--serif);font-size:11.5px;fill:var(--muted)} .k{font-family:var(--mono);font-size:10px;letter-spacing:.08em;fill:var(--muted)} .kf{font-family:var(--mono);font-size:10px;letter-spacing:.08em;fill:var(--c-fil)} .ar{stroke:var(--muted);stroke-width:1.3;fill:none} .fr{stroke:var(--c-fil);stroke-width:1.6;stroke-dasharray:6 5;fill:none} .ah{fill:var(--muted)}`}</style>
+    <defs><marker id="ph-ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 1L9 5L0 9z" class="ah"/></marker></defs>
+    <text x="320" y="18" text-anchor="middle" class="k">DATOS · TEXTOS · PROBLEMA</text>
+    <path class="ar" d="M320 26 L320 44" marker-end="url(#ph-ah)"/>
+    <rect x="60" y="48" width="520" height="86" rx="3" class="bx"/>
+    <text x="72" y="66" class="k">MÁQUINA · agente operativo</text>
+    <text x="72" y="92" class="t">Teoría Fundamentada</text><text x="72" y="110" class="s">codificación abierta → axial → selectiva</text>
+    <text x="340" y="92" class="t">Triangulación</text><text x="340" y="110" class="s">multi-fuente · multi-agente · teórica</text>
+    <text x="72" y="128" class="s">Output estructurado y auditable: hallazgos + niveles de confianza + zonas de divergencia</text>
+    <path class="fr" d="M40 162 L600 162"/>
+    <text x="600" y="156" text-anchor="end" class="kf">FRONTERA</text>
+    <path class="ar" d="M320 136 L320 184" marker-end="url(#ph-ah)"/>
+    <rect x="60" y="190" width="520" height="70" rx="3" class="bx"/>
+    <text x="72" y="208" class="k">HUMANO · agente imputable</text>
+    <text x="72" y="232" class="t">Validación</text>
+    <text x="72" y="250" class="s">valida la codificación · evalúa la divergencia · asume la responsabilidad epistémica</text>
+    <path class="ar" d="M580 225 C 620 225 620 92 582 92" marker-end="url(#ph-ah)"/>
+    <text x="612" y="165" text-anchor="middle" class="k" transform="rotate(-90 612 165)">retroalimentación</text>
+    <text x="320" y="288" text-anchor="middle" class="s">Aserciones del investigador, defendibles ante una comunidad de pares.</text>
+  </svg>
+  <figcaption><b>Figura 1.</b> La prótesis hermenéutica. La máquina configura; el humano valida; la frontera entre ambos está marcada, no fusionada.</figcaption>
+</figure>
+
+La máquina contribuye lo que hace mejor que el investigador individual: velocidad sobre corpus masivos, consistencia en la aplicación de protocolos, identificación de patrones a escala y generación sistemática de hipótesis relacionales. Esa contribución es genuina, y reducirla a la imagen del instrumento pasivo distorsiona lo que el sistema hace. Pero la máquina no contribuye validación, responsabilidad ni juicio: esas funciones están, por diseño, del otro lado de la frontera, porque su ejercicio requiere un agente que pueda ser tenido por autor de la decisión.
+
+El humano valida que los códigos reflejan el corpus y no proyectan categorías preestablecidas; decide sobre la suficiencia de la saturación; justifica la selección teórica; y, sobre todo, asume la responsabilidad epistémica final, el momento en que las conclusiones dejan de ser output del sistema y se vuelven aserciones del investigador. El investigador no es un supervisor que aprueba outputs: es el agente que cierra el arco que el sistema deja truncado.
+
+Sin andamiaje, esa frontera es invisible, y el riesgo es aceptar outputs como si ya fueran validaciones. Con andamiaje, cada output incluye su procedencia, sus límites declarados y las condiciones bajo las cuales debería ser rechazado. La frontera no es una barrera, sino una interfaz: el lugar donde la máquina termina y el humano comienza, marcado con precisión para que ninguno ocupe el lugar del otro.
+
+<Glosa marca="c">
+El prototipo, *Descubrimiento de categorías en imágenes narcocolombianas*, aplica el andamiaje con Gemini Vision a un corpus de cultura visual narco. El artículo analiza qué logra y qué debe seguir aportando el investigador.
+</Glosa>
+
+Que el diseño es implementable lo muestra un prototipo<sup class="mark">c</sup> sobre cultura visual narco colombiana, descrito en el artículo. Lo que queda abierto —y es materia del doctorado— es la tipología completa de criterios de validación: cuáles puede satisfacer un sistema artificial porque su verificación recae sobre el registro del proceso, y cuáles exigen un sujeto imputable porque recaen sobre la posición del agente que responde.

@@ -17,8 +17,9 @@
     { "id": "ner", "t": "app", "x": 430, "y": 390, "r": 8, "lp": "b", "label": "NER-Colombia", "title": "NER para el conflicto colombiano", "desc": "Reconocimiento de entidades en testimonios y documentos históricos.", "href": "https://github.com/Izainea/NER-Colombia" },
     { "id": "parque", "t": "app", "x": 700, "y": 110, "r": 7, "lp": "l", "label": "datos-al-parque", "title": "datos-al-parque", "desc": "Sitio del proyecto Datos al Parque.", "href": "https://github.com/Izainea/datos-al-parque" },
     { "id": "b1", "t": "blog", "x": 130, "y": 190, "r": 7, "lp": "b", "label": "¿Qué es un quiver?", "title": "¿Qué es un quiver?", "desc": "Introducción visual a vértices, flechas, caminos y el álgebra que generan.", "href": "/blog/que-es-un-quiver/" },
-    { "id": "b2", "t": "blog", "x": 250, "y": 290, "r": 7, "lp": "b", "label": "Hermenéutica y LLM", "title": "Hermenéutica para modelos de lenguaje", "desc": "Por escribir: interpretación, prejuicio y contexto, de Gadamer a los transformers.", "href": "/blog/" },
+    { "id": "b2", "t": "blog", "x": 250, "y": 290, "r": 7, "lp": "b", "label": "Agencia sin imputación (blog)", "title": "Agencia sin imputación, en tres entradas", "desc": "El giro epistemológico, el infortunio de autoridad epistémica y la prótesis hermenéutica, adaptados del artículo para el blog.", "href": "/blog/agencia-sin-imputacion/" },
     { "id": "b3", "t": "blog", "x": 590, "y": 60, "r": 7, "lp": "l", "label": "Over-squashing con caminos", "title": "El over-squashing, explicado con caminos", "desc": "Por escribir: por qué una GNN olvida lo que está lejos.", "href": "/blog/" },
+    { "id": "ranc", "t": "fil", "x": 90, "y": 130, "r": 8, "lp": "b", "label": "La palabra sin cuerpo", "title": "La palabra sin cuerpo en el reparto entre habla y ruido", "desc": "Los loros estocásticos leídos con Rancière: emiten sin poder litigar, y la sospecha de bodega recuenta el habla humana como ruido.", "href": "/blog/la-palabra-sin-cuerpo/" },
     { "id": "agloc", "t": "doc", "x": 150, "y": 430, "r": 8, "lp": "b", "label": "Taller: agentes locales", "title": "Agentes locales con Ollama y LangChain", "desc": "Taller para construir agentes que corren en la propia máquina.", "href": "https://github.com/Izainea/capacitacion-agentes-locales" },
     { "id": "aginv", "t": "doc", "x": 300, "y": 400, "r": 8, "lp": "b", "label": "agentes-ia-investigacion", "title": "Agentes de IA para la investigación", "desc": "Material sobre el uso de agentes en el trabajo académico.", "href": "https://github.com/Izainea/agentes-ia-investigacion" },
     { "id": "icfes", "t": "doc", "x": 80, "y": 330, "r": 8, "lp": "b", "label": "Capacitación ICFES", "title": "Análisis de datos para las pruebas de Estado", "desc": "Recursos y talleres en R en el contexto de las pruebas Saber.", "href": "https://github.com/Izainea/capacitacion_icfes" },
@@ -28,6 +29,6 @@
     ["tesis", "aiq"], ["tesis", "pgnn"], ["tesis", "xai"], ["tesis", "b1"], ["aiq", "act"],
     ["aiq", "scholar"], ["pgnn", "b3"], ["xai", "b2"], ["ner", "b2"], ["secop", "tax"],
     ["parque", "secop"], ["scholar", "aginv"], ["agloc", "aginv"], ["icfes", "dian"], ["dian", "agloc"],
-    ["filo", "asi"], ["filo", "austin"], ["filo", "amoral"], ["filo", "b2"], ["austin", "asi"]
+    ["filo", "asi"], ["filo", "austin"], ["filo", "amoral"], ["filo", "b2"], ["austin", "asi"], ["filo", "ranc"]
   ]
 }
