@@ -1,0 +1,371 @@
+---
+import Base from '../../layouts/Base.astro';
+
+// Cuaderno guiado sobre el paquete aiq-quivers. El código de cada capítulo corre en el
+// navegador con Pyodide (Python en WebAssembly) e instala el paquete real desde PyPI.
+const capitulos = [
+  {
+    id: 'quiver',
+    titulo: 'El quiver y su matriz',
+    texto: `Todo empieza con <code>Quiver(vertices, arrows)</code>. Cada flecha es una terna
+      <code>(nombre, origen, destino)</code>; se admiten lazos y flechas paralelas. La matriz de
+      adyacencia <i>A</i> cuenta flechas de <i>i</i> a <i>j</i>, y sus potencias <i>A<sup>k</sup></i>
+      cuentan caminos de longitud <i>k</i>. El ejemplo es el quiver de citación de cinco artículos
+      del <i>Quick Start</i> del paquete.`,
+    codigo: `from aiq import Quiver
+
+Q = Quiver(
+    vertices=["P1", "P2", "P3", "P4", "P5"],
+    arrows=[
+        ("a1", "P1", "P2"), ("a2", "P1", "P3"),
+        ("a3", "P2", "P4"), ("a4", "P3", "P4"),
+        ("a5", "P3", "P5"), ("a6", "P4", "P5"),
+    ],
+)
+print(Q.summary())
+print("acíclico:", Q.is_acyclic(), "· diámetro:", Q.diameter())
+A = Q.adjacency_matrix()
+print("A =\\n", A)
+print("A² =\\n", Q.adjacency_power(2))
+
+out = viz_quiver(Q, matriz=A)`,
+  },
+  {
+    id: 'caminos',
+    titulo: 'El álgebra de caminos kQ',
+    texto: `<code>PathAlgebra(Q)</code> enumera los caminos por longitud y comprueba la identidad
+      central: la dimensión de <i>e<sub>i</sub>·kQ<sub>k</sub>·e<sub>j</sub></i> coincide con la
+      entrada <i>(i, j)</i> de <i>A<sup>k</sup></i>. Un <code>Ideal</code> generado por relaciones
+      define el cociente <i>kQ/I</i>, cuya matriz de caminos efectivos ya no cuenta los caminos que
+      la relación anula. Este es el quiver del ejemplo de la documentación, con dos flechas paralelas.`,
+    codigo: `from aiq import Quiver, PathAlgebra, Ideal, QuotientAlgebra
+
+Q = Quiver([1, 2, 3, 4],
+           [("α1", 1, 2), ("α2", 1, 2), ("γ", 1, 3), ("β", 2, 4), ("δ", 3, 4)])
+pa = PathAlgebra(Q)
+print("dim(kQ) =", pa.total_dimension())
+for k in range(0, 3):
+    print(f"caminos de longitud {k}:", [str(p) for p in pa.enumerate_paths(k)])
+print("dim(e1·kQ2·e4) =", pa.dimension(1, 4, 2), "= (A²)[1,4] =", pa.dimension_via_matrix(1, 4, 2))
+print("equivalencia matricial:", pa.verify_matrix_equivalence())
+
+# cociente por la relación conmutativa βα1 − δγ
+I = Ideal(pa, [pa.path_element(["α1", "β"]) - pa.path_element(["γ", "δ"])])
+kQI = QuotientAlgebra(pa, I)
+print("dim(kQ/I) =", kQI.total_dimension())
+print("caminos efectivos de longitud 2:\\n", kQI.effective_walk_matrix(2))
+
+out = viz_quiver(Q, matriz=Q.adjacency_power(2), titulo_matriz="A²")`,
+  },
+  {
+    id: 'impacto',
+    titulo: 'Grado de impacto y vecindades',
+    texto: `El <b>grado de impacto</b> <i>g(c<sub>i</sub>, c<sub>j</sub>)</i> es la longitud del
+      camino dirigido más corto (Def. 2.2); el <b>vector de impacto</b> cuenta los caminos de cada
+      longitud (Def. 2.5). El <b>sistema fundamental de vecindades</b> {A<sub>k</sub>(c)} agrupa a
+      los vértices por el grado con que impactan a <i>c</i> (Def. 2.3): son las capas que la
+      figura colorea. Cambia el vértice <code>c</code> para ver sus capas.`,
+    codigo: `from aiq import Quiver, impact_degree, impact_vector, FundamentalNeighborhoodSystem
+from aiq.datasets import example_5node_citation_quiver
+
+Q = example_5node_citation_quiver()
+c = "P5"
+print("g(P1, P5) =", impact_degree(Q, "P1", c))
+print("vec_g(P1, P5) =", impact_vector(Q, "P1", c, max_k=4))
+
+sfv = FundamentalNeighborhoodSystem(Q, c)
+capas = sfv.all_layers()
+for g, vs in sorted(capas.items()):
+    print(f"A_{g}({c}) =", sorted(vs))
+print("atrapado topológicamente:", sfv.is_topologically_trapped())
+
+out = viz_quiver(Q, capas={str(g): sorted(map(str, vs)) for g, vs in capas.items()}, centro=c)`,
+  },
+  {
+    id: 'aiq',
+    titulo: 'El autómata de impacto (AIQ)',
+    texto: `Un AIQ es la cuádrupla <i>(Q, Σ, {A<sub>k</sub>}, φ)</i>: el quiver, un conjunto de
+      estados, el sistema de vecindades y una regla de evolución. La <b>tasa de impacto</b>
+      <i>i<sup>t</sup>(c)</i> pondera la influencia de los vecinos con un peso <i>P(g)</i>
+      decreciente en el grado (Def. 2.9). Con la regla SIR, un artículo susceptible (S) se vuelve
+      relevante (R) según esa tasa y luego obsoleto (O) con probabilidad <code>recovery_prob</code>.
+      Ejecuta y recorre la órbita con el control deslizante.`,
+    codigo: `from aiq import AIQ
+from aiq.datasets import example_5node_citation_quiver
+
+Q = example_5node_citation_quiver()
+aiq = AIQ(Q, states=["S", "R", "O"], evolution_rule="SIR",
+          beta=1.0, recovery_prob=0.3)
+aiq.set_initial_config({"P1": "R", "P2": "S", "P3": "S", "P4": "S", "P5": "S"})
+aiq.run(8, seed=42)
+print(aiq.orbit_counts_table())
+print("tasas de impacto hacia R en t final:", aiq.impact_rates_snapshot(target_state="R"))
+
+out = viz_quiver(Q, orbita=[{str(k): str(v) for k, v in cfg.items()} for cfg in aiq.orbit])`,
+  },
+  {
+    id: 'brauer',
+    titulo: 'Configuraciones de Brauer',
+    texto: `Una configuración de Brauer <i>Γ = (Γ<sub>0</sub>, Γ<sub>1</sub>, μ, o)</i> tiene
+      vértices, polígonos (multiconjuntos de vértices), una multiplicidad μ y una orientación. El
+      paquete calcula la dimensión del álgebra Λ<sub>Γ</sub> y de su centro, el
+      <b>factor de impacto</b> δ<sub>B</sub> = Σ μ(m)·val(m) y la <b>entropía</b> H(B). El ejemplo
+      son las particiones de 10 del artículo; <code>brauer_from_citation_json</code> hace lo mismo
+      con una red de citación.`,
+    codigo: `from aiq.brauer import example_partitions_of_10, MU_STRATEGIES
+
+bc = example_partitions_of_10()
+print(bc.summary())
+print("vértices:", bc.n_vertices, "· polígonos:", bc.n_polygons)
+print("valencias:", {v: bc.valency(v) for v in bc.Gamma0})
+print("μ:", bc.mu_dict)
+print("truncados:", [v for v in bc.Gamma0 if bc.is_truncated(v)])
+print("estrategias de multiplicidad disponibles:", list(MU_STRATEGIES))
+
+out = {"tabla": [[str(v), bc.valency(v), bc.mu(v)] for v in bc.Gamma0],
+       "cabecera": ["vértice", "valencia", "μ"]}`,
+  },
+];
+---
+<Base title="Laboratorio AIQ" description="Cuaderno interactivo para entender el paquete aiq-quivers: quivers, álgebras de caminos, impacto, autómatas y configuraciones de Brauer, ejecutados en el navegador.">
+  <header class="post-head">
+    <div class="meta"><a href="/#apps">← Apps</a><span>Matemáticas</span><span>aiq-quivers 1.2.1</span></div>
+    <h1>Laboratorio AIQ</h1>
+    <p class="desc">Un cuaderno para entender <code>aiq-quivers</code>, el paquete de la tesis <i>Autómatas de impacto sobre quivers</i>. Cada capítulo explica una idea, la ejecuta con el paquete real y la dibuja. El código es editable: cambia el quiver, los parámetros o los estados y vuelve a ejecutar.</p>
+  </header>
+
+  <div class="lab-status" id="lab-status" aria-live="polite">
+    <span class="dot"></span>
+    <span id="lab-status-text">Preparando Python en el navegador (Pyodide + aiq-quivers desde PyPI). La primera vez tarda unos segundos; después queda en caché.</span>
+  </div>
+
+  <div class="lab">
+    {capitulos.map((c, i) => (
+      <section class="cap" id={c.id}>
+        <div class="cap-head"><span class="no">§{i + 1}</span><h2>{c.titulo}</h2></div>
+        <p class="cap-text" set:html={c.texto}></p>
+        <div class="cell">
+          <div class="cell-bar">
+            <span class="cell-label">Python · aiq</span>
+            <button type="button" class="run" data-run={c.id} disabled>Ejecutar</button>
+            <button type="button" class="reset" data-reset={c.id}>Restaurar</button>
+          </div>
+          <textarea id={`code-${c.id}`} class="code" spellcheck="false" rows={c.codigo.split('\n').length + 1} data-original={c.codigo}>{c.codigo}</textarea>
+          <pre class="stdout" id={`out-${c.id}`} hidden></pre>
+        </div>
+        <div class="viz" id={`viz-${c.id}`} hidden></div>
+      </section>
+    ))}
+  </div>
+
+  <section class="sec" style="margin-top: 3rem;">
+    <div class="sec-head"><span class="no">§6</span><h2>Para seguir</h2></div>
+    <p>El paquete está en PyPI (<code>pip install aiq-quivers</code>) y el código en <a href="https://github.com/Izainea/aiq-quivers" target="_blank" rel="noopener">GitHub</a>. Los módulos que este cuaderno no toca —<code>morphisms</code>, <code>validation</code> con datos de citación reales, <code>gnn</code> con la atención algebraica y el puente a PyTorch Geometric— se documentan en el README. La entrada <a href="/blog/que-es-un-quiver/">¿Qué es un quiver?</a> explica desde cero las ideas del primer capítulo.</p>
+  </section>
+</Base>
+
+<style is:global>
+  .lab-status { display: flex; align-items: center; gap: 0.7rem; margin-top: 1.6rem; font-family: var(--mono); font-size: 0.78rem; color: var(--muted); }
+  .lab-status .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--c-doc); flex: none; animation: pulse 1.2s ease-in-out infinite; }
+  .lab-status.ready .dot { background: var(--c-inv); animation: none; }
+  .lab-status.error .dot { background: var(--c-fil); animation: none; }
+  @keyframes pulse { 50% { opacity: 0.3; } }
+  .lab { display: flex; flex-direction: column; gap: 3.5rem; margin-top: 2.5rem; }
+  .cap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.2rem 2.5rem; scroll-margin-top: 3rem; }
+  .cap-head { grid-column: 1 / -1; display: flex; align-items: baseline; gap: 0.9rem; border-bottom: 1px solid var(--rule); padding-bottom: 0.6rem; }
+  .cap-head .no { font-family: var(--mono); font-size: 0.8rem; color: var(--accent); }
+  .cap-head h2 { font-family: var(--display); font-weight: 700; font-size: 1.4rem; letter-spacing: -0.015em; margin: 0; }
+  .cap-text { grid-column: 1 / -1; max-width: 46rem; margin: 0; }
+  .cap-text code, .code, .stdout, .desc code { font-family: var(--mono); }
+  .cap-text code, .desc code { font-size: 0.86em; }
+  .cell { display: flex; flex-direction: column; border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; background: var(--surface); }
+  .cell-bar { display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem 0.6rem; border-bottom: 1px solid var(--rule); font-family: var(--mono); font-size: 0.72rem; }
+  .cell-label { color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; margin-right: auto; }
+  .cell-bar button { font: inherit; letter-spacing: 0.05em; border: 1px solid var(--rule); background: transparent; color: var(--ink); border-radius: 999px; padding: 0.22rem 0.8rem; cursor: pointer; }
+  .cell-bar .run { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .cell-bar .run:disabled { opacity: 0.4; cursor: wait; }
+  .cell-bar .reset { color: var(--muted); }
+  .code { width: 100%; border: 0; resize: vertical; padding: 0.8rem 0.9rem; font-size: 0.82rem; line-height: 1.55; background: transparent; color: var(--ink); tab-size: 4; }
+  .code:focus { outline: none; box-shadow: inset 0 0 0 2px var(--accent); }
+  .stdout { margin: 0; padding: 0.8rem 0.9rem; border-top: 1px dashed var(--rule); font-size: 0.78rem; line-height: 1.5; white-space: pre-wrap; overflow-x: auto; color: var(--muted); max-height: 22rem; overflow-y: auto; }
+  .stdout.err { color: var(--c-fil); }
+  .viz { display: flex; flex-direction: column; gap: 0.9rem; }
+  .viz svg { width: 100%; height: auto; display: block; }
+  .viz .v-edge { fill: none; stroke: var(--muted); stroke-width: 1.4; }
+  .viz .v-ah { fill: var(--muted); }
+  .viz .v-node { stroke: var(--bg); stroke-width: 2; }
+  .viz .v-lab { font-family: var(--mono); font-size: 12px; fill: var(--ink); paint-order: stroke; stroke: var(--bg); stroke-width: 4px; stroke-linejoin: round; }
+  .viz .v-alab { font-family: var(--serif); font-style: italic; font-size: 12px; fill: var(--muted); paint-order: stroke; stroke: var(--bg); stroke-width: 3px; }
+  .viz .v-cap { font-family: var(--mono); font-size: 10.5px; fill: var(--muted); }
+  .viz table { border-collapse: collapse; font-family: var(--mono); font-size: 0.78rem; }
+  .viz th, .viz td { padding: 0.3rem 0.7rem; border-bottom: 1px solid var(--rule); text-align: right; }
+  .viz th { font-weight: 500; color: var(--muted); }
+  .viz td:first-child, .viz th:first-child { text-align: left; }
+  .viz .mat-title { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+  .viz .legend { display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; font-family: var(--mono); font-size: 0.74rem; color: var(--muted); }
+  .viz .legend span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 0.4rem; background: var(--sw); vertical-align: -1px; }
+  .viz .orbit { display: flex; align-items: center; gap: 0.8rem; font-family: var(--mono); font-size: 0.78rem; }
+  .viz .orbit input { flex: 1; accent-color: var(--accent); }
+  @media (max-width: 900px) { .cap { grid-template-columns: minmax(0, 1fr); } }
+</style>
+
+<script src="https://cdn.jsdelivr.net/pyodide/v0.27.7/full/pyodide.js" is:inline></script>
+<script is:inline>
+(async function () {
+  var status = document.getElementById('lab-status');
+  var statusText = document.getElementById('lab-status-text');
+  var runs = document.querySelectorAll('button.run');
+  var COL = { S: 'var(--c-app)', R: 'var(--c-fil)', O: 'var(--muted)', I: 'var(--c-fil)' };
+  var CAPAS = ['var(--c-fil)', 'var(--c-doc)', 'var(--c-inv)', 'var(--c-app)', 'var(--c-blog)', 'var(--muted)'];
+
+  // Puente Python -> JS: el código de cada celda deja en `out` un dict serializable.
+  var HELPERS = [
+    'import json, sys, io',
+    'def viz_quiver(Q, matriz=None, titulo_matriz="A", capas=None, centro=None, orbita=None):',
+    '    V = [str(v) for v in Q.Q0]',
+    '    E = [[str(a), str(Q.source(a)), str(Q.target(a))] for a, _, _ in Q.Q1]',
+    '    d = {"vertices": V, "arrows": E}',
+    '    if matriz is not None: d["matriz"] = [[int(x) for x in row] for row in matriz]; d["titulo_matriz"] = titulo_matriz',
+    '    if capas is not None: d["capas"] = capas; d["centro"] = str(centro)',
+    '    if orbita is not None: d["orbita"] = orbita',
+    '    return d',
+  ].join('\n');
+
+  function el(tag, attrs, parent) {
+    var e = document.createElementNS('http://www.w3.org/2000/svg', tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  function drawQuiver(host, d, colorOf) {
+    var n = d.vertices.length, W = 460, H = 300, cx = W / 2, cy = H / 2, R = Math.min(W, H) / 2 - 46;
+    var pos = {};
+    d.vertices.forEach(function (v, i) { var a = -Math.PI / 2 + (i * 2 * Math.PI) / n; pos[v] = [cx + R * Math.cos(a), cy + R * Math.sin(a)]; });
+    var svg = el('svg', { viewBox: '0 0 ' + W + ' ' + H, role: 'img', 'aria-label': 'Quiver con ' + n + ' vértices y ' + d.arrows.length + ' flechas' });
+    var defs = el('defs', {}, svg);
+    var m = el('marker', { id: 'v-ah', viewBox: '0 0 10 10', refX: '9', refY: '5', markerWidth: '7', markerHeight: '7', orient: 'auto' }, defs);
+    el('path', { d: 'M0 1L9 5L0 9z', 'class': 'v-ah' }, m);
+    // flechas paralelas y lazos se curvan
+    var seen = {};
+    d.arrows.forEach(function (a) {
+      var s = pos[a[1]], t = pos[a[2]], key = a[1] + '>' + a[2];
+      seen[key] = (seen[key] || 0) + 1;
+      var k = seen[key], bend = (k - 1) * 22 * (k % 2 ? 1 : -1) + (seen[a[2] + '>' + a[1]] ? 18 : 0);
+      var path;
+      if (a[1] === a[2]) {
+        path = 'M' + (s[0] + 8) + ' ' + (s[1] - 8) + ' C ' + (s[0] + 50) + ' ' + (s[1] - 50) + ', ' + (s[0] - 30) + ' ' + (s[1] - 60) + ', ' + (s[0] - 3) + ' ' + (s[1] - 12);
+      } else {
+        var dx = t[0] - s[0], dy = t[1] - s[1], L = Math.hypot(dx, dy), ux = dx / L, uy = dy / L;
+        var mx = (s[0] + t[0]) / 2 - uy * bend, my = (s[1] + t[1]) / 2 + ux * bend;
+        var sx = s[0] + ux * 13, sy = s[1] + uy * 13, ex = t[0] - ux * 15, ey = t[1] - uy * 15;
+        path = 'M' + sx + ' ' + sy + ' Q ' + mx + ' ' + my + ' ' + ex + ' ' + ey;
+        var lx = (s[0] + t[0]) / 2 - uy * (bend + 10), ly = (s[1] + t[1]) / 2 + ux * (bend + 10);
+        var tl = el('text', { x: lx, y: ly + 4, 'text-anchor': 'middle', 'class': 'v-alab' }, svg); tl.textContent = a[0];
+      }
+      el('path', { d: path, 'class': 'v-edge', 'marker-end': 'url(#v-ah)' }, svg);
+    });
+    d.vertices.forEach(function (v) {
+      var p = pos[v];
+      el('circle', { cx: p[0], cy: p[1], r: 11, 'class': 'v-node', fill: colorOf(v), 'data-v': v }, svg);
+      var t = el('text', { x: p[0], y: p[1] - 17, 'text-anchor': 'middle', 'class': 'v-lab' }, svg); t.textContent = v;
+    });
+    host.appendChild(svg);
+    return svg;
+  }
+  function drawMatrix(host, d) {
+    var wrap = document.createElement('div');
+    var title = document.createElement('div'); title.className = 'mat-title'; title.textContent = 'Matriz ' + (d.titulo_matriz || 'A') + ' · filas = origen, columnas = destino';
+    wrap.appendChild(title);
+    var tbl = document.createElement('table'), tr = document.createElement('tr');
+    tr.appendChild(document.createElement('th'));
+    d.vertices.forEach(function (v) { var th = document.createElement('th'); th.textContent = v; tr.appendChild(th); });
+    tbl.appendChild(tr);
+    d.matriz.forEach(function (row, i) {
+      var r = document.createElement('tr'), th = document.createElement('th'); th.textContent = d.vertices[i]; r.appendChild(th);
+      row.forEach(function (x) { var td = document.createElement('td'); td.textContent = x; if (x) td.style.color = 'var(--accent)'; r.appendChild(td); });
+      tbl.appendChild(r);
+    });
+    wrap.appendChild(tbl); host.appendChild(wrap);
+  }
+  function legend(host, items) {
+    var lg = document.createElement('div'); lg.className = 'legend';
+    items.forEach(function (it) { var s = document.createElement('span'); s.style.setProperty('--sw', it[1]); s.textContent = it[0]; lg.appendChild(s); });
+    host.appendChild(lg);
+  }
+  function render(host, d) {
+    host.textContent = ''; host.hidden = false;
+    if (d.tabla) {
+      var tbl = document.createElement('table'), tr = document.createElement('tr');
+      d.cabecera.forEach(function (h) { var th = document.createElement('th'); th.textContent = h; tr.appendChild(th); }); tbl.appendChild(tr);
+      d.tabla.forEach(function (row) { var r = document.createElement('tr'); row.forEach(function (x) { var td = document.createElement('td'); td.textContent = x; r.appendChild(td); }); tbl.appendChild(r); });
+      host.appendChild(tbl); return;
+    }
+    if (d.capas) {
+      var capaDe = {}; Object.keys(d.capas).forEach(function (g) { d.capas[g].forEach(function (v) { capaDe[v] = +g; }); });
+      drawQuiver(host, d, function (v) { return v === d.centro ? 'var(--ink)' : (v in capaDe ? CAPAS[capaDe[v] % CAPAS.length] : 'var(--rule)'); });
+      legend(host, [['c = ' + d.centro, 'var(--ink)']].concat(Object.keys(d.capas).sort().map(function (g) { return ['A_' + g + '(c)', CAPAS[g % CAPAS.length]]; })).concat([['sin camino a c', 'var(--rule)']]));
+      return;
+    }
+    if (d.orbita) {
+      var t = 0, svg = drawQuiver(host, d, function (v) { return COL[d.orbita[0][v]] || 'var(--rule)'; });
+      var bar = document.createElement('div'); bar.className = 'orbit';
+      var lab = document.createElement('span'); lab.textContent = 't = 0';
+      var rng = document.createElement('input'); rng.type = 'range'; rng.min = 0; rng.max = d.orbita.length - 1; rng.value = 0; rng.id = 'orbit-' + host.id;
+      rng.setAttribute('aria-label', 'Paso de la órbita');
+      rng.addEventListener('input', function () {
+        t = +rng.value; lab.textContent = 't = ' + t;
+        svg.querySelectorAll('circle[data-v]').forEach(function (c) { c.setAttribute('fill', COL[d.orbita[t][c.getAttribute('data-v')]] || 'var(--rule)'); });
+      });
+      bar.appendChild(lab); bar.appendChild(rng); host.appendChild(bar);
+      legend(host, Object.keys(COL).filter(function (s) { return d.orbita.some(function (c) { return Object.values(c).indexOf(s) >= 0; }); }).map(function (s) { return [s, COL[s]]; }));
+      return;
+    }
+    drawQuiver(host, d, function () { return 'var(--c-inv)'; });
+    if (d.matriz) drawMatrix(host, d);
+  }
+
+  var py;
+  try {
+    py = await loadPyodide({ indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.27.7/full/' });
+    statusText.textContent = 'Instalando numpy, scipy, pandas, networkx, sympy y matplotlib…';
+    await py.loadPackage(['numpy', 'scipy', 'pandas', 'networkx', 'sympy', 'matplotlib', 'micropip']);
+    statusText.textContent = 'Instalando aiq-quivers desde PyPI…';
+    await py.runPythonAsync('import micropip\nawait micropip.install("aiq-quivers==1.2.1")');
+    py.runPython(HELPERS);
+    status.classList.add('ready');
+    statusText.textContent = 'Listo: aiq-quivers 1.2.1 corriendo en tu navegador. Ejecuta cualquier celda.';
+    runs.forEach(function (b) { b.disabled = false; });
+  } catch (e) {
+    status.classList.add('error');
+    statusText.textContent = 'No se pudo cargar Python en el navegador: ' + e.message + '. Puedes copiar el código y ejecutarlo con pip install aiq-quivers.';
+    return;
+  }
+
+  runs.forEach(function (b) {
+    b.addEventListener('click', async function () {
+      var id = b.getAttribute('data-run');
+      var code = document.getElementById('code-' + id).value;
+      var out = document.getElementById('out-' + id), viz = document.getElementById('viz-' + id);
+      b.disabled = true; out.hidden = false; out.className = 'stdout'; out.textContent = 'Ejecutando…';
+      try {
+        py.runPython('sys.stdout = io.StringIO()\nout = None');
+        await py.runPythonAsync(code);
+        var text = py.runPython('sys.stdout.getvalue()');
+        out.textContent = text || '(sin salida)';
+        var res = py.runPython('json.dumps(out) if out is not None else "null"');
+        var d = JSON.parse(res);
+        if (d) render(viz, d); else viz.hidden = true;
+      } catch (e) {
+        out.className = 'stdout err';
+        out.textContent = String(e.message || e).split('\n').slice(-12).join('\n');
+      } finally { b.disabled = false; }
+    });
+  });
+  document.querySelectorAll('button.reset').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var ta = document.getElementById('code-' + b.getAttribute('data-reset'));
+      ta.value = ta.getAttribute('data-original');
+    });
+  });
+})();
+</script>
