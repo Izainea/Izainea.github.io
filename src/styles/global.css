@@ -13,7 +13,7 @@
   --c-fil: #8A1C2B;
   --wm: rgba(40, 55, 50, 0.085);
   --display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", sans-serif;
-  --serif: "Source Serif 4", "Iowan Old Style", Georgia, serif;
+  --text: "PT Sans", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
   color-scheme: light;
 }
@@ -56,9 +56,9 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
-  font-family: var(--serif);
-  font-size: 17px;
-  line-height: 1.65;
+  font-family: var(--text);
+  font-size: 18px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 img { max-width: 100%; height: auto; }
@@ -68,7 +68,7 @@ a:hover { color: var(--accent); }
 
 /* ---------- marcas de agua ---------- */
 .wm { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
-.wm text { font-family: var(--serif); font-style: italic; fill: var(--wm); }
+.wm text { font-family: var(--text); font-style: italic; fill: var(--wm); }
 .wm .ln { fill: none; stroke: var(--wm); stroke-width: 1.6; }
 .wm .dot, .wm .wah { fill: var(--wm); }
 
