@@ -191,9 +191,9 @@
   ],
   "docencia": [
     {
-      "when": "2027 · programa de microcredenciales",
+      "when": "2027 · programa de cursos",
       "name": "Tunjos para la IA",
-      "desc": "Siete cursos de dos créditos sobre razonamiento, validación e inteligencia artificial en ciencias sociales y humanidades: las tres inferencias, corpus textual, corpus visual, codificación asistida, métodos computacionales, validación e interpretación, y ética y gobernanza. Cada curso se enseña con el método que enseña: el estudiante configura con la máquina, valida y registra la frontera entre ambos. Con mini apps, figuras y guiones de sesión; material abierto.",
+      "desc": "Siete cursos cortos sobre razonamiento, validación e inteligencia artificial en ciencias sociales y humanidades: las tres inferencias, corpus textual, corpus visual, codificación asistida, métodos computacionales, validación e interpretación, y ética y gobernanza. Cada curso se enseña con el método que enseña: el estudiante configura con la máquina, valida y registra la frontera entre ambos. Con mini apps, figuras y guiones de sesión; material abierto.",
       "tags": [
         "abducción",
         "validación",
