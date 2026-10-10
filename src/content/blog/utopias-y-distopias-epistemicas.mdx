@@ -1,0 +1,349 @@
+---
+title: "La inteligencia artificial como una decisión entre utopías y distopías epistémicas"
+description: "La IA generativa como motor semiótico que industrializa la abducción y, acoplada al sujeto, como prótesis semiótica. Cuando la producción de resultados certificados crece más rápido que la capacidad de comprenderlos, el problema se desplaza de la verdad al juicio."
+date: 2026-10-10
+tema: Filosofía
+estado: brote
+---
+import Glosa from '../../components/Glosa.astro';
+
+<p class="note">Artículo de investigación en preparación, en el marco del doctorado en Filosofía (USTA). Una versión de divulgación, más breve, está en <a href="/blog/los-matematicos-de-banach/">Los matemáticos de Banach</a>. El argumento prolonga la caracterización de los LLM como <a href="/blog/agencia-sin-imputacion/">agentes sin imputación</a>, el análisis político de sus signos en <a href="/blog/la-palabra-sin-cuerpo/">La palabra sin cuerpo</a> y la propuesta de la <a href="/blog/protesis-hermeneutica/">prótesis hermenéutica</a>.</p>
+
+**Resumen.** La aparición de sistemas de inteligencia artificial capaces de generar hipótesis, demostraciones y resultados científicos plantea un problema epistemológico distinto del debate tradicional sobre automatización: la posibilidad de que la producción de conocimiento crezca más rápidamente que la capacidad humana para verificarlo, interpretarlo e incorporarlo significativamente a una práctica científica. Tomando como punto de partida la máxima atribuida a Stefan Banach según la cual los mejores matemáticos encuentran «analogías entre analogías» y el reciente repositorio OpenAI/math, este artículo propone interpretar la inteligencia artificial generativa como un *motor semiótico* y su acoplamiento con el sujeto como una *prótesis semiótica* capaz de ampliar de manera masiva el espacio de producción abductiva. A partir de Peirce, Wittgenstein, Eco, Arendt y Broncano, se argumenta que el problema central no consiste exclusivamente en determinar si una máquina puede producir proposiciones verdaderas, sino en examinar qué ocurre cuando sistemas no humanos participan crecientemente en la producción, transformación, validación y selección de los signos mediante los cuales una comunidad organiza su conocimiento. Se propone distinguir entre una *utopía epistémica*, en la que la inteligencia artificial amplía la capacidad humana de establecer relaciones entre dominios preservando la interpretación y el juicio, y una *distopía epistémica*, caracterizada por la progresiva separación entre producción de conocimiento y comprensión humana. Finalmente, se plantea la *polimatía aumentada* como posible estrategia epistemológica: no como acumulación enciclopédica de información, sino como capacidad de atravesar juegos de lenguaje, reconocer invariantes entre estructuras y encontrar analogías entre analogías mediante el uso crítico de prótesis semióticas.
+
+<p class="note">Palabras clave: inteligencia artificial; semiótica; abducción; Wittgenstein; Peirce; epistemología; polimatía; inteligencia artificial para matemáticas; Lean; filosofía de la tecnología.</p>
+
+## 1. La máxima de Banach como punto de partida
+
+Una observación atribuida a Stefan Banach sostiene que los buenos matemáticos encuentran analogías entre teoremas o teorías y que los mejores encuentran «analogías entre analogías». La atribución debe manejarse con cautela: no se trata de una formulación localizada en una publicación matemática de Banach, sino de una idea transmitida principalmente por Stanisław Ulam, discípulo y amigo suyo. El prólogo de *Analogies Between Analogies* señala explícitamente que Ulam solía citar esa observación de Banach y que su propia versatilidad científica constituía una aplicación de aquel principio (Ulam, 1990).<sup class="mark">a</sup>
+
+<Glosa marca="a">
+La fuente textual cotejada es el prólogo de A. R. Bednarek y Françoise Ulam a <i>Analogies Between Analogies</i>: «Good mathematicians see analogies between theorems or theories; the very best ones see analogies between analogies». Circula además una versión más larga, con cuatro escalones (teoremas, demostraciones, teorías y analogías), atribuida a la autobiografía de Ulam (1991), cuya página no se ha podido cotejar aquí.
+</Glosa>
+
+La frase permite formular una concepción estructural de la inteligencia. El matemático excepcional no es únicamente quien conoce más resultados ni quien calcula más rápido. Su capacidad consiste también en reconocer una estructura que reaparece bajo representaciones diferentes y, en el caso límite sugerido por Banach, en identificar regularidades entre las propias relaciones que conectan estructuras. Esta intuición adquiere una relevancia inesperada en el contexto de la inteligencia artificial contemporánea.
+
+El repositorio OpenAI/math, publicado el 6 de octubre de 2026, contiene manuscritos y artefactos de prueba producidos por un modelo interno de OpenAI, no publicado, al que se plantearon aproximadamente 4.000 problemas abiertos de investigación. En la consulta realizada para este artículo enumeraba 719 manuscritos organizados en 372 familias de resultados, con alrededor del 42 % de los resultados principales formalizados en Lean,<sup class="mark">b</sup> y advertía explícitamente que los trabajos se encuentran en distintos estados de verificación. La propia documentación reconoce que algunos resultados no formalizados pueden contener problemas (OpenAI, 2026). La reacción de la comunidad matemática fue inmediata y trazó, en una semana, la distinción que este artículo quiere pensar: el grupo asesor sobre matemáticas e inteligencia artificial convocado por el Institute for Advanced Study declaró que la publicación es el comienzo, y no la culminación, del proceso de comprensión humana (AGMAI, 2026), y Jeremy Avigad resumió la cuestión en una frase: piense o no la inteligencia artificial, no puede pensar por nosotros (Avigad, 2026).
+
+<Glosa marca="b">
+El repositorio se encuentra en actualización continua. Las cifras corresponden a la consulta del 10 de octubre de 2026; la prensa de los primeros días informó de 722 manuscritos (Howlett, 2026).
+</Glosa>
+
+Este episodio resulta filosóficamente relevante con independencia de cuál termine siendo el valor matemático definitivo de cada manuscrito. Hace visible una transformación en la economía de la investigación: una máquina puede producir candidatos a conocimiento a una velocidad que empieza a desplazar el cuello de botella desde la generación hacia la verificación, selección, interpretación y comprensión. La pregunta que orienta este artículo puede entonces formularse así:
+
+> ¿Qué ocurre cuando una sociedad adquiere la capacidad de producir más candidatos a conocimiento de los que sus comunidades pueden comprender?
+
+Esta cuestión introduce la posibilidad de una paradoja epistemológica: una civilización podría llegar a poseer más conocimiento verdadero del que es capaz de comprender significativamente. Dicho con más precisión, para no presuponer lo que está en disputa: podría producir más resultados verdaderos y formalmente certificados de los que sus miembros son capaces de comprender. La paradoja deja abierta la pregunta que la objeción definicional plantea, y que este artículo asume como propia: si podemos seguir llamando conocimiento a aquello que una comunidad puede certificar pero ya no puede recorrer intelectualmente.
+
+El objetivo de este trabajo es analizar esa paradoja mediante cinco movimientos. Primero, se interpreta la IA generativa como participante en procesos de semiosis. Segundo, se propone comprender parte de su potencia generativa como una expansión de la producción abductiva. Tercero, se muestra que la verificación formal —ejemplificada por Lean— no resuelve por sí sola el problema del significado. Cuarto, se examina la IA como prótesis técnica y semiótica desde una concepción no esencialista de la subjetividad. Finalmente, se propone la polimatía aumentada como posible respuesta epistemológica a un mundo caracterizado por abundancia de generación y escasez de juicio.
+
+## 2. Del problema matemático al problema epistemológico
+
+Los sistemas de inteligencia artificial aplicados a la ciencia están comenzando a participar en tareas que durante mucho tiempo fueron consideradas componentes específicamente humanos de la investigación: revisión de literatura, diseño experimental, análisis de datos y, particularmente, generación de hipótesis. Una revisión publicada en *npj Artificial Intelligence* describe la progresiva integración de los LLM en distintas etapas del ciclo científico y subraya simultáneamente su potencial creativo y la necesidad de mecanismos explícitos de evaluación y alineación con objetivos científicos humanos (Zhang et al., 2025).
+
+La generación automatizada de hipótesis ya no pertenece solamente al terreno especulativo. Zhou et al. (2024) desarrollaron procedimientos mediante los cuales LLM generan y refinan hipótesis a partir de datos, mientras Yang et al. (2024) estudiaron sistemas orientados a descubrir hipótesis científicas en dominios abiertos. Si, Yang y Hashimoto (2024) compararon, con revisores expertos a ciegas, ideas de investigación generadas por modelos e ideas escritas por investigadores, y hallaron que las primeras eran juzgadas más novedosas pero menos factibles, y que el propio juicio de novedad resultaba difícil incluso para los expertos. Gottweis et al. (2025) describen un sistema que genera, critica y refina hipótesis en torneos sucesivos, algunas de ellas sometidas después a validación experimental.
+
+Estos resultados no demuestran que un LLM posea una facultad científica equivalente a la humana. Sí muestran algo epistemológicamente suficiente para el argumento de este artículo: la generación de hipótesis puede ser parcialmente desacoplada del investigador individual y realizada computacionalmente a gran escala. Eso modifica la estructura clásica del problema. Podemos representar esquemáticamente el modelo tradicional de investigación como:
+
+> problema → hipótesis → contrastación → interpretación → conocimiento.
+
+En una arquitectura intensivamente mediada por IA podría aparecer:
+
+> problema → generación masiva de hipótesis → filtrado automatizado → verificación computacional → selección → interpretación humana.
+
+Y eventualmente:
+
+> problema → IA → IA → IA → humano.
+
+El problema deja entonces de ser exclusivamente si la IA «descubre». Pasa a ser quién controla las sucesivas transformaciones que convierten una posibilidad en conocimiento reconocido. Terence Tao (2026) ha descrito el mismo desplazamiento desde dentro de la matemática: cuando generar candidatos deja de ser costoso, las etapas posteriores, verificar, explicar y digerir, pasan a ser las limitantes.
+
+## 3. La inteligencia artificial como máquina semiótica
+
+Los modelos de lenguaje trabajan inmediatamente sobre representaciones. Su operación no comienza por una relación ingenua entre una palabra aislada y un objeto aislado, sino por enormes configuraciones de relaciones entre unidades simbólicas.
+
+En este punto resulta útil recuperar la tradición estructural inaugurada por Ferdinand de Saussure. Para Saussure, el valor de un signo depende de su posición diferencial dentro de un sistema; los signos no poseen valor lingüístico de manera completamente independiente unos de otros (Saussure, 1916/1983; Bredin, 1984). La literatura especializada continúa identificando esta concepción relacional del valor como uno de los núcleos del estructuralismo lingüístico.
+
+La analogía con los modelos contemporáneos debe establecerse con prudencia: un *embedding* no es una realización computacional de la semiología saussureana. Sin embargo, existe una afinidad estructural relevante: parte de la potencia de los modelos emerge de su capacidad para aprender relaciones diferenciales dentro de enormes espacios de representaciones. Pero esta caracterización resulta insuficiente. Para entender cómo una máquina puede pasar de relacionar signos a producir nuevas interpretaciones, Peirce ofrece una herramienta más poderosa.
+
+La semiótica peirceana concibe el signo dentro de una relación en la que intervienen signo, objeto e interpretante. El interpretante es el efecto significativo mediante el cual algo funciona como signo; a su vez, un interpretante puede incorporarse a nuevas cadenas de significación. La centralidad del interpretante distingue precisamente a la teoría peirceana y permite pensar la significación como proceso. Desde esta perspectiva puede proponerse una primera tesis:
+
+> La IA generativa es un motor semiótico: una tecnología capaz de ocupar posiciones funcionalmente interpretativas dentro de cadenas de semiosis.
+
+No se afirma con ello que la máquina posea conciencia ni que su actividad sea idéntica a la interpretación humana. Se afirma algo más limitado: sus productos pueden funcionar como interpretantes dentro de procesos sociales de significación. Un documento es suministrado a un modelo; el modelo produce una interpretación; esa interpretación se convierte en entrada de otro sistema; el segundo sistema la clasifica; un tercero la resume; una institución toma una decisión utilizando el resultado. La cadena semiótica puede así contener varias mediaciones artificiales antes de regresar a un intérprete humano. Esta situación transforma la escala material de la semiosis.
+
+La tesis tiene vecinos. La noción de «máquina semiótica» fue discutida por Nöth (2002), que negó a los computadores la semiosis genuina pero admitió grados de semioticidad. En los últimos años, Picca (2025) ha propuesto leer los LLM como máquinas semióticas cuyas salidas funcionan como representámenes que suscitan interpretantes; Thibault y Allois (2025) hablan de una <i>intentio machinae</i> que se añade a las tres intenciones de Eco; Lucifora (2024) sostiene, desde Peirce, que la «semiosis maquínica» genera y moldea nuestros interpretantes sin que la máquina piense; y Cabitza y Colombo (2026) describen el LLM como una máquina tecno-semiótica que automatiza una fase de la semiosis escrita. Floridi (2023) formula el reverso de la misma observación cuando habla de agencia sin inteligencia. Lo que se añade aquí es el énfasis en la posición y en la escala: no se discute si la máquina interpreta, sino qué ocurre cuando sus productos ocupan, en masa, el lugar que antes ocupaba un interpretante humano.
+
+## 4. La industrialización de la semiosis
+
+Umberto Eco recuperó de Peirce la idea de una semiosis potencialmente ilimitada: los signos pueden interpretarse mediante otros signos, que a su vez permiten nuevas interpretaciones. Sin embargo, Eco fue igualmente cuidadoso en rechazar la conclusión de que toda interpretación sea igualmente legítima; su trabajo posterior insistió precisamente en los límites impuestos por los textos, los códigos y las comunidades interpretativas (Eco, 1976, 1979, 1990).
+
+La IA generativa introduce aquí una transformación principalmente cuantitativa que puede adquirir consecuencias cualitativas. La semiosis siempre fue potencialmente extensible; lo novedoso es su escalabilidad automática. Los sistemas generativos permiten producir enormes cantidades de nuevos textos, clasificaciones, explicaciones, resúmenes, hipótesis y conexiones a partir de otros signos. Por ello proponemos el concepto de *industrialización de la semiosis*. No significa que las máquinas hayan inventado la interpretación. Significa que hacen posible automatizar y multiplicar operaciones semióticas a velocidades y volúmenes que desbordan las capacidades individuales. La formulación más cercana que conocemos es la de Cabitza y Colombo (2026), para quienes el LLM automatiza una fase de la semiosis escrita; aquí se quiere nombrar el fenómeno en su conjunto.
+
+De aquí surge una primera caracterización de la distopía epistémica:
+
+> Existe una tendencia distópica cuando la capacidad de producir interpretantes crece más rápidamente que la capacidad de incorporarlos críticamente a prácticas de comprensión, contrastación y juicio.
+
+La inflación semiótica no implica necesariamente inflación del conocimiento. Puede producir también ruido, redundancia, falsas conexiones o resultados que, aun siendo correctos, ninguna comunidad consigue integrar significativamente. La misma circulación tiene una cara política, examinada en *La palabra sin cuerpo* con Rancière y con la lectura de Quintana (2020): una emisión que no puede litigar y que altera el reparto entre habla y ruido.
+
+## 5. Inducción, deducción y la cuestión de la abducción
+
+¿Cómo pensar inferencialmente esta capacidad generativa? Una descripción simplificada podría sostener que los grandes modelos aprenden regularidades a partir de grandes cantidades de ejemplos. En ese sentido amplio, su formación contiene un componente profundamente inductivo. Pero la inducción no agota el comportamiento que interesa aquí. Los sistemas contemporáneos son utilizados precisamente para producir posibilidades no explícitamente presentes en una consulta: una explicación, una hipótesis, una estrategia de demostración, una nueva representación, una analogía.
+
+Aquí aparece la tercera forma de inferencia desarrollada por Peirce: la abducción. Peirce utilizó el término para una forma de razonamiento distinta de la deducción y de la inducción, relacionada con la formación de hipótesis explicativas. En su concepción madura, la abducción pertenece principalmente al contexto del descubrimiento: introduce candidatos explicativos que posteriormente deberán someterse a deducción y contrastación inductiva. Peirce llegó a describirla como la operación inferencial mediante la cual aparecen nuevas ideas, aunque su propia teoría de la abducción evolucionó durante décadas y no puede reducirse a una única fórmula (Peirce, CP 5.171–172; Douven, 2025).
+
+La literatura sobre abducción y máquinas es antigua y está dividida. Magnani (2009) ha defendido una abducción «manipulativa», distribuida en artefactos, aunque reserva a los humanos una apertura eco-cognitiva de la que las máquinas carecen; Aliseda (2006) reconstruyó la abducción como cambio epistémico en los sistemas de inteligencia artificial; Thagard (2024) ha evaluado si ChatGPT produce inferencias explicativas; y Floridi, Morley, Novelli y Watson (2025) sostienen que los LLM producen texto a partir de patrones aprendidos sin realizar abducción alguna, aunque conceden que sirven para generar ideas que luego deben evaluarse críticamente. En español, Scolari (2023) ha señalado precisamente la abducción como aquello que les falta a estos sistemas.
+
+Es importante, por tanto, no afirmar simplemente que «los LLM razonan abductivamente» como si se tratara de un resultado establecido. La propuesta de este artículo es diferente:
+
+> Los sistemas generativos pueden funcionar socialmente como tecnologías de producción abductiva, porque permiten generar a gran escala hipótesis, explicaciones, analogías y candidatos que luego deben ser evaluados.
+
+Esta interpretación cuenta además con un correlato empírico: la literatura reciente ya estudia de manera explícita el uso de LLM para generación de hipótesis científicas (Si et al., 2024; Gottweis et al., 2025; Zhang et al., 2025). Podríamos denominar a este fenómeno *industrialización de la abducción*. La expresión no pretende describir un mecanismo interno exacto del transformer. Designa una transformación epistemológica de su función dentro del proceso de investigación: la máquina permite ampliar extraordinariamente el espacio de conjeturas que pueden explorarse. Una objeción inmediata es que la evaluación también se automatiza: los mismos sistemas que generan hipótesis las critican y clasifican en torneos (Gottweis et al., 2025). La respuesta de este artículo es que la evaluación automatizable es la de consistencia y plausibilidad, no la de relevancia, y a esa diferencia se dedican las secciones siguientes.
+
+Y esto nos devuelve a Banach. Encontrar una analogía estructural puede constituir una operación abductiva: ante dos sistemas aparentemente diferentes, se propone que existe una estructura común capaz de hacer inteligibles ciertas semejanzas. Encontrar analogías entre analogías significa llevar esa producción de relaciones a un nivel de segundo orden.
+
+## 6. OpenAI/math y la aparición del juez maquínico
+
+La matemática proporciona un caso particularmente interesante porque dispone de mecanismos de validación más fuertes que muchos otros campos. Si un modelo genera una demostración en lenguaje informal, todavía debe establecerse que los pasos sean correctos. La formalización permite trasladar parte de esa tarea a un sistema de demostración asistida, y Lean constituye uno de los ejemplos más importantes.
+
+Lean es simultáneamente un lenguaje funcional y un demostrador interactivo basado en teoría de tipos dependientes. Su arquitectura separa mecanismos sofisticados de automatización de un núcleo lógico pequeño cuya tarea es comprobar términos de prueba. La documentación oficial enfatiza precisamente que el *kernel* está diseñado para ser mínimo y para admitir implementaciones independientes, reduciendo la superficie confiable del sistema (Avigad et al., 2025). Hales (2026), que dirigió la formalización de la conjetura de Kepler, ha recordado sin embargo que ese núcleo tiene miles de líneas, que en 2026 se encontraron en él errores de solidez, que los resultados importantes se comprueban cruzando varios verificadores independientes y que la formalización incorrecta de un enunciado exige una auditoría humana que ningún núcleo puede hacer: la consistencia no es, en absoluto, suficiente. La estructura resulta, aun así, epistemológicamente sugestiva:
+
+> modelo generativo → candidato → formalización → kernel de Lean → aceptación/rechazo.
+
+No es correcto afirmar que Lean sea el único juez capaz de verificar resultados producidos por máquinas: existen otros asistentes y verificadores formales. Pero Lean funciona como figura paradigmática de algo nuevo:
+
+> Cuando la producción de pruebas alcanza escala maquínica, la verificación también necesita adquirir escala maquínica.
+
+Así emerge una semiosis parcialmente automatizada en ambos extremos: una máquina produce signos matemáticos; otra arquitectura comprueba relaciones formales entre ellos. El humano puede encontrarse después del proceso de generación y de una parte sustancial del proceso de validación.
+
+## 7. La corrección no agota el significado
+
+Aquí surge una distinción decisiva. La aceptación de un término de prueba por un kernel formal establece algo extremadamente importante: dentro de las reglas, definiciones, axiomas e importaciones utilizadas, la prueba satisface los requisitos del sistema. El propio manual de referencia de Lean separa esa cuestión de otra: «it is important to distinguish the question “does the theorem have a valid proof” from “what does the theorem statement mean”» (Lean FRO, 2026). Pero la práctica matemática no se reduce a ello. Los matemáticos distinguen también entre resultados triviales y profundos, aislados y fecundos, esperables y sorprendentes, opacos y explicativos, torpes y elegantes. Ninguna de esas distinciones queda automáticamente agotada por la corrección formal. Por tanto:
+
+> Verdad formal, comprensión y significado matemático no son categorías equivalentes.
+
+La distinción tiene una larga historia en la filosofía de la práctica matemática. Thurston (1994) sostuvo que el progreso de la matemática consiste en el avance de la comprensión humana y no en la acumulación de teoremas. Rav (1999) imaginó un oráculo capaz de decidir la verdad de cualquier enunciado y concluyó que su llegada sería la ruina de la matemática, porque las demostraciones, y no los teoremas, son las portadoras del conocimiento matemático. Avigad (2024) ha examinado qué cambia con el giro formal. Weatherall y Wolfson (2026) argumentan que la verificabilidad formal no garantiza el valor epistémico de una prueba, y la declaración firmada por veinticinco medallistas Fields en septiembre de 2026 afirma que resolver problemas es solo un instrumento y un indicador del objetivo primario, que es la comprensión conceptual (Medallistas Fields, 2026). La posición contraria también existe y conviene nombrarla: Buzzard (2026) declara que a él le interesa el recuento de teoremas, que la comprensión es un concepto nebuloso y que se siente seguro con Lean. Messeri y Crockett (2024) han advertido, para la ciencia en general, del riesgo de producir más y comprender menos.
+
+Este punto permite introducir al segundo Wittgenstein. En las *Investigaciones filosóficas*, Wittgenstein desplaza la pregunta por el significado desde una entidad interna o una correspondencia abstracta hacia el uso. Su discusión de los juegos de lenguaje subraya que hablar una lengua forma parte de una actividad y, en última instancia, de una forma de vida (Wittgenstein, 2009).
+
+Esto complica profundamente la pregunta contemporánea: ¿entiende un LLM? Una respuesta puramente mentalista —«no sabemos qué ocurre dentro de la máquina»— resulta insuficiente desde una perspectiva wittgensteiniana. Pero tampoco puede identificarse uso con mera regularidad estadística. Los juegos de lenguaje están incrustados en prácticas de corrección, aprendizaje, expectativa, institución, corporalidad e interacción social. Entonces puede formularse el problema de manera más precisa:
+
+> ¿Qué significa que una máquina participe competentemente en un juego de lenguaje cuando su relación con la forma de vida que históricamente sostiene ese juego es radicalmente diferente?
+
+La cuestión es particularmente importante porque las máquinas ya no son observadoras externas. Sus producciones empiezan a modificar las propias prácticas.
+
+## 8. De «¿comprende la máquina?» a «¿qué juegos de lenguaje estamos construyendo?»
+
+La discusión contemporánea sobre significado en modelos de lenguaje contiene posiciones fuertemente contrapuestas. Bender y Koller (2020), por ejemplo, argumentaron que un sistema entrenado únicamente sobre la forma lingüística no obtiene por ello el significado, insistiendo en distinguir regularidad formal de *grounding* y comprensión. Desde el otro lado, Gubelmann (2024) y Lyre (2024) sostienen que los LLM ya participan en normas pragmáticas y adquieren una forma de anclaje social, lo que haría ocioso negarles el uso.
+
+No es necesario resolver aquí la cuestión ontológica de si un LLM «realmente comprende». Este artículo acepta, con *Agencia sin imputación*, la crítica ontológica: el modelo carece de cuerpo, mundo e historia efectual. No se trata de atribuirle comprensión, sino de observar cómo una agencia no imputable interviene en las prácticas que producen significado. Un sistema que no comparte nuestra forma de vida puede, sin embargo, intervenir en los juegos de lenguaje mediante los cuales esa forma de vida se organiza. La perspectiva wittgensteiniana permite así plantear un problema distinto y posiblemente más importante:
+
+> ¿Qué ocurre cuando sistemas artificiales empiezan a formar parte de las prácticas que determinan nuestros usos lingüísticos?
+
+La pregunta deja de ser unilateral. No solamente «¿puede la IA adaptarse a nuestros juegos de lenguaje?», sino también «¿estamos modificando nuestros juegos de lenguaje para hacerlos compatibles con la IA?». Si nuestras instituciones privilegian progresivamente aquello que puede ser cuantificado, clasificado, tokenizado, formalizado y procesado automáticamente, la infraestructura artificial no solamente responde preguntas. Puede contribuir a transformar qué preguntas llegan a parecer legítimas.
+
+La distopía epistémica adquiere aquí un significado más preciso. No sería un universo dominado necesariamente por falsedades. Podría ser un universo donde nuestras prácticas de conocimiento se reorganizan alrededor de aquello que resulta legible para las máquinas.
+
+## 9. Una distopía de respuestas verdaderas
+
+La literatura sobre inteligencia artificial suele enfatizar correctamente problemas como la alucinación, el sesgo y la producción de información falsa. Sin embargo, estos riesgos pueden ocultar otro problema filosóficamente más extraño. Imaginemos una arquitectura en la que:
+
+1. una IA produce cien mil hipótesis;
+2. sistemas automatizados eliminan las inconsistentes;
+3. verificadores formales validan las formalizables;
+4. sistemas de *ranking* identifican las consideradas más prometedoras;
+5. otro modelo resume los resultados;
+6. el investigador recibe las conclusiones.
+
+Podría ocurrir que cada etapa funcionara razonablemente bien. Precisamente entonces aparece el problema: ¿en qué momento ocurrió la comprensión?
+
+El fenómeno tiene antecedentes empíricos. Bainbridge (1983) describió las ironías de la automatización: cuanto más fiable es el sistema, menos ejercita el operador la destreza que necesitará cuando falle. Zerilli, Knott, Maclaurin y Gavaghan (2019) trasladaron el problema a la decisión algorítmica, y Lee et al. (2025) han medido que una mayor confianza en la IA generativa se correlaciona con un menor esfuerzo de pensamiento crítico. En el ámbito hispano, Pastorino (2026) habla de un «eclipse del juicio» e Innerarity (2025) pregunta quién decide cuando decide un algoritmo.
+
+La distopía epistémica que proponemos no consiste necesariamente en la sustitución de verdad por falsedad. Consiste en una posible desconexión entre verdad y participación humana en su producción de sentido. Una sociedad puede aumentar espectacularmente su repertorio de proposiciones correctas y simultáneamente disminuir su capacidad para recorrer, interpretar y discutir las estructuras que las hacen significativas.
+
+## 10. El paso del conocimiento al juicio en Hannah Arendt
+
+Aquí el problema epistemológico encuentra una dimensión política. Hannah Arendt distingue en *The Human Condition* entre labor, trabajo y acción. La acción se encuentra vinculada específicamente a la pluralidad, la libertad y la capacidad de introducir algo nuevo en un mundo compartido. Su análisis insiste además en la relación entre acción, discurso y aparición ante otros (Arendt, 1958). En sus lecciones sobre Kant, el juicio aparece como la facultad que no deduce de reglas, sino que decide sobre lo particular ante otros (Arendt, 1982). Herzog (2021) ha mostrado la pertinencia de este marco para la decisión algorítmica: los algoritmos pueden hallar nuevos medios, pero no nuevos fines.
+
+No sería correcto convertir retrospectivamente a Arendt en teórica de la inteligencia artificial. Su pensamiento permite, sin embargo, formular una distinción decisiva: producir posibilidades no es lo mismo que juzgar cuáles deben incorporarse al mundo común. Una IA puede producir 10.000 opciones. Un sistema lógico puede demostrar que 500 son consistentes. Un sistema predictivo puede estimar consecuencias. Pero todavía puede permanecer abierta una pregunta:
+
+> ¿Cuál merece convertirse en acción?
+
+La producción de posibilidades puede automatizarse; la decisión acerca de cuáles deben ingresar al mundo común nos lleva del conocimiento al juicio y, finalmente, a la acción. Ese tránsito introduce responsabilidad y pluralidad. Por ello el riesgo político no consiste únicamente en que una máquina tome una decisión equivocada. Existe otro:
+
+> Que los humanos renuncien progresivamente al juicio porque la infraestructura de producción, validación y recomendación funciona suficientemente bien como para hacerlo parecer innecesario.
+
+La distopía epistémica desemboca así en un problema político.
+
+## 11. Broncano y la imposibilidad del humano «sin prótesis»
+
+Una respuesta inmediata podría consistir en reivindicar un retorno a una cognición humana no mediada. Pero esta alternativa descansa en una antropología problemática.
+
+Fernando Broncano ha desarrollado una concepción de los seres humanos como sujetos constituidos en entornos técnicos y culturas materiales. En *La melancolía del ciborg* sostiene provocadoramente que los humanos nacemos ya como una especie ciborg: organismos constituidos mediante prótesis culturales y técnicas (Broncano, 2009). Su trabajo posterior sobre cultura material insiste igualmente en que las tecnologías no constituyen simples objetos externos, sino mediaciones que modifican las trayectorias posibles de los sujetos y las sociedades (Broncano, 2012). Sobre la inteligencia artificial generativa, Broncano no ha empleado, hasta donde sabemos, el vocabulario protésico: la describe como un artefacto sociotécnico, un sistema híbrido de ingenieros, entrenadores y usuarios que exige un tratamiento ético-político (Broncano, 2024, 2025). Lo que sigue prolonga su marco en lugar de exponerlo.
+
+Desde esta perspectiva, la oposición relevante no es humano *versus* tecnología. Los seres humanos siempre han pensado mediante sistemas externos: la escritura externaliza memoria; la notación algebraica reorganiza la inferencia; los diagramas hacen visibles relaciones; las bibliotecas materializan conocimiento colectivo; los computadores expanden cálculo y almacenamiento. La pregunta correcta es:
+
+> ¿Qué clases de sujetos producen determinadas prótesis?
+
+## 12. La IA como prótesis semiótica
+
+Conviene distinguir tres niveles. Llamamos *motor semiótico* al sistema generativo aislado, que produce, transforma y relaciona signos. Llamamos *prótesis semiótica* al acoplamiento de un sujeto con ese motor, que amplía el espacio de signos, analogías e hipótesis accesible al sujeto. Y la *prótesis hermenéutica* es una clase gobernada de prótesis semiótica, en la que un andamiaje fija qué configura la máquina y qué valida el investigador. El modelo aislado no es, en este vocabulario, una prótesis. La noción de prótesis, también en Broncano, es deliberadamente general; la distinción anterior quiere mostrar que el acoplamiento tiene más componentes de los que el término sugiere, y que esos componentes se pueden describir y gobernar por separado. La expresión *prótesis semiótica* pretende distinguir ese acoplamiento del que establecemos con tecnologías que simplemente almacenan, transportan o recuperan signos. Una biblioteca conserva signos; un buscador localiza signos; un procesador de texto facilita su producción. Un sistema generativo puede, además, proponer nuevos signos y nuevas relaciones entre signos que el usuario no había anticipado.<sup class="mark">c</sup>
+
+<Glosa marca="c">
+La <a href="/blog/protesis-hermeneutica/">prótesis hermenéutica</a> desarrollada en la investigación doctoral designa el sistema andamiaje-LLM acoplado al investigador que valida, con frontera explícita entre configuración y validación. La prótesis semiótica es el acoplamiento sin esa frontera; el motor semiótico, la máquina sola.
+</Glosa>
+
+El término «prótesis cognitiva» tiene ya una historia en la inteligencia artificial (Ford, Glymour y Hayes, 1997), y la teoría de la mente extendida ha discutido los LLM como extensores que implementan procesos cognitivos en lugar de servir como herramientas estáticas (Hernández-Orallo y Vold, 2019; Clark, 2025). Dos antecedentes recientes están especialmente cerca. Sadin (2020) había observado que las tecnologías digitales pasaron de ser prótesis acumulativas, que almacenan, indexan y transmiten, a entidades de las que se espera que enuncien una verdad, aunque extrae de ello una conclusión antihumanista opuesta a la de este artículo. Silvera (2026) llama «promptesis» a una prótesis cognitiva de segundo orden que no solo almacena o ejecuta, sino que propone y reformula, y que redefine la subjetividad epistémica. El adjetivo *semiótica* quiere precisar lo que esas formulaciones dejan abierto: la prótesis opera sobre signos y devuelve signos, y por eso su efecto se mide en la cadena de interpretantes y no en una capacidad psicológica aumentada.
+
+Esta característica altera la dirección tradicional de la instrumentalidad. Un martillo no suele responder «el problema no consiste en el clavo que usted me mostró; pruebe otra estructura». Un motor semiótico sí puede hacerlo. La relación deja de representarse adecuadamente como sujeto → instrumento → objeto y adquiere una estructura más recursiva:
+
+> (sujeto ↔ motor semiótico) → mundo.
+
+El humano modifica la máquina mediante instrucciones y selección. La máquina modifica al humano mediante propuestas, representaciones y conexiones inesperadas. Ambos participan en un circuito ampliado de producción de posibilidades. Barandiaran y Pérez-Verdugo (2025) han formalizado esta diferencia: la cognición extendida clásica suponía un entorno sin poder generativo, mientras que con la IA generativa la flecha de la intencionalidad tecnológica puede volverse hacia el agente. A la objeción de que «prótesis» connota una mera amplificación de capacidades previas (Alvarado, 2023) se responde aquí que la prótesis semiótica es constitutiva y recursiva: no amplifica una interpretación ya hecha, sino que interviene en su formación. Por eso el nombre designa el acoplamiento y no la máquina.
+
+## 13. De la prótesis semiótica a la polimatía aumentada
+
+Esta situación obliga también a reconsiderar qué significa ser un polímata. Históricamente, la polimatía estuvo asociada a individuos capaces de dominar un número extraordinario de campos (Burke, 2020). Esa definición se vuelve insuficiente en un contexto donde ninguna persona puede competir cuantitativamente con una infraestructura capaz de procesar bibliotecas completas. La abundancia cognitiva disminuye el valor relativo de acumular contenidos y aumenta el de reconocer estructuras transportables entre dominios: el nuevo polímata no es quien posee muchos conocimientos, sino quien puede reconocer qué estructura se conserva cuando un problema cambia de lenguaje. La polimatía relevante para la era de la IA debe definirse de manera estructural y no enciclopédica. Proponemos:
+
+> La polimatía aumentada es la capacidad de atravesar múltiples juegos de lenguaje, reconocer invariantes estructurales entre los dominios que esos juegos expresan y utilizar prótesis semióticas para explorar, contrastar y desarrollar esas conexiones sin delegar por completo el juicio sobre su significado.
+
+Su competencia central no sería recordar toda la información disponible. Sería transportar estructuras entre dominios. Un economista habla de redes; un matemático, de grafos; un epidemiólogo, de difusión; un lingüista, de dependencias; un sociólogo, de relaciones. Los lenguajes disciplinares no son intercambiables y cada práctica posee criterios propios. Pero pueden existir estructuras capaces de trasladarse productivamente entre ellas. El polímata aumentado aprende a detectar esas posibilidades.
+
+La psicología de la polimatía distingue amplitud, profundidad e integración (Araki, 2018); la polimatía aumentada carga el peso en la tercera. Ortega y Gasset (1930) había descrito al especialista como un «sabio-ignorante»; la prótesis semiótica vuelve ese diagnóstico más urgente, porque ahora la amplitud es barata y la integración no. La posición contraria la ha formulado Amodei (2024): el polímata del futuro sería la propia máquina, más capaz que un premio Nobel en la mayoría de los campos, y el humano quedaría como ayuda en la toma de decisiones.
+
+## 14. Invariantes estructurales entre dominios
+
+La noción matemática de invariante ofrece una metáfora especialmente fértil. Un invariante es, en términos generales, aquello que permanece bajo determinada transformación. Podemos trasladar cuidadosamente la intuición al problema interdisciplinario. Cuando una estructura se expresa en matemáticas mediante un formalismo, en biología mediante otro vocabulario y en sociología mediante categorías distintas, ¿existe algo relacional que permanece?
+
+La nueva polimatía no buscaría borrar las diferencias entre disciplinas. Buscaría precisamente comprender qué puede conservarse al pasar de un dominio a otro, cada uno expresado en su juego de lenguaje, y qué se pierde en esa traducción. No se trata de matematizar la noción de juego de lenguaje, sino de preguntar por los invariantes de las estructuras que esos juegos describen. En este sentido, la máxima atribuida a Banach adquiere una dimensión que desborda las matemáticas. Encontrar analogías entre analogías significa identificar estructuras de segundo orden: no simplemente que A se parece a B, sino que la relación entre A y B se parece estructuralmente a otra relación entre C y D.
+
+La IA posee una ventaja extraordinaria para ayudar a recorrer esos espacios porque puede explorar volúmenes de literatura y combinaciones conceptuales inaccesibles para un individuo. Pero la capacidad de producir analogías no garantiza que sean buenas. La diferencia entre analogía fecunda y semejanza superficial exige nuevamente contraste, interpretación y juicio.
+
+Si los modelos razonan por analogía es, además, una cuestión empírica abierta: Webb, Holyoak y Lu (2023) reportaron un razonamiento analógico emergente en GPT-3, y Lewis y Mitchell (2024) mostraron que ese rendimiento se degrada en variantes contrafácticas de las mismas tareas, lo que sugiere semejanza superficial más que captura de estructura (Mitchell, 2021). La idea de que la analogía profunda es el motor de la matemática tiene, en cambio, un linaje firme: la carta de Weil (1940/2005) sobre las analogías entre teoría de números, curvas sobre cuerpos finitos y superficies de Riemann; la lectura de Corfield (2003) sobre el papel de la analogía en la matemática real; la pregunta de Mazur (2008) sobre cuándo una cosa es igual a otra; y los «puentes» entre teorías de Caramello (2018).
+
+## 15. Utopía y distopía epistémicas como dos futuros posibles
+
+Podemos ahora precisar la oposición anunciada.
+
+### 15.1 Utopía epistémica
+
+En el escenario utópico, la IA funciona como ampliación de capacidades humanas. El proceso podría representarse así:
+
+> humano formula problemas → IA amplía el espacio abductivo → evidencia y sistemas formales restringen posibilidades → humanos y comunidades interpretan → se ejerce juicio plural → se actúa.
+
+La producción maquínica no sustituye la comprensión; la libera parcialmente de restricciones de escala. Los investigadores pueden utilizar sistemas artificiales para buscar conexiones que individualmente nunca habrían encontrado. En este horizonte, la prótesis semiótica favorece una nueva polimatía.
+
+### 15.2 Distopía epistémica
+
+En el segundo escenario:
+
+> IA genera → IA formaliza → IA verifica → IA prioriza → IA interpreta → IA recomienda → IA ejecuta.
+
+El ser humano aparece esencialmente como receptor de conclusiones. Puede incluso tratarse de conclusiones correctas. La pérdida no sería de información; sería de agencia epistémica. Los sujetos dejarían progresivamente de participar en los procesos mediante los cuales algo se vuelve significativo y digno de orientar la acción.
+
+Esta es la razón por la cual la utopía y la distopía descritas aquí son epistémicas antes que meramente tecnológicas. Ambas pueden construirse utilizando las mismas máquinas.
+
+## 16. Los matemáticos de Banach
+
+Llegamos finalmente al punto de partida. La afirmación atribuida a Banach puede leerse hoy como algo más que una observación sobre talento matemático. Sugiere una concepción de inteligencia basada en la capacidad de encontrar estructuras relacionales cada vez más abstractas. Los grandes modelos generativos nos proporcionan por primera vez un motor capaz de buscar conexiones en espacios simbólicos de una magnitud que ningún ser humano podría recorrer por sí solo; que ese motor llegue a ser una prótesis depende del acoplamiento.
+
+Por ello los «matemáticos de Banach» del futuro quizá no sean exclusivamente matemáticos. Pueden ser científicos, filósofos, ingenieros, historiadores, artistas o investigadores sociales capaces de moverse entre sistemas conceptuales y reconocer invariantes sin confundir la traducción con la identidad.
+
+Su ventaja frente a la máquina no consistirá necesariamente en razonar mejor que ella en todas las tareas. Tampoco necesitamos asumir que alguna facultad permanecerá eternamente fuera del alcance de la inteligencia artificial. La tesis es diferente:
+
+> El problema decisivo no es establecer qué operación cognitiva pertenece exclusivamente al humano, sino decidir qué arquitectura de cooperación permite conservar y ampliar nuestra capacidad de interpretación, juicio y acción.
+
+La inteligencia artificial puede multiplicar nuestras abducciones. Lean y otros sistemas pueden ampliar extraordinariamente nuestra capacidad de verificación. Las bases de datos pueden extender nuestra memoria. Los modelos pueden atravesar bibliotecas enteras. Nada de ello determina por sí solo qué conocimientos merecen incorporarse a nuestro mundo común. Esa decisión ocurre todavía en el espacio donde se encuentran significado, comunidad, responsabilidad y acción.
+
+## 17. Conclusiones
+
+Este artículo ha propuesto interpretar la transformación contemporánea de la inteligencia artificial a partir de cinco conceptos articulados.
+
+Primero, la IA generativa puede ser entendida como una tecnología que participa funcionalmente en cadenas de semiosis, produciendo interpretantes que alimentan nuevas operaciones humanas y artificiales. Segundo, su capacidad de generar hipótesis permite hablar —como hipótesis filosófica y no como descripción literal de su arquitectura interna— de una industrialización de la abducción. Tercero, la articulación entre modelos generativos y sistemas de prueba formal como Lean muestra la aparición de circuitos en los cuales máquinas producen y máquinas verifican conocimiento antes de su interpretación humana. Cuarto, esta situación no debe comprenderse mediante una oposición entre humanidad auténtica y tecnología externa; prolongando la orientación protésica de Broncano, la cuestión relevante es qué tipo de sujetos producen las nuevas mediaciones, y se ha distinguido entre el motor semiótico, la prótesis semiótica y la prótesis hermenéutica. Quinto, se ha propuesto la polimatía aumentada como estrategia epistemológica posible: la capacidad de utilizar prótesis semióticas para atravesar juegos de lenguaje, reconocer invariantes y construir analogías de orden superior sin abandonar el juicio.
+
+La oposición entre utopía y distopía epistémicas no corresponde, entonces, a dos tecnologías diferentes. Corresponde a dos maneras de habitar la misma expansión semiótica. Podemos utilizar máquinas para extender los límites de aquello que una comunidad humana es capaz de imaginar, contrastar y comprender. O podemos construir sistemas en los que producción, validación, selección e interpretación se desplacen progresivamente fuera de nuestra participación.
+
+La paradoja central de la inteligencia artificial contemporánea podría consistir precisamente en esto:
+
+> Por primera vez podemos imaginar una sociedad capaz de producir más conocimiento verdadero del que sus miembros pueden comprender.
+
+O, con la precisión que la objeción definicional exige: más resultados verdaderos y certificados de los que sus miembros pueden recorrer, en una sociedad que debe decidir si sigue llamando conocimiento a lo que certifica sin comprender.
+
+Si Banach tenía razón y una de las formas más altas del pensamiento consiste en encontrar analogías entre analogías, las tecnologías generativas pueden constituir el motor más poderoso jamás construido para buscarlas, y, acopladas a nosotros, la prótesis más poderosa. La cuestión filosófica comienza después. No es únicamente si las máquinas serán capaces de encontrar esas analogías. Es qué clase de seres humanos y qué clase de mundo construiremos cuando las encontremos con ellas.
+
+## Referencias
+
+- Advisory Group on Mathematics and AI [AGMAI]. (2026, 6 de octubre). *Statement on the OpenAI release* [Declaración]. Institute for Advanced Study. https://agmai.org
+- Aliseda, A. (2006). *Abductive reasoning: Logical investigations into discovery and explanation*. Springer.
+- Alvarado, R. (2023). AI as an epistemic technology. *Science and Engineering Ethics*, 29, 32. https://doi.org/10.1007/s11948-023-00451-3
+- Amodei, D. (2024, octubre). *Machines of loving grace* [Ensayo]. https://darioamodei.com/machines-of-loving-grace
+- Araki, M. E. (2018). Polymathy: A new outlook. *Journal of Genius and Eminence*, 3(1), 66–82.
+- Arendt, H. (1958). *The human condition*. University of Chicago Press.
+- Arendt, H. (1982). *Lectures on Kant's political philosophy* (R. Beiner, Ed.). University of Chicago Press.
+- Avigad, J. (2024). Mathematics and the formal turn. *Bulletin of the American Mathematical Society*, 61(2). https://doi.org/10.1090/bull/1832
+- Avigad, J. (2026, 5 de octubre). The future of mathematics [Entrada de blog invitada]. *What's new* (blog de T. Tao). https://terrytao.wordpress.com/2026/10/05/the-future-of-mathematics/
+- Avigad, J., de Moura, L., Kong, S. y Ullrich, S. (2025). *Theorem proving in Lean 4*. Lean Community.
+- Bainbridge, L. (1983). Ironies of automation. *Automatica*, 19(6), 775–779. https://doi.org/10.1016/0005-1098(83)90046-8
+- Barandiaran, X. E. y Pérez-Verdugo, M. (2025). Generative midtended cognition and artificial intelligence. *Synthese*, 205, 137. https://doi.org/10.1007/s11229-025-04961-4
+- Bender, E. M. y Koller, A. (2020). Climbing towards NLU: On meaning, form, and understanding in the age of data. *Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics*, 5185–5198. https://doi.org/10.18653/v1/2020.acl-main.463
+- Bredin, H. (1984). Sign and value in Saussure. *Philosophy*, 59(227), 67–77. https://doi.org/10.1017/S0031819100056497
+- Broncano, F. (2009). *La melancolía del ciborg*. Herder.
+- Broncano, F. (2012). *La estrategia del simbionte: cultura material para nuevas humanidades*. Delirio.
+- Broncano, F. (2024, 3 de noviembre). Proyecto para un tratamiento ético-político de la inteligencia artificial generativa. *El laberinto de la identidad* [Blog]. https://laberintodelaidentidad.blogspot.com/2024/11/proyecto-para-un-tratamiento-etico.html
+- Broncano, F. (2025, 9 de noviembre). Inteligencia artificial generativa: un experimento social sin control. *El laberinto de la identidad* [Blog]. https://laberintodelaidentidad.blogspot.com/2025/11/inteligencia-artificial-generativa-un.html
+- Burke, P. (2020). *The polymath: A cultural history from Leonardo da Vinci to Susan Sontag*. Yale University Press.
+- Buzzard, K. (2026, 1 de octubre). To grieve, or not to grieve? *Xena Project* [Blog]. https://xenaproject.wordpress.com/2026/10/01/to-grieve-or-not-to-grieve/
+- Cabitza, F. y Colombo, G. (2026). *Beyond epistemia: Epistemic schizologia and large language models as techno-semiotic machines* (arXiv:2607.25620). arXiv. https://arxiv.org/abs/2607.25620
+- Caramello, O. (2018). *Theories, sites, toposes: Relating and studying mathematical theories through topos-theoretic 'bridges'*. Oxford University Press.
+- Clark, A. (2025). Extending minds with generative AI. *Nature Communications*, 16, 4627. https://doi.org/10.1038/s41467-025-59906-9
+- Corfield, D. (2003). *Towards a philosophy of real mathematics*. Cambridge University Press. https://doi.org/10.1017/CBO9780511487576
+- Douven, I. (2025). Abduction. En E. N. Zalta y U. Nodelman (Eds.), *The Stanford Encyclopedia of Philosophy*. Metaphysics Research Lab, Stanford University.
+- Eco, U. (1976). *A theory of semiotics*. Indiana University Press.
+- Eco, U. (1979). *The role of the reader: Explorations in the semiotics of texts*. Indiana University Press.
+- Eco, U. (1990). *The limits of interpretation*. Indiana University Press.
+- Floridi, L. (2023). AI as agency without intelligence: On ChatGPT, large language models, and other generative models. *Philosophy & Technology*, 36, 15. https://doi.org/10.1007/s13347-023-00621-y
+- Floridi, L., Morley, J., Novelli, C. y Watson, D. (2025). *What kind of reasoning (if any) is an LLM actually doing?* (arXiv:2512.10080). arXiv. https://arxiv.org/abs/2512.10080
+- Ford, K. M., Glymour, C. y Hayes, P. J. (1997). On the other hand… Cognitive prostheses. *AI Magazine*, 18(3), 104.
+- Gottweis, J. et al. (2025). *Towards an AI co-scientist* (arXiv:2502.18864). arXiv. https://arxiv.org/abs/2502.18864
+- Gubelmann, R. (2024). Pragmatic norms are all you need: Why the symbol grounding problem does not apply to LLMs. *Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing*, 11663–11678. https://doi.org/10.18653/v1/2024.emnlp-main.651
+- Hales, T. C. (2026, 9 de octubre). What mathematicians should know about the Lean theorem prover: Questions of reliability and AI [Entrada de blog invitada]. *What's new* (blog de T. Tao). https://terrytao.wordpress.com/2026/10/09/what-mathematicians-should-know-about-the-lean-theorem-proverquestions-of-reliability-and-ai/
+- Hernández-Orallo, J. y Vold, K. (2019). AI extenders: The ethical and societal implications of humans cognitively extended by AI. *Proceedings of the 2019 AAAI/ACM Conference on AI, Ethics, and Society*, 507–513.
+- Herzog, L. (2021). Old facts, new beginnings: Thinking with Arendt about algorithmic decision-making. *The Review of Politics*, 83(4), 555–577. https://doi.org/10.1017/S0034670521000474
+- Howlett, J. (2026, 6 de octubre). OpenAI unleashes hundreds more math results upon a field already in shock. *Scientific American*.
+- Innerarity, D. (2025). *Una teoría crítica de la inteligencia artificial*. Galaxia Gutenberg.
+- Lean FRO. (2026). Validating a Lean proof. En *The Lean language reference*. https://lean-lang.org/doc/reference/latest/ValidatingProofs/
+- Lee, H.-P., Sarkar, A., Tankelevitch, L., Drosos, I., Rintel, S., Banks, R. y Wilson, N. (2025). The impact of generative AI on critical thinking: Self-reported reductions in cognitive effort and confidence effects from a survey of knowledge workers. *Proceedings of the 2025 CHI Conference on Human Factors in Computing Systems*. https://doi.org/10.1145/3706598.3713778
+- Lewis, M. y Mitchell, M. (2024). *Using counterfactual tasks to evaluate the generality of analogical reasoning in large language models* (arXiv:2402.08955). arXiv.
+- Lucifora, M. C. (2024). El impacto de la inteligencia artificial en la semiosis humana desde la teoría de Peirce. *IX Jornadas «Peirce en Argentina»*. Grupo de Estudios Peirceanos. https://www.unav.es/gep/LuciforaIXJornadas.pdf
+- Lyre, H. (2024). *«Understanding AI»: Semantic grounding in large language models* (arXiv:2402.10992). arXiv.
+- Magnani, L. (2009). *Abductive cognition: The epistemological and eco-cognitive dimensions of hypothetical reasoning*. Springer. https://doi.org/10.1007/978-3-642-03631-6
+- Mazur, B. (2008). When is one thing equal to some other thing? En B. Gold y R. A. Simons (Eds.), *Proof and other dilemmas: Mathematics and philosophy* (pp. 221–242). Mathematical Association of America.
+- Medallistas Fields. (2026, 11 de septiembre). A severe misalignment of AI in mathematics [Declaración publicada en el blog de T. Tao]. https://terrytao.wordpress.com/2026/09/11/a-severe-misalignment-of-ai-in-mathematics/
+- Messeri, L. y Crockett, M. J. (2024). Artificial intelligence and illusions of understanding in scientific research. *Nature*, 627, 49–58. https://doi.org/10.1038/s41586-024-07146-0
+- Mitchell, M. (2021). Abstraction and analogy-making in artificial intelligence. *Annals of the New York Academy of Sciences*, 1505(1), 79–101. https://doi.org/10.1111/nyas.14619
+- Nöth, W. (2002). Semiotic machines. *Cybernetics & Human Knowing*, 9(1), 5–21.
+- OpenAI. (2026). *OpenAI/math: Mathematical manuscripts and supporting proof artifacts produced by an internal OpenAI model* [Repositorio]. GitHub. Consulta: 10 de octubre de 2026.
+- Ortega y Gasset, J. (1930). La barbarie del «especialismo». En *La rebelión de las masas* (cap. XII). Revista de Occidente.
+- Pastorino Pereira, M. Á. (2026). El advenimiento del Homo algorithmicus y el eclipse del juicio. *Studium. Filosofía y Teología*, 29(57), 117–138. https://doi.org/10.53439/stdfyt57.29.2026.117-138
+- Peirce, C. S. (1931–1958). *Collected papers of Charles Sanders Peirce* (C. Hartshorne, P. Weiss y A. W. Burks, Eds., Vols. 1–8). Harvard University Press.
+- Picca, D. (2025). *Not minds, but signs: Reframing LLMs through semiotics* (arXiv:2505.17080). arXiv. https://arxiv.org/abs/2505.17080
+- Quintana, L. (2020). *Política de los cuerpos: Emancipaciones desde y más allá de Jacques Rancière*. Herder.
+- Rav, Y. (1999). Why do we prove theorems? *Philosophia Mathematica*, 7(1), 5–41. https://doi.org/10.1093/philmat/7.1.5
+- Sadin, É. (2020). *La inteligencia artificial o el desafío del siglo: Anatomía de un antihumanismo radical*. Caja Negra.
+- Saussure, F. de. (1983). *Course in general linguistics* (R. Harris, Trad.). Duckworth. (Trabajo original publicado en 1916).
+- Scolari, C. A. (2023, 21 de agosto). El mal que aqueja a las IA es la abducción. *Hipermediaciones* [Blog]. https://hipermediaciones.com/2023/08/21/el-mal-que-aqueja-a-las-ia-es-la-abduccion/
+- Si, C., Yang, D. y Hashimoto, T. (2024). *Can LLMs generate novel research ideas? A large-scale human study with 100+ NLP researchers* (arXiv:2409.04109). arXiv. https://arxiv.org/abs/2409.04109
+- Silvera, M. J. (2026). *Promptesis: La inteligencia artificial como prótesis cognitiva*. Edición del autor. https://www.aacademica.org/marcelo.j.silvera/2.pdf
+- Tao, T. (2026). *Mathematics in the age of AI* (arXiv:2608.16753). arXiv. Texto para los Proceedings of the International Congress of Mathematicians 2026.
+- Thagard, P. (2024). *Can ChatGPT make explanatory inferences? Benchmarks for abductive reasoning* (arXiv:2404.18982). arXiv.
+- Thibault, M. y Allois, D. (2025). A step-by-step semiotic understanding of LLMs and chatbots through interdisciplinary dialogue. *Digital Age in Semiotics & Communication*, 8, 19–49. https://doi.org/10.33919/dasc.25.8.2
+- Thurston, W. P. (1994). On proof and progress in mathematics. *Bulletin of the American Mathematical Society*, 30(2), 161–177. https://doi.org/10.1090/S0273-0979-1994-00502-6
+- Ulam, S. M. (1990). *Analogies between analogies: The mathematical reports of S. M. Ulam and his Los Alamos collaborators* (A. R. Bednarek y F. Ulam, Eds.). University of California Press.
+- Ulam, S. M. (1991). *Adventures of a mathematician*. University of California Press.
+- Weatherall, J. O. y Wolfson, J. (2026). *Correctness, artificial intelligence, and the epistemic value of mathematical proof* (arXiv:2602.12463). arXiv.
+- Webb, T., Holyoak, K. J. y Lu, H. (2023). Emergent analogical reasoning in large language models. *Nature Human Behaviour*, 7, 1526–1541. https://doi.org/10.1038/s41562-023-01659-w
+- Weil, A. (2005). A 1940 letter of André Weil on analogy in mathematics (M. H. Krieger, Trad.). *Notices of the American Mathematical Society*, 52(3), 334–341. (Carta original de 1940).
+- Wittgenstein, L. (2009). *Philosophical investigations* (P. M. S. Hacker y J. Schulte, Eds. y trads., 4.ª ed.). Wiley-Blackwell.
+- Yang, Z., Du, X., Li, J., Zheng, J., Poria, S. y Cambria, E. (2024). Large language models for automated open-domain scientific hypotheses discovery. *Findings of the Association for Computational Linguistics: ACL 2024*, 13545–13565. https://doi.org/10.18653/v1/2024.findings-acl.804
+- Zerilli, J., Knott, A., Maclaurin, J. y Gavaghan, C. (2019). Algorithmic decision-making and the control problem. *Minds and Machines*, 29(4), 555–578. https://doi.org/10.1007/s11023-019-09513-7
+- Zhang, Y., Khan, S. A., Mahmud, A., Yang, H., Lavin, A., Levin, M., Frey, J., Dunnmon, J., Evans, J., Bundy, A., Džeroski, S., Tegnér, J., Zenil, H. et al. (2025). Exploring the role of large language models in the scientific method: From hypothesis to discovery. *npj Artificial Intelligence*, 1, Article 14. https://doi.org/10.1038/s44387-025-00019-5
+- Zhou, Y., Liu, H., Srivastava, T., Mei, H. y Tan, C. (2024). Hypothesis generation with large language models. *Proceedings of the 1st Workshop on NLP for Science (NLP4Science)*, 117–139. https://doi.org/10.18653/v1/2024.nlp4science-1.10

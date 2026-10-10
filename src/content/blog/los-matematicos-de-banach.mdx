@@ -1,0 +1,136 @@
+---
+title: "Los matemáticos de Banach"
+description: "Una máquina puede producir más candidatos a conocimiento de los que somos capaces de leer, verificar y juzgar. Sobre la IA como prótesis semiótica y el regreso de los polímatas."
+date: 2026-10-10
+tema: Filosofía
+estado: brote
+---
+import Glosa from '../../components/Glosa.astro';
+
+<p class="note">Texto de divulgación. El argumento se desarrolla con detalle y bibliografía en <a href="/blog/utopias-y-distopias-epistemicas/">La inteligencia artificial como una decisión entre utopías y distopías epistémicas</a>, y se conecta con la investigación doctoral: <a href="/blog/agencia-sin-imputacion/">Agencia sin imputación</a> (qué tipo de agente es el LLM), <a href="/blog/la-palabra-sin-cuerpo/">La palabra sin cuerpo</a> (qué ocurre políticamente con sus signos) y <a href="/blog/protesis-hermeneutica/">La prótesis hermenéutica</a> (cómo gobernar el acoplamiento).</p>
+
+Se cuenta que Stefan Banach, uno de los grandes matemáticos del siglo XX, distinguía a los matemáticos por su capacidad para descubrir analogías. Los buenos encontraban analogías entre teoremas o entre teorías; los mejores eran capaces de encontrar analogías entre analogías.<sup class="mark">a</sup>
+
+<Glosa marca="a">
+La frase nos llega a través de Stanisław Ulam, discípulo y amigo de Banach, quien gustaba de recordarla. El prólogo de <i>Analogies Between Analogies</i> (1990) la cita textualmente como principio de la propia versatilidad científica de Ulam. Circula también una versión más larga, con cuatro escalones (teoremas, demostraciones, teorías, analogías), atribuida a la autobiografía de Ulam.
+</Glosa>
+
+No es difícil comprender por qué sobrevivió. Condensa en pocas palabras una idea poderosa sobre la inteligencia: pensar bien no consiste únicamente en saber muchas cosas, sino en descubrir relaciones donde otros solamente ven objetos separados. Casi un siglo después, esa vieja intuición matemática adquiere un significado inesperado.
+
+El 6 de octubre de 2026, OpenAI hizo público un repositorio de resultados matemáticos, conocido como OpenAI/math, producidos por un modelo interno de inteligencia artificial que no ha sido publicado. El catálogo reúne más de 700 manuscritos organizados en 372 familias de resultados, derivados de una evaluación de aproximadamente 4.000 problemas de investigación. Algo más del 40 % incluye formalizaciones verificables mediante Lean; el resto permanece en distintos estados de revisión, y la propia organización advierte que algunos resultados no formalizados podrían contener problemas.
+
+Más allá de cuánto de ese material termine siendo matemáticamente relevante, el experimento introduce una situación extraña: una máquina puede producir matemáticas a una velocidad tal que la dificultad comienza a desplazarse. Durante buena parte de la historia de la ciencia, el problema era encontrar nuevas ideas. Ahora podemos empezar a enfrentar el problema inverso: ¿qué sucede cuando podemos producir más candidatos a conocimiento de los que somos capaces de leer, verificar, comprender y juzgar?
+
+La pregunta es mucho más profunda que si una inteligencia artificial puede resolver un examen o demostrar un teorema. Tal vez estemos entrando en una época en la que una civilización pueda producir más conocimiento verdadero del que es capaz de comprender. Dicho con más precisión, para no dar por resuelto lo que está en disputa: más resultados verdaderos y formalmente certificados de los que sus miembros son capaces de comprender. Y entonces habrá que preguntarse si podemos seguir llamando conocimiento a aquello que una comunidad puede certificar pero ya no puede recorrer intelectualmente.
+
+## Una máquina que produce signos
+
+Para entender el problema conviene abandonar por un momento la pregunta habitual, «¿piensa la inteligencia artificial?». Quizá estamos preguntando demasiado pronto. Antes de preguntarnos si piensa, deberíamos observar qué hace.
+
+Un modelo de lenguaje trabaja con signos. Encuentra relaciones entre palabras, conceptos, expresiones, imágenes, fórmulas y estructuras producidas por seres humanos, y a partir de cantidades inmensas de esas relaciones genera nuevos signos. Esta descripción acerca inesperadamente la inteligencia artificial a una vieja tradición de la filosofía del lenguaje y de la semiótica.
+
+Saussure mostró que un signo no adquiere su valor simplemente porque señale una cosa en el mundo. También lo obtiene por las diferencias que mantiene con los demás signos de un sistema: «perro» significa algo, entre otras razones, porque no significa «gato», «lobo» o «caballo». Un modelo de lenguaje lleva esta lógica relacional a una escala extraordinaria. Aprende gigantescas configuraciones de proximidades, diferencias y regularidades entre signos.
+
+Pero esto todavía no explica cómo aparece el sentido. Charles Sanders Peirce entendía el signo como parte de una relación dinámica: un signo remite a un objeto mediante un interpretante, es decir, mediante otro efecto de sentido que puede convertirse a su vez en un nuevo signo. Un signo produce otro; una interpretación produce una nueva interpretación. Peirce llamó semiosis a ese movimiento potencialmente abierto.
+
+Durante siglos, podíamos representar simplificadamente una parte importante de nuestra cultura así:
+
+> persona → texto → persona → interpretación → nuevo texto.
+
+Ahora empiezan a aparecer circuitos diferentes:
+
+> persona → inteligencia artificial → inteligencia artificial → base de datos → inteligencia artificial → persona.
+
+Y, en ocasiones, máquina → máquina → máquina → humano.
+
+La inteligencia artificial no es únicamente una biblioteca gigantesca. Es un motor semiótico: una máquina que produce, transforma y relaciona signos dentro de cadenas de semiosis. La imprenta multiplicó libros; internet multiplicó información; la IA generativa comienza a multiplicar interpretaciones. Podríamos decir que estamos asistiendo a una industrialización de la semiosis. Esa circulación de signos sin cuerpo tiene también una cara política, que <a href="/blog/la-palabra-sin-cuerpo/">La palabra sin cuerpo</a> examina con Rancière y con la lectura de Laura Quintana en <i>Política de los cuerpos</i>: una emisión que no puede litigar y que altera el reparto entre habla y ruido.
+
+## El extraño poder de la abducción
+
+Pero ¿cómo genera la máquina nuevas posibilidades? Una forma sencilla de entenderlo consiste en recuperar tres formas clásicas de inferencia.
+
+La primera es la inducción: observamos muchos casos y extraemos regularidades. En buena medida, el aprendizaje de los grandes modelos tiene una profunda base inductiva; millones de ejemplos permiten aprender patrones que luego pueden utilizarse ante situaciones nuevas. La segunda es la deducción: si aceptamos unas premisas y unas reglas determinadas, obtenemos consecuencias necesarias. Las matemáticas formales constituyen el territorio privilegiado de esta operación.
+
+Pero existe una tercera forma de inferencia mucho más interesante para entender la inteligencia generativa: la abducción. Peirce utilizó esta palabra para describir el salto mediante el cual proponemos una hipótesis capaz de explicar algo. Encontramos un fenómeno extraño y pensamos «quizás ocurre esto». Vemos un problema matemático y sugerimos «quizás este lema permitiría resolverlo». Observamos dos disciplinas distintas y sospechamos «quizás estas estructuras son en realidad versiones de un mismo fenómeno».
+
+La abducción no demuestra. Propone. Hablar aquí de abducción no describe el mecanismo computacional interno del modelo, que predice tokens, sino la función que sus productos pueden desempeñar dentro de un proceso de descubrimiento: hipótesis, analogías y explicaciones candidatas que deberán someterse después a contraste. Y allí puede residir una parte decisiva de la transformación que estamos viviendo. La inteligencia artificial contemporánea no solamente automatiza cálculos o deducciones. Puede convertirse en una extraordinaria máquina productora de candidatos abductivos: conexiones, hipótesis, analogías, estrategias, representaciones alternativas, posibles explicaciones. Y puede hacerlo millones de veces. La revolución quizá no consista únicamente en automatizar la inteligencia deductiva, sino en industrializar la generación de posibilidades.
+
+Aquí Banach comienza a aparecer nuevamente. Encontrar una analogía profunda es, de alguna forma, una abducción: sospechar que dos estructuras aparentemente alejadas comparten algo esencial. Encontrar una analogía entre analogías es llevar esa operación a un nivel superior. ¿Qué ocurre cuando construimos una máquina capaz de sugerirlas a una escala imposible para cualquier individuo?
+
+## Cuando una máquina necesita otra máquina
+
+OpenAI/math permite observar otro fenómeno. Si una máquina produce resultados matemáticos a escala maquínica, ¿quién los verifica? Un matemático humano puede dedicar días, meses o años a revisar una demostración compleja. No puede revisar miles simultáneamente.
+
+Aquí adquieren una importancia inesperada sistemas como Lean, un asistente de demostración basado en teoría de tipos que existe desde mucho antes que estos modelos. Su arquitectura contiene un núcleo deliberadamente pequeño cuya tarea consiste en comprobar términos de prueba: verificar que determinada demostración formal satisface las reglas establecidas. La escena epistemológica resulta extraordinaria: en los resultados que han sido formalizados, una máquina genera y otra máquina verifica. La primera explora posibilidades; la segunda comprueba necesidad formal. Y finalmente el resultado llega a una comunidad humana.
+
+Pero aquí debemos tener cuidado. Lean puede verificar que una prueba formal es válida dentro de determinado sistema. Su propio manual de referencia distingue expresamente dos cuestiones: si el teorema tiene una prueba válida y qué significa el enunciado del teorema.<sup class="mark">b</sup> Thomas Hales, que dirigió la formalización de la conjetura de Kepler, lo recordó pocos días después de la publicación: la consistencia no basta, nadie debería confiar ciegamente en Lean, y siempre hace falta que alguien compruebe que el enunciado formalizado dice lo que creemos que dice. Esa pequeña distinción abre un problema gigantesco. Lean puede decirnos «la prueba es correcta». Pero no necesariamente puede decirnos «este teorema es profundo», «esta demostración es hermosa», «esta conexión va a transformar una disciplina» o «esta pregunta merece veinte años de investigación».
+
+<Glosa marca="b">
+Manual de referencia de Lean, sección <i>Validating a Lean Proof</i>: «it is important to distinguish the question “does the theorem have a valid proof” from “what does the theorem statement mean”». Es el puente exacto entre Lean y Wittgenstein.
+</Glosa>
+
+La matemática no consiste únicamente en distinguir verdadero de falso. También contiene juegos humanos de relevancia, elegancia, fertilidad, sorpresa y explicación. Jeremy Avigad, uno de los autores del manual de Lean, lo escribió la víspera de la publicación: piense o no la inteligencia artificial, no puede pensar por nosotros. Y aquí llegamos a Wittgenstein.
+
+## El significado no vive solamente en el signo
+
+El segundo Wittgenstein propuso una de las ideas más influyentes de la filosofía contemporánea: el significado de una palabra está en su uso. Las palabras no adquieren significado porque contengan pequeñas definiciones escondidas en su interior. Tienen sentido dentro de prácticas: dar una orden, hacer una promesa, demostrar, preguntar, bromear, condenar, perdonar, enseñar. Wittgenstein llamó juegos de lenguaje a estas prácticas y las vinculó con algo todavía más profundo: nuestras formas de vida.
+
+Esto vuelve incómoda la pregunta «¿la máquina realmente comprende?». Nosotros tampoco verificamos la comprensión humana mirando dentro de la cabeza de otra persona; reconocemos públicamente que alguien comprende porque sabe desenvolverse dentro de determinadas prácticas. Pero de ahí no se sigue que debamos atribuir comprensión a la máquina, y este texto no lo hace: acepta que carece de cuerpo, de mundo y de historia. No es necesario atribuirle comprensión para reconocer que sus producciones ya participan de nuestros usos lingüísticos. Precisamente ahí aparece el problema wittgensteiniano: un sistema que no comparte nuestra forma de vida puede, sin embargo, intervenir en los juegos de lenguaje mediante los cuales esa forma de vida se organiza. Wittgenstein no nos devuelve a la pregunta por lo que la máquina es, sino a la pregunta por lo que hace en nuestras prácticas.<sup class="mark">c</sup>
+
+<Glosa marca="c">
+Aquí no se revierte la tesis de <a href="/blog/agencia-sin-imputacion/">Agencia sin imputación</a>, que acepta la crítica ontológica: el LLM carece de cuerpo, mundo e historia efectual. La cuestión no es atribuirle comprensión, sino observar cómo una agencia no imputable interviene en prácticas productoras de significado.
+</Glosa>
+
+Y quizás el problema futuro ni siquiera sea si las máquinas aprenderán nuestros juegos. Podría ocurrir algo más extraño: que nosotros empecemos a modificar nuestros juegos de lenguaje para hacerlos compatibles con las máquinas. Lo fácilmente cuantificable podría desplazar a lo ambiguo; lo clasificable, a lo singular; lo estadísticamente probable, a lo excepcional; lo formalizable, a aquello que solamente puede comprenderse desde una experiencia vivida.
+
+La distopía epistémica no consistiría necesariamente en que las máquinas produzcan falsedades. Podría consistir en que terminemos aceptando como significativo únicamente aquello que nuestras máquinas pueden procesar.
+
+## La distopía de las respuestas correctas
+
+Solemos imaginar la amenaza de la inteligencia artificial mediante imágenes espectaculares: una superinteligencia rebelándose, una máquina engañándonos, un algoritmo tomando el control. Pero existe una distopía mucho más silenciosa.
+
+Supongamos este circuito: una IA genera hipótesis; otra las verifica; otra establece cuáles son importantes; otra las resume; otra recomienda qué hacer con ellas; otra ejecuta la decisión. Al final, un ser humano recibe una conclusión: «esta es la respuesta correcta». Todo podría funcionar perfectamente. Ese es precisamente el problema.
+
+La peor distopía epistémica no necesita máquinas que fallen. Podría surgir de máquinas que funcionan tan bien que dejamos progresivamente de ejercer aquello que no parecía necesario automatizar: el juicio.
+
+Aquí Hannah Arendt se vuelve relevante, en dos registros. En <i>La condición humana</i>, la acción es nuestra capacidad de introducir algo nuevo en un mundo compartido, entre seres plurales, y de responder por ello. En sus lecciones sobre Kant, el juicio es la facultad de decidir sobre lo particular cuando no hay regla que lo decida por nosotros. Una máquina puede ofrecernos mil posibilidades. Otra puede eliminar novecientas por inconsistentes. Pero todavía queda una pregunta diferente: ¿cuál de las cien posibilidades restantes queremos convertir en mundo? La producción de posibilidades puede automatizarse; la decisión acerca de cuáles deben ingresar al mundo común nos lleva del conocimiento al juicio y, finalmente, a la acción. Es decir, a la política.
+
+## Nunca fuimos humanos sin prótesis
+
+Sería tentador concluir que la solución consiste en alejarnos de las máquinas. Pero esa conclusión parte de una fantasía: la idea de un ser humano intelectualmente puro que piensa por sí mismo y solamente después utiliza tecnologías. Nunca hemos sido así. La escritura es una prótesis de memoria; un mapa, una prótesis de orientación; la notación algebraica, una prótesis del razonamiento; una biblioteca, una prótesis colectiva de conocimiento; un computador, una prótesis de cálculo.
+
+El filósofo español Fernando Broncano ha insistido en pensar la cultura técnica no simplemente como un conjunto de herramientas externas, sino como parte constitutiva de nuestras capacidades. Desde esa perspectiva, la pregunta importante no es «¿tecnología o humanidad?», sino «¿qué clase de humanidad construimos mediante nuestras tecnologías?».
+
+La inteligencia artificial introduce una prótesis peculiar. Conviene distinguir tres cosas. El modelo aislado es un motor semiótico: produce, transforma y relaciona signos. Una persona acoplada a ese motor forma una prótesis semiótica: el acoplamiento amplía el espacio de signos, analogías e hipótesis al que esa persona puede acceder. Y cuando el acoplamiento incluye además un andamiaje que fija qué configura la máquina y qué valida el humano, tenemos una prótesis hermenéutica.<sup class="mark">d</sup> La palabra prótesis, también en Broncano, es deliberadamente general; la distinción quiere mostrar que el acoplamiento tiene más componentes de los que el término sugiere, y que cada uno se puede pensar y gobernar por separado. La prótesis semiótica no solamente almacena nuestros signos, ni solamente los transporta, ni solamente calcula con ellos. Puede devolvernos signos que nosotros no habíamos producido. Puede decirnos «usted está formulando mal el problema», «existe una conexión que no había considerado», «esta estructura matemática se parece a aquella», «esta interpretación produce una consecuencia inesperada». La prótesis comienza a modificar al propio intérprete.
+
+<Glosa marca="d">
+En la investigación doctoral, la <a href="/blog/protesis-hermeneutica/">prótesis hermenéutica</a> nombra el sistema andamiaje-LLM acoplado al investigador que valida. Es una clase gobernada de prótesis semiótica, con frontera explícita entre configuración y validación. El LLM aislado no es prótesis sino motor.
+</Glosa>
+
+Ya no tenemos simplemente humano → herramienta → mundo. Tenemos un acoplamiento, humano ↔ motor semiótico, que mira al mundo y se modifica a sí mismo.
+
+## El regreso de los polímatas
+
+¿Y qué tipo de ser humano puede aprovechar una prótesis semejante sin entregar completamente su juicio? Tal vez reaparezca una vieja figura: el polímata. Pero no el polímata entendido como una enciclopedia ambulante. Competir con una inteligencia artificial en cantidad de información sería absurdo; ningún Leonardo, Leibniz o Humboldt podría memorizar una fracción relevante de aquello que un modelo puede consultar.
+
+La nueva polimatía tendría que significar otra cosa. La abundancia cognitiva disminuye el valor relativo de acumular contenidos y aumenta el valor de reconocer estructuras transportables entre dominios. El nuevo polímata no es quien posee muchos conocimientos, sino quien puede reconocer qué estructura se conserva cuando un problema cambia de lenguaje. No saber todas las disciplinas, sino moverse entre ellas: comprender suficientemente varios juegos de lenguaje para reconocer cuándo problemas aparentemente diferentes comparten una estructura. El especialista puede dominar un territorio. El nuevo polímata debe aprender a construir puentes entre territorios.
+
+Un matemático habla de grafos. Un sociólogo habla de redes sociales. Un epidemiólogo habla de propagación. Un lingüista habla de estructuras relacionales. Un filósofo habla de mediaciones. Las palabras son distintas. La pregunta polimática es: ¿qué permanece cuando cambia el lenguaje?
+
+En matemáticas tenemos una palabra extraordinariamente adecuada para esto: invariante. Un invariante es aquello que permanece bajo determinadas transformaciones. Quizá la polimatía de la era de la inteligencia artificial consista precisamente en aprender a buscar invariantes estructurales entre dominios expresados en juegos de lenguaje diferentes. La IA puede ayudarnos a recorrer enormes espacios de posibilidades; puede sugerir miles de conexiones; puede convertirse en una prótesis abductiva. Pero la persona debe aprender a preguntar qué conexiones son superficiales y cuáles revelan una estructura profunda.
+
+## Los matemáticos de Banach
+
+Y entonces regresamos a Banach. Tal vez los «matemáticos de Banach» del futuro no sean únicamente matemáticos. Serán científicos, filósofos, artistas, ingenieros, médicos, historiadores o ciudadanos capaces de utilizar inteligencias artificiales para recorrer territorios que una sola vida no podría abarcar. Su ventaja no consistirá en poseer más datos que la máquina. Consistirá en saber atravesar formas de conocimiento, reconocer una estructura bajo distintos nombres, descubrir relaciones entre relaciones. Encontrar, literalmente, analogías entre analogías.
+
+Aquí aparece finalmente la bifurcación entre dos futuros.
+
+En uno, la inteligencia artificial amplía nuestra capacidad de interpretar. Produce posibilidades, nosotros las contrastamos, las conectamos con experiencias y conocimientos distintos, discutimos su significado y asumimos responsabilidad por aquello que hacemos con ellas. Esta sería una utopía epistémica. No porque las máquinas sepan todo, sino porque nos permiten pensar cosas que antes no podíamos pensar.
+
+En el otro futuro, delegamos progresivamente cada etapa. La máquina produce, verifica, selecciona, interpreta, recomienda. Y nosotros simplemente recibimos resultados. No habríamos dejado de producir conocimiento; todo lo contrario, probablemente produciríamos muchísimo más. Pero habríamos empezado a perder nuestra participación en la construcción de su significado. Esa sería la distopía epistémica.
+
+La paradoja de nuestro tiempo podría formularse así: podemos estar construyendo máquinas capaces de ayudarnos a conocer mucho más precisamente en el momento en que corremos el riesgo de comprender cada vez menos aquello que conocemos.
+
+Por eso el problema de fondo de la inteligencia artificial quizá nunca haya sido si una máquina puede pensar como un ser humano. La pregunta interesante es la contraria: ¿en qué clase de seres humanos nos convertiremos cuando podamos pensar con máquinas?
+
+Si Banach tenía razón y una de las formas más altas de la inteligencia consiste en reconocer analogías entre analogías, acabamos de construir un motor formidable para buscarlas. Que llegue a ser una prótesis depende de cómo nos acoplemos a él. La utopía o la distopía no comienzan cuando la máquina las encuentre. Comienzan con lo que nosotros decidamos hacer después.
